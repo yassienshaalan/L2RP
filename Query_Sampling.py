@@ -401,7 +401,7 @@ def adjustSalesRankOrder(category_name,source_category_path,old_feature_path,new
 sourceFeaturesDirectory = "f:\Yassien_PhD\Experiment_4/All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/"
 category_source = "f:\Yassien_PhD\categories/"#"C:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three\categories/"
 productBaseDirectory = "f:\Yassien_PhD/Product_Reviews/"
-destination_directory = "f:\Yassien_PhD\Experiment_4/All_Categories_Data_25_Basic_Features_With_10_Time_Intervals_Num_Rev_decending/"
+destination_directory = "f:\Yassien_PhD\Experiment_4/All_Categories_Data_25_Basic_Features_With_10_Time_Intervals_Sim_by_Clustering/"
 sales_destination_directory= "f:\Yassien_PhD\Experiment_4/categories_sales_rank/"
 sample_size = 10
 categoryList = ["Industrial & Scientific","Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories", "Electronics"]
@@ -412,8 +412,8 @@ for category in categoryList:
     sort = 0
     #arrange_products_by_num_reviews(feature_category_path,category,source_category_path,productBaseDirectory,sample_size,destination_directory,sort)
     #arrange_products_by_similarity_of_num_reviews(feature_category_path,category,source_category_path,productBaseDirectory,sample_size,destination_directory)
-    #arrange_products_by_Clustering(feature_category_path,category,source_category_path,productBaseDirectory,sample_size,destination_directory,1)
-    arrange_products_by_similarity_of_num_reviews(feature_category_path, category, source_category_path,productBaseDirectory, sample_size, destination_directory,sort)
+    arrange_products_by_Clustering(feature_category_path,category,source_category_path,productBaseDirectory,sample_size,destination_directory,1)
+    #arrange_products_by_similarity_of_num_reviews(feature_category_path, category, source_category_path,productBaseDirectory, sample_size, destination_directory,sort)
     old_feature_path= feature_category_path
     new_feature_path=destination_directory+category+".txt"
     adjustSalesRankOrder(category,source_category_path,old_feature_path,new_feature_path,sales_destination_directory)

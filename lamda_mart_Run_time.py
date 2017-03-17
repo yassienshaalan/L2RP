@@ -211,10 +211,10 @@ for category in categoryList:
 #categoriesList = ["Cafes", "Chinese","Mexican" , "Italian","American (Traditional)", "Thai", "Bars", "Japanese", "American (New)"]
 #orig_catNames = ["Cafes", "Chinese","Mexican" , "Italian","American (Traditional)", "Thai", "Bars", "Japanese", "American (New)"]
 #*******************************Amazon Dataset
-#categoriesList = ["Arts","Industrial", "Jewelry", "Toys", "Computers", "Video Games", "Electronics","Software", "Cell Phones"]
-#orig_catNames  = ["Arts, Crafts & Sewing","Industrial & Scientific", "Jewelry",  "Toys & Games","Computers & Accessories", "Video Games", "Electronics", "Software", "Cell Phones & Accessories"]
-categoriesList = ["Arts","Cell Phones"]
-orig_catNames  = ["Arts, Crafts & Sewing", "Cell Phones & Accessories"]
+categoriesList = ["Arts","Industrial", "Jewelry", "Toys", "Computers", "Video Games", "Electronics","Software", "Cell Phones"]
+orig_catNames  = ["Arts, Crafts & Sewing","Industrial & Scientific", "Jewelry",  "Toys & Games","Computers & Accessories", "Video Games", "Electronics", "Software", "Cell Phones & Accessories"]
+#categoriesList = ["Arts","Cell Phones"]
+#orig_catNames  = ["Arts, Crafts & Sewing", "Cell Phones & Accessories"]
 dataset_type="amazon"
 rename=1
 

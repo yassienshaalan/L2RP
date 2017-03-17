@@ -2514,7 +2514,7 @@ if __name__ == '__main__':
             #sourceFeaturesDirectory = "F:\Yassien_PhD\yelp_dataset_challenge_academic_dataset\All_Categories_Data_25_Basic_Features_With_1_Time_Intervals/"
             #destDirectorySvm = "F:\Yassien_PhD\yelp_dataset_challenge_academic_dataset\K_Fold_PerCategory_Basic__With_1_Time_Interval_TQ_Target_25_lamda/"+category+"/"+cutoff+"/"
             # *******************************Amazon training/testing sets building configuration**************************************************************************************
-            sourceFeaturesDirectory = "f:\Yassien_PhD\Experiment_4/All_Categories_Data_25_Basic_Features_With_10_Time_Intervals_Num_Rev_decending/"
+            sourceFeaturesDirectory = "f:\Yassien_PhD\Experiment_4/All_Categories_Data_25_Basic_Features_With_10_Time_Intervals_Sim_by_Clustering/"
             destDirectorySvm = "f:\Yassien_PhD\Experiment_4/K_Fold_PerCategory_Basic__With_10_Time_Interval_TQ_Target_25_lamda_samp/"+category+"/"+cutoff+"/"
             # ********************************************************************************************************************************************************************
             threshold = cutoffs[i]#(i+1)*10
