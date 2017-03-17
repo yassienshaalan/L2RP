@@ -236,7 +236,7 @@ def createSortedRankAndRunR(categoryMainDirectory,lib,categoryName,orig_CatName,
 
                 sourceDirectory = destDirectory+"SalesRank/"
                 sortedSalesRankDirectory+="/"
-                sortRankedProductDirectory(sourceDirectory, sortedSalesRankDirectory,1)
+                sortRankedProductDirectory(sourceDirectory, sortedSalesRankDirectory,0)
 
                 sortedPredictionDirectory = destDirectory + "Sorted_Predictions"
                 try:

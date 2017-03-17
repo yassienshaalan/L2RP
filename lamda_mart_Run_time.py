@@ -167,7 +167,7 @@ cutoffs = [10]
 #categoriesDirectory = "F:\Yassien_PhD\yelp_dataset_challenge_academic_dataset\Resturants_Categories/"
 #*******************************Amazon Dataset
 categoryList = ["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories", "Electronics"]
-#categoryList = ["Arts, Crafts & Sewing","Computers & Accessories","Software"]
+#categoryList = ["Arts, Crafts & Sewing","Cell Phones & Accessories"]
 #categoryList = ["Jewelry"]
 base_learning_directory = "f:\Yassien_PhD\Experiment_4\K_Fold_PerCategory_Basic__With_10_Time_Interval_TQ_Target_25_lamda_samp/"#"C:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three\Experiment 3\K_Fold_PerCategory_Basic__With_10_Time_Interval_TQ_Target_25_lamda_scarcity/"
 categoriesDirectory = "f:\Yassien_PhD\Experiment_4\categories_sales_rank/"#"D:\Yassien_PhD\Experiment_4\categories_sales_rank/"#"c:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three/categories/"
@@ -211,8 +211,10 @@ for category in categoryList:
 #categoriesList = ["Cafes", "Chinese","Mexican" , "Italian","American (Traditional)", "Thai", "Bars", "Japanese", "American (New)"]
 #orig_catNames = ["Cafes", "Chinese","Mexican" , "Italian","American (Traditional)", "Thai", "Bars", "Japanese", "American (New)"]
 #*******************************Amazon Dataset
-categoriesList = ["Arts","Industrial", "Jewelry", "Toys", "Computers", "Video Games", "Electronics","Software", "Cell Phones"]
-orig_catNames  = ["Arts, Crafts & Sewing","Industrial & Scientific", "Jewelry",  "Toys & Games","Computers & Accessories", "Video Games", "Electronics", "Software", "Cell Phones & Accessories"]
+#categoriesList = ["Arts","Industrial", "Jewelry", "Toys", "Computers", "Video Games", "Electronics","Software", "Cell Phones"]
+#orig_catNames  = ["Arts, Crafts & Sewing","Industrial & Scientific", "Jewelry",  "Toys & Games","Computers & Accessories", "Video Games", "Electronics", "Software", "Cell Phones & Accessories"]
+categoriesList = ["Arts","Cell Phones"]
+orig_catNames  = ["Arts, Crafts & Sewing", "Cell Phones & Accessories"]
 dataset_type="amazon"
 rename=1
 

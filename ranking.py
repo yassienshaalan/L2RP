@@ -1777,6 +1777,7 @@ def prepareTraininTestingFromOneCategory(categoryPath,destDirectory,threshold,la
     patch = 0
     records = []
     patches = []
+    print(categoryPath)
     patches.append("qid:0")
     numRecords = 0
     with open(categoryPath, 'r') as fp:
@@ -1936,21 +1937,32 @@ def prepareTraininTestingFromOneCategory(categoryPath,destDirectory,threshold,la
             for item in TestingSet:
                for it in item:
                    filehandleTesting.write(it)
+        num_valid = int(numTraining*0.3)
+        num_train = numTraining-num_valid
+        training_index = 0
         for set in newRecords:
             counter = 0
+            is_test = 0
             for line in set:
                 lineTemp = str(line)
                 lineTemp = lineTemp.split(" ")
                 if lineTemp[1] in allTesting[i]:
                     if oneTesting==0:
                         filehandleTesting.write(line)
+                        is_test = 1
 
                 else:
-                    filehandleTraining.write(line)
-                    if lamda == 1:
-                        filehandleValid.write(line)
+                    is_test = 0
+                    if training_index<num_train or lamda!=1:
+                        filehandleTraining.write(line)
+                    else:
+                        if lamda == 1:
+                            filehandleValid.write(line)
+
                 index += 1
                 counter+=1
+            if is_test == 0:
+                training_index += 1
             #print("This set contains "+str(counter) +" records")
 
         filehandleTesting.close()
