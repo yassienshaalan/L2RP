@@ -120,9 +120,10 @@ def main():
         #print(measures.jaccard_similarity([0, 1, 2, 5, 6], [0, 2, 3, 5, 7, 9]))
 
 
-        '''file_path = "f:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/Arts, Crafts & Sewing.txt"
-        features,features_dict = getFeatureVector(file_path)
-        for key,value in features_dict.items():
+
+        #file_path = "f:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/Arts, Crafts & Sewing.txt"
+        #features,features_dict = getFeatureVector(file_path)
+        '''for key,value in features_dict.items():
             print(str(key)+" "+str(value))'''
 
         '''num_buckets = 100
@@ -152,36 +153,41 @@ def main():
             print(feature_buckets[i])
 
         print("num_disposed_products")
-        print(num_disposed_products)'''
+        print(num_disposed_products)
+        '''
 
 
         #Clustering part
         #X = init_board(100)
         #print(X.shape)
         #print(X)
-
-        '''fv= np.array(features)
+        '''
+        fv= np.array(features)
         print(fv.shape)
-        mu, clusters = find_centers(fv,100)
+        num_clusters = int(len(features_dict)/10)
+        print("Num Clusters "+str(num_clusters))
+        mu, clusters = find_centers(fv,num_clusters)
         print("mu")
         print(len(mu))
-        print("clusters")
+
         num_objs=0
         for key,value in clusters.items():
             #print(key)
-            num_objs+=len(value)
-            print(len(value))
+            local_num_objs=len(value)
+            num_objs+=local_num_objs
             #print(value[0][250])
+            print("Num obj per cluster "+str(local_num_objs))
             sum=0
             for feat in value[0]:
                 sum+=feat
-            print(sum)
-            print(features_dict[sum])
-            break
-        print("num_objs")
-        print(num_objs)'''
+            #print(sum)
+            #print(features_dict[sum])
+
+        print("Total num_objs "+str(num_objs))
+
+        #'''
 
 
 
 #if __name__ == "__main__":
-   # main()
+  # main()

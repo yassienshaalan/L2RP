@@ -7,6 +7,18 @@ def get_num_revs(product_path):
         for item in filep:
             count+=1
     return count
+def get_num_revs_avg_rating(product_path):
+    #Count the number of reviews for a product and get the average num revs
+    count = 0
+    avg_rating = 0
+    with open(product_path, 'r') as filep:
+        for line in filep:
+            row = line.split('\t')
+            avg_rating+=float(row[5])
+            count+=1
+    avg_rating/=count
+    return count,avg_rating
+
 def get_num_revs_original_case(source_category_path,productBaseDirectory):
     index = 0
     # products_with_small_num_revs = []  # <70
@@ -71,7 +83,7 @@ def get_num_revs_large_to_small_distribution(source_category_path,productBaseDir
         index+=1
     return x,y
 
-category_name = "Industrial & Scientific"
+'''category_name = "Industrial & Scientific"
 source_category_path="d:\Yassien_PhD\categories/"+category_name+".txt"
 productBaseDirectory="d:\Yassien_PhD/Product_Reviews/"
 x,y=get_num_revs_large_to_small_distribution(source_category_path,productBaseDirectory)
@@ -82,4 +94,4 @@ ax.set_xlabel('Products')
 ax.set_ylabel('Num Reviews')
 ax.scatter(x, y)
 fig.suptitle(category_name, fontsize=14, fontweight='bold')
-plt.show()
+plt.show()'''
