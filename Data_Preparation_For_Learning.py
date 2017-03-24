@@ -164,9 +164,30 @@ def DivideTrainingSetIntoQueries(cat_train_test_desination_directory,category_na
 
   print("The num of products in queries "+str(num_products_assigned_to_q))
 
+  return
 
+def PrepareCategoriesWithSalesRankRanking(sourceCategorypath,destinationCategorypath,category_name):
+  print("Processing " + category_name)
+
+  ranks = []
+  with open(sourceCategorypath, 'r') as filep:
+    for line in filep:
+      ranks.append(int(line.split(' ')[0]))
+  products = []
+  with open(destinationCategorypath, 'r') as filep:
+    for line in filep:
+      products.append(line.split('\t')[0])
+  if len(ranks)!=len(products):
+    print("Non Equal lengths ranks is "+str(len(ranks))+" products "+str(len(products)))
+    print(products)
+  filehandle = open(destinationCategorypath, 'w')
+  for i in range(len(products)):
+    filehandle.write(str(products[i])+"\t"+str(ranks[i])+"\n")
+
+  filehandle.close()
 
   return
+
 category_source = "f:\Yassien_PhD\categories/"
 categories_source="f:\Yassien_PhD\Experiment_5\Categories/"
 source_features_path = "f:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/"
@@ -175,10 +196,11 @@ train_test_destination="f:\Yassien_PhD\Experiment_5\Train_Test_Category_With_10_
 #Categories with small number of products < 5000 products do need cross validation
 categories_with_small_products = ["Industrial & Scientific","Arts, Crafts & Sewing","Computers & Accessories","Software"]
 
+
 #Categories with large number of products > 5000 products we don't need cross_Validation randomize and take 80%
-categories_with_large_products=[ "Jewelry","Toys & Games", "Video Games" , "Cell Phones & Accessories", "Electronics"]
+categories_with_large_products=["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories", "Electronics"]#[ "Jewelry","Toys & Games", "Video Games" , "Cell Phones & Accessories", "Electronics"]
 for category_name in categories_with_large_products:
-  modified_categories_with_indices= categories_source+category_name+"/"
+  '''modified_categories_with_indices= categories_source+category_name+"/"
   #training_ratio = 0.8
   #source_category_path = category_source + category_name + ".txt"
   #Randomize_Product_List_and_Picktraining(source_category_path, training_ratio,local_destination)
@@ -189,3 +211,7 @@ for category_name in categories_with_large_products:
   query_size = 10
   DivideTrainingSetIntoQueries(cat_train_test_desination_directory_stage_1,category_name,train_test_destination_for_cat,query_size)
   break
+  '''
+  sourceCategory="C:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three\Experiment 2\All_Categories_Data_25_Basic_Features_With_10_Time_Interval_TQ_Target_For_Ranking/"+category_name+".txt"
+  destinationCategory="F:\Yassien_PhD\Experiment_5\Categories_Ranked_by_TQ_Rank/"+category_name+".txt"
+  PrepareCategoriesWithSalesRankRanking(sourceCategory,destinationCategory,category_name)
