@@ -41,7 +41,41 @@ def transformPredictionsToComputedPerCategory(categoryName,categoriesDirectory, 
     print("Total Products")
     print(total)
     return
+def transformPredictionsToComputedPerCategory_New_Setup(categoryName,categoriesDirectory, destDirectory,predicitonsFile):
+    print("Procedure to combine prediction values with Product names for Kendal preparation")
+    offset = 0
+    predictions = []
+    with open(predicitonsFile, 'r') as fp:
+        for line in fp:
+            row = line.split("\n")
+            predictions.append(row[0])
+    print("No. Predictions")
+    print(len(predictions))
+    total = 0
+    print(categoryName)
+    catPath = categoriesDirectory + categoryName + ".txt"
+    products = []
+    with open(catPath, 'r') as fp:
+        for line in fp:
+            row = line.split("\t")
+            products.append(row[0])
+    numLines = len(products)
+    total += numLines
+    FilePath = destDirectory + categoryName + ".txt"
 
+    filehandle = open(FilePath, 'w')
+    for i in range(len(products)):
+        if (i + offset < len(predictions)):
+            filehandle.write(products[i])
+            filehandle.write("\t")
+            filehandle.write(predictions[i + offset])
+            filehandle.write("\n")
+        else:
+            break
+    offset += numLines
+    print("Total Products")
+    print(total)
+    return
 def transformPredictionsToComputed(testing_Set, categoriesDirectory, destDirectory,predicitonsFile):
     offset = 0
     predictions = []

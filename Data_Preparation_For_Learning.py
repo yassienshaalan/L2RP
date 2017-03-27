@@ -2,6 +2,7 @@ import random
 import shutil
 import os
 from alogrithms import mergeSort
+from New_Query_Sampling import  DivideTrainingSetIntoQueries,DivideTestingSetIntoQueries
 
 def Randomize_Product_List_and_Picktraining(source_category_path, training_ratio,local_destination):
 
@@ -113,58 +114,6 @@ def Retreive_Train_Test_Per_Category(source_feature_vector_path,category_name,mo
   filehandle.close()
 
   return
-def DivideTrainingSetIntoQueries(cat_train_test_desination_directory,category_name,train_test_destination_for_cat,query_size):
-
-  #This funciton still divides the queries randomly taking the first sample_size as one query and the rest
-  print("Processing " + category_name)
-
-  try:
-    os.stat(train_test_destination_for_cat)
-  except:
-    os.mkdir(train_test_destination_for_cat)
-
-  training_file_path = cat_train_test_desination_directory+"training.txt"
-  all_queries = []
-  index = 0
-  num_products = 0
-  with open(training_file_path, 'r') as filep:
-    query = []
-    for line in filep:
-      if len(query)<query_size:
-        query.append(line)
-        index+=1
-      else:
-        index=0
-        all_queries.append(query)
-        query=[]
-        query.append(line)
-      num_products+=1
-
-  print("The index when out "+str(index))
-  if len(query)!=0:
-    for product in query:
-      all_queries[len(all_queries)-1].append(product)
-
-  print("Num products "+str(num_products))
-  print("How many queries "+str(len(all_queries)))
-  print("The length of each query")
-  num_products_assigned_to_q = 0
-  for query in all_queries:
-    num_products_assigned_to_q+=len(query)
-    index = 0
-    query_pair =[]
-    for product_line in query:
-      rank = str(product_line).split(' ')[0]
-      query_pair.append((index,int(rank)))
-      index+=1
-    print(query_pair)
-    mergeSort(query_pair)
-    print(query_pair)
-
-
-  print("The num of products in queries "+str(num_products_assigned_to_q))
-
-  return
 
 def PrepareCategoriesWithSalesRankRanking(sourceCategorypath,destinationCategorypath,category_name):
   print("Processing " + category_name)
@@ -187,31 +136,106 @@ def PrepareCategoriesWithSalesRankRanking(sourceCategorypath,destinationCategory
   filehandle.close()
 
   return
+def Prepare_Training_Testing_Data_New_Experiment_Setup():
+  category_source = "f:\Yassien_PhD\categories/"
+  categories_source="f:\Yassien_PhD\Experiment_5\Categories/"
+  source_features_path = "f:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/"
+  train_test_destination_stage1="f:\Yassien_PhD\Experiment_5\Train_Test_Category_Stage_1/"
+  train_test_destination="f:\Yassien_PhD\Experiment_5\Train_Test_Category_With_10_Time_Interval_TQ_Target/"
+  #Categories with small number of products < 5000 products do need cross validation
+  categories_with_small_products = ["Industrial & Scientific","Arts, Crafts & Sewing","Computers & Accessories","Software"]
 
-category_source = "f:\Yassien_PhD\categories/"
-categories_source="f:\Yassien_PhD\Experiment_5\Categories/"
-source_features_path = "f:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/"
-train_test_destination_stage1="f:\Yassien_PhD\Experiment_5\Train_Test_Category_Stage_1/"
-train_test_destination="f:\Yassien_PhD\Experiment_5\Train_Test_Category_With_10_Time_Interval_TQ_Target/"
-#Categories with small number of products < 5000 products do need cross validation
-categories_with_small_products = ["Industrial & Scientific","Arts, Crafts & Sewing","Computers & Accessories","Software"]
 
+  #Categories with large number of products > 5000 products we don't need cross_Validation randomize and take 80%
+  categories_with_large_products=["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories", "Electronics"]#[ "Jewelry","Toys & Games", "Video Games" , "Cell Phones & Accessories", "Electronics"]
+  for category_name in categories_with_large_products:
 
-#Categories with large number of products > 5000 products we don't need cross_Validation randomize and take 80%
-categories_with_large_products=["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories", "Electronics"]#[ "Jewelry","Toys & Games", "Video Games" , "Cell Phones & Accessories", "Electronics"]
-for category_name in categories_with_large_products:
-  '''modified_categories_with_indices= categories_source+category_name+"/"
-  #training_ratio = 0.8
-  #source_category_path = category_source + category_name + ".txt"
-  #Randomize_Product_List_and_Picktraining(source_category_path, training_ratio,local_destination)
-  source_feature_vector_path=source_features_path+category_name+".txt"
-  cat_train_test_desination_directory_stage_1 = train_test_destination_stage1+category_name+"/"
-  #Retreive_Train_Test_Per_Category(source_feature_vector_path,category_name,modified_categories,cat_desination_directory)
-  train_test_destination_for_cat = train_test_destination+category_name+"/"
-  query_size = 10
-  DivideTrainingSetIntoQueries(cat_train_test_desination_directory_stage_1,category_name,train_test_destination_for_cat,query_size)
-  break
-  '''
-  sourceCategory="C:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three\Experiment 2\All_Categories_Data_25_Basic_Features_With_10_Time_Interval_TQ_Target_For_Ranking/"+category_name+".txt"
-  destinationCategory="F:\Yassien_PhD\Experiment_5\Categories_Ranked_by_TQ_Rank/"+category_name+".txt"
-  PrepareCategoriesWithSalesRankRanking(sourceCategory,destinationCategory,category_name)
+    ################################################################################################################################################################
+    '''
+    This part of the code to randomize all products within one group and then pick 80% randomly for training and 20% for testing keeping the indices of each set to be able to formulate the queries
+    modified_categories_with_indices= categories_source+category_name+"/"
+    training_ratio = 0.8
+    source_category_path = category_source + category_name + ".txt"
+    Randomize_Product_List_and_Picktraining(source_category_path, training_ratio,modified_categories_with_indices)
+    source_feature_vector_path=source_features_path+category_name+".txt"
+    cat_train_test_desination_directory_stage_1 = train_test_destination_stage1+category_name+"/"
+    Retreive_Train_Test_Per_Category(source_feature_vector_path,category_name,modified_categories_with_indices,cat_train_test_desination_directory_stage_1)
+    train_test_destination_for_cat = train_test_destination+category_name+"/"
+    '''
+    ################################################################################################################################################################
+
+    ################################################################################################################################################################
+    #This part was just to prepare to get the sales rank and the TQ rank for all products in all categories to be utilized in forming the training and testing sets
+    '''sourceCategory="C:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three\Experiment 2\All_Categories_Data_25_Basic_Features_With_10_Time_Interval_TQ_Target_For_Ranking/"+category_name+".txt"
+    destinationCategory="F:\Yassien_PhD\Experiment_5\Categories_Ranked_by_TQ_Rank/"+category_name+".txt"
+    PrepareCategoriesWithSalesRankRanking(sourceCategory,destinationCategory,category_name)'''
+    ################################################################################################################################################################
+    #This part converts the randomized training and testing sets into queries with the given size
+    query_size = 10
+    cat_train_test_desination_directory_stage_1 = train_test_destination_stage1 + category_name + "/"
+    train_test_destination_for_cat = train_test_destination + category_name + "/"
+    try:
+      os.stat(train_test_destination_for_cat)
+    except:
+      os.mkdir(train_test_destination_for_cat)
+    train_test_destination_for_cat+= "/Cutoff_10/"
+    modified_categories_with_indices = categories_source + category_name + "/"
+    validation_ratio = 0.2
+    new_q_index = DivideTrainingSetIntoQueries(cat_train_test_desination_directory_stage_1,category_name,train_test_destination_for_cat,query_size,validation_ratio)
+    sales_rank_original_ranking_path = "F:\Yassien_PhD\Experiment_5\Categories_Ranked_by_Sales_Rank/"+category_name+".txt"
+    modified_categories_with_indices = categories_source + category_name + "/"
+    DivideTestingSetIntoQueries(cat_train_test_desination_directory_stage_1,category_name,train_test_destination_for_cat,modified_categories_with_indices,sales_rank_original_ranking_path,query_size,new_q_index)
+
+  return
+
+def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_sales_rank,categories_with_testing_indices):
+  categories = ["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games","Video Games", "Computers & Accessories", "Software", "Cell Phones & Accessories","Electronics"]
+  print("This procedure computes the kendall tau for the new learning experiment setup ")
+  for category_name in categories:
+
+    print("Processing "+category_name)
+
+    testing_indices = []
+    testing_indices_path = categories_with_testing_indices+category_name+ "/" + "testing_index.txt"
+    with open(testing_indices_path, 'r') as filep:
+      for line in filep:
+        testing_indices.append(int(line))
+
+    print(testing_indices)
+    all_products = []
+
+    sales_rank_original_ranking_path=categories_sales_rank+category_name+".txt"
+    with open(sales_rank_original_ranking_path, 'r') as filep:
+      for line in filep:
+        all_products.append(int(line.split('\t')[1]))
+
+    products_to_test = []
+    index = 0
+    for i in range(len(testing_indices)):
+      product_index = testing_indices[i]
+      sales_rank = all_products[product_index]
+      products_to_test.append((index,sales_rank))
+      index+=1
+
+    print(products_to_test)
+
+    predictions = []
+    index = 0
+    predictions_path = base_predictions_directory+category_name+"/Cutoff_10/"+"predictions.txt"
+    with open(predictions_path, 'r') as filep:
+      for line in filep:
+        predictions.append((index,float(line)))
+        index+=1
+    print(predictions)
+
+    if len(products_to_test) != len(predictions):
+      print("Error Un even lists")
+      print("Num products from sales "+str(len(products_to_test)) +" From predictions "+str(len(predictions)))
+
+    print("#####################################")
+    mergeSort(products_to_test)
+    print(products_to_test)
+    mergeSort(predictions)
+    print(predictions)
+    break
+  return
