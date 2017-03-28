@@ -4,7 +4,7 @@ import os
 from alogrithms import mergeSort
 from New_Query_Sampling import  DivideTrainingSetIntoQueries,DivideTestingSetIntoQueries
 
-def Randomize_Product_List_and_Picktraining(source_category_path, training_ratio,local_destination):
+def Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,local_destination):
 
   print("Processing "+category_name)
   index = 0
@@ -151,17 +151,17 @@ def Prepare_Training_Testing_Data_New_Experiment_Setup():
   for category_name in categories_with_large_products:
 
     ################################################################################################################################################################
-    '''
-    This part of the code to randomize all products within one group and then pick 80% randomly for training and 20% for testing keeping the indices of each set to be able to formulate the queries
+    #'''
+    #This part of the code to randomize all products within one group and then pick 80% randomly for training and 20% for testing keeping the indices of each set to be able to formulate the queries
     modified_categories_with_indices= categories_source+category_name+"/"
     training_ratio = 0.8
     source_category_path = category_source + category_name + ".txt"
-    Randomize_Product_List_and_Picktraining(source_category_path, training_ratio,modified_categories_with_indices)
+    Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,modified_categories_with_indices)
     source_feature_vector_path=source_features_path+category_name+".txt"
     cat_train_test_desination_directory_stage_1 = train_test_destination_stage1+category_name+"/"
     Retreive_Train_Test_Per_Category(source_feature_vector_path,category_name,modified_categories_with_indices,cat_train_test_desination_directory_stage_1)
     train_test_destination_for_cat = train_test_destination+category_name+"/"
-    '''
+    #'''
     ################################################################################################################################################################
 
     ################################################################################################################################################################
@@ -188,9 +188,13 @@ def Prepare_Training_Testing_Data_New_Experiment_Setup():
 
   return
 
-def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_sales_rank,categories_with_testing_indices):
+def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_sales_rank,categories_with_testing_indices,lib,R_path):
   categories = ["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games","Video Games", "Computers & Accessories", "Software", "Cell Phones & Accessories","Electronics"]
   print("This procedure computes the kendall tau for the new learning experiment setup ")
+  correlationFilePath = base_predictions_directory + "correlation_" + lib + ".txt"
+  correlationFileHandle = open(correlationFilePath, 'w')
+  correlationFileHandle.write("Category\t\tKendal Tau")
+  correlationFileHandle.write("\n")
   for category_name in categories:
 
     print("Processing "+category_name)
@@ -207,7 +211,8 @@ def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_s
     sales_rank_original_ranking_path=categories_sales_rank+category_name+".txt"
     with open(sales_rank_original_ranking_path, 'r') as filep:
       for line in filep:
-        all_products.append(int(line.split('\t')[1]))
+        sales = int(line.split('\t')[1])
+        all_products.append(sales)
 
     products_to_test = []
     index = 0
@@ -216,7 +221,7 @@ def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_s
       sales_rank = all_products[product_index]
       products_to_test.append((index,sales_rank))
       index+=1
-
+    print("Before Sorting")
     print(products_to_test)
 
     predictions = []
@@ -233,9 +238,57 @@ def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_s
       print("Num products from sales "+str(len(products_to_test)) +" From predictions "+str(len(predictions)))
 
     print("#####################################")
+    print("After Sorting")
     mergeSort(products_to_test)
-    print(products_to_test)
     mergeSort(predictions)
+    products_to_test.reverse()#reverse as it is ordered in ascending order and in our notation the higher the value the better the rank
+    predictions.reverse()
+    print(products_to_test)
     print(predictions)
-    break
+
+    #Create sorted sales rank file
+    print("Writing sorted sales rank file ")
+    file_path = base_predictions_directory + category_name + "/Cutoff_10/" + "Sorted_Sales_Rank.txt"
+    filehandle = open(file_path, 'w')
+    filehandle.write("Index\tRank\n")
+    for sales_rank in products_to_test:
+      filehandle.write(str(sales_rank[0])+"\t"+str(sales_rank[1])+"\n")
+    filehandle.close()
+
+    #Create sorted predictions
+    print("Writing sorted predictions file ")
+    file_path = base_predictions_directory + category_name + "/Cutoff_10/" + "Sorted_Predictions.txt"
+    filehandle = open(file_path, 'w')
+    filehandle.write("Index\tValue\n")
+    for pred in predictions:
+      filehandle.write(str(pred[0]) + "\t" + str(pred[1])+"\n")
+    filehandle.close()
+
+    # Create R_Difference file where you put the two
+    print("Writing R_Difference File for kendall Calculation")
+    r_difference_path = base_predictions_directory + category_name + "/Cutoff_10/" + "R_Difference.txt"
+    filehandle = open(r_difference_path, 'w')
+    for i in range(len(products_to_test)):
+      filehandle.write(str(i+1)+"\t")
+      initial_index = products_to_test[i][0]
+      temp_index = 0
+      for pred in predictions:
+        if initial_index == pred[0]:
+          break
+        temp_index+=1
+      filehandle.write(str(temp_index + 1) + "\n")
+    filehandle.close()
+
+    from Testing import runKenallExtractScript,writeCorrelationRScriptOneFile
+    #Creating the R Script to run Kendall tau
+
+    rScriptFilePath = writeCorrelationRScriptOneFile(r_difference_path, 1,base_predictions_directory + category_name + "/Cutoff_10/")
+    print(rScriptFilePath)
+    print("Kendall value is ")
+    kendall = runKenallExtractScript(rScriptFilePath, R_path)
+    correlationFileHandle.write(category_name+"\t\t"+str(kendall)+"\n")
+
+  correlationFileHandle.close()
   return
+
+#Prepare_Training_Testing_Data_New_Experiment_Setup()

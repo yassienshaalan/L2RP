@@ -924,6 +924,36 @@ def writeCorrelationRScript(destDirectory,correlationFn):
     rScriptFileHandle.close()
     print("Finished Writing")
     return rScriptFilePath
+
+
+def writeCorrelationRScriptOneFile(file_path,correlationFn,destDirectory):
+    #correlationFn 1 means Kendall tau and 2 means Spearman Correlation
+    if correlationFn == 1:
+        #p
+        rScriptFilePath = destDirectory + "R_Kendall_Script.r"
+    else:
+        rScriptFilePath = destDirectory + "R_Spearman_Script.r"
+
+    file_path = file_path.replace('/', "\\\\")
+    file_path = file_path.replace('\\', "\\\\")
+    rScriptFileHandle = open(rScriptFilePath, 'w')
+    if correlationFn == 1:
+        rScriptFileHandle.write("library(Kendall)\n")
+
+
+    rScriptFileHandle.write("mydodo<-read.table(file.path(")
+    rScriptFileHandle.write('"')
+    rScriptFileHandle.write(file_path+"")
+    rScriptFileHandle.write('"')
+    rScriptFileHandle.write("))\n")
+    if correlationFn == 1:
+        rScriptFileHandle.write("print(Kendall(mydodo$V1,mydodo$V2))\n")
+    else:
+        rScriptFileHandle.write("print(cor(mydodo$V1,mydodo$V2))\n")
+
+    rScriptFileHandle.close()
+    print("Finished Writing")
+    return rScriptFilePath
 #from RankingHelper import runRScript
 
 #runSpearmanExtractScript(rFile)

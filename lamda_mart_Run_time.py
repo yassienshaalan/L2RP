@@ -238,7 +238,7 @@ learning_lib_directory ="f:\Yassien_PhD\Experiment 2\Lamda_Java/"
 exp_type ="lamda"
 #'''
 #runLamadaMart_All_Categories_Old_Experiment_Setup(categoryList,base_learning_directory,learning_lib_directory,exp_type)
-#runLamadaMart_All_Categories_New_Experiment_Setup(base_learning_directory,learning_lib_directory,exp_type)
+runLamadaMart_All_Categories_New_Experiment_Setup(base_learning_directory,learning_lib_directory,exp_type)
 #'''
 
 
@@ -253,8 +253,10 @@ categoriesList = ["Arts","Industrial", "Jewelry", "Toys", "Computers", "Video Ga
 orig_catNames  = ["Arts, Crafts & Sewing","Industrial & Scientific", "Jewelry",  "Toys & Games","Computers & Accessories", "Video Games", "Electronics", "Software", "Cell Phones & Accessories"]
 dataset_type="amazon"
 rename=1
+R_path = "C:\Program Files\R\R-3.2.2/bin/Rscript.exe"  # RMIT
+# R_path ="C:\Program Files\R\R-3.3.2/bin/Rscript.exe" #Laptop
 #compute_Kendall_Old_Experiment_Setup(categoriesList,orig_catNames,base_learning_directory,dataset_type,rename)
-compute_Kendall_New_Experiment_Setup(base_learning_directory,categories_sales_rank,categories_with_testing_indices)
+compute_Kendall_New_Experiment_Setup(base_learning_directory,categories_sales_rank,categories_with_testing_indices,"LamdaMart",R_path)
 #'''
 print("done")
 

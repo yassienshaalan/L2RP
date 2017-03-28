@@ -182,7 +182,7 @@ def DivideTestingSetIntoQueries(cat_train_test_desination_directory_stage_1,cate
             for i in range(1, len(old_query_iter)):
                 if i == 1:
                     temp = old_query_iter[i].split(':')
-                    new_q_index = temp[0] + ":" + str(new_query_index)
+                    new_q_index = temp[0] + ":" + str(new_query_index)#if you put start_index
                     new_query += new_q_index + ' '
                 else:
                     if i == len(old_query_iter) - 1:
