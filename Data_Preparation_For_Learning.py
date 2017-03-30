@@ -4,7 +4,15 @@ import os
 from alogrithms import mergeSort
 from New_Query_Sampling import  DivideTrainingSetIntoQueries,DivideTestingSetIntoQueries
 
-def Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,local_destination):
+def get_num_reviews_per_product_local(product_path):
+    #Count the number of reviews for a product
+    count = 0
+    with open(product_path, 'r') as filep:
+        for item in filep:
+            count+=1
+    return count
+
+def Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,local_destination,product_base_directory):
 
   print("Processing "+category_name)
   index = 0
@@ -49,12 +57,18 @@ def Randomize_Product_List_and_Picktraining(source_category_path,category_name, 
   training_index_filepath = local_destination + "training_index.txt"
   filehandle = open(training_filepath, 'w')
   filehandle_index = open(training_index_filepath, 'w')
+  num_actually_written = 0
   for product_line in training_products:
     produtid= str(product_line).split('\t')[0]
-    filehandle.write(product_line)
-    filehandle_index.write(str(productid_index_dict[produtid])+"\n")
+    product_file_path = product_base_directory+produtid+".txt"
+    count = get_num_reviews_per_product_local(product_file_path)
+    if count>50:
+      filehandle.write(product_line)
+      filehandle_index.write(str(productid_index_dict[produtid])+"\n")
+      num_actually_written+=1
   filehandle.close()
   filehandle_index.close()
+  print("Final num_actually_written " + str((num_actually_written)))
 
   testing_filepath = local_destination + "testing.txt"
   testing_index_filepath = local_destination + "testing_index.txt"
@@ -136,12 +150,13 @@ def PrepareCategoriesWithSalesRankRanking(sourceCategorypath,destinationCategory
   filehandle.close()
 
   return
-def Prepare_Training_Testing_Data_New_Experiment_Setup():
+def Prepare_Training_Testing_Data_New_Experiment_Setup(query_size):
   category_source = "f:\Yassien_PhD\categories/"
   categories_source="f:\Yassien_PhD\Experiment_5\Categories/"
   source_features_path = "f:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/"
   train_test_destination_stage1="f:\Yassien_PhD\Experiment_5\Train_Test_Category_Stage_1/"
   train_test_destination="f:\Yassien_PhD\Experiment_5\Train_Test_Category_With_10_Time_Interval_TQ_Target/"
+  product_base_directory ="f:\Yassien_PhD\Product_Reviews/"
   #Categories with small number of products < 5000 products do need cross validation
   categories_with_small_products = ["Industrial & Scientific","Arts, Crafts & Sewing","Computers & Accessories","Software"]
 
@@ -154,9 +169,13 @@ def Prepare_Training_Testing_Data_New_Experiment_Setup():
     #'''
     #This part of the code to randomize all products within one group and then pick 80% randomly for training and 20% for testing keeping the indices of each set to be able to formulate the queries
     modified_categories_with_indices= categories_source+category_name+"/"
+    try:
+      os.stat(modified_categories_with_indices)
+    except:
+      os.mkdir(modified_categories_with_indices)
     training_ratio = 0.8
     source_category_path = category_source + category_name + ".txt"
-    Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,modified_categories_with_indices)
+    Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,modified_categories_with_indices,product_base_directory)
     source_feature_vector_path=source_features_path+category_name+".txt"
     cat_train_test_desination_directory_stage_1 = train_test_destination_stage1+category_name+"/"
     Retreive_Train_Test_Per_Category(source_feature_vector_path,category_name,modified_categories_with_indices,cat_train_test_desination_directory_stage_1)
@@ -171,7 +190,7 @@ def Prepare_Training_Testing_Data_New_Experiment_Setup():
     PrepareCategoriesWithSalesRankRanking(sourceCategory,destinationCategory,category_name)'''
     ################################################################################################################################################################
     #This part converts the randomized training and testing sets into queries with the given size
-    query_size = 10
+
     cat_train_test_desination_directory_stage_1 = train_test_destination_stage1 + category_name + "/"
     train_test_destination_for_cat = train_test_destination + category_name + "/"
     try:
@@ -182,13 +201,13 @@ def Prepare_Training_Testing_Data_New_Experiment_Setup():
     modified_categories_with_indices = categories_source + category_name + "/"
     validation_ratio = 0.2
     new_q_index = DivideTrainingSetIntoQueries(cat_train_test_desination_directory_stage_1,category_name,train_test_destination_for_cat,query_size,validation_ratio)
-    sales_rank_original_ranking_path = "F:\Yassien_PhD\Experiment_5\Categories_Ranked_by_Sales_Rank/"+category_name+".txt"
+    sales_rank_original_ranking_path = "f:\Yassien_PhD\Experiment_5\Categories_Ranked_by_Sales_Rank/"+category_name+".txt"
     modified_categories_with_indices = categories_source + category_name + "/"
     DivideTestingSetIntoQueries(cat_train_test_desination_directory_stage_1,category_name,train_test_destination_for_cat,modified_categories_with_indices,sales_rank_original_ranking_path,query_size,new_q_index)
 
   return
 
-def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_sales_rank,categories_with_testing_indices,lib,R_path):
+def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_sales_rank,categories_with_testing_indices,query_size,lib,R_path):
   categories = ["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games","Video Games", "Computers & Accessories", "Software", "Cell Phones & Accessories","Electronics"]
   print("This procedure computes the kendall tau for the new learning experiment setup ")
   correlationFilePath = base_predictions_directory + "correlation_" + lib + ".txt"
@@ -199,7 +218,7 @@ def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_s
 
     print("Processing "+category_name)
 
-    testing_indices = []
+    '''testing_indices = []
     testing_indices_path = categories_with_testing_indices+category_name+ "/" + "testing_index.txt"
     with open(testing_indices_path, 'r') as filep:
       for line in filep:
@@ -233,6 +252,7 @@ def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_s
         index+=1
     print(predictions)
 
+    #This is the old measuring of kendall tau metric
     if len(products_to_test) != len(predictions):
       print("Error Un even lists")
       print("Num products from sales "+str(len(products_to_test)) +" From predictions "+str(len(predictions)))
@@ -289,6 +309,92 @@ def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_s
     correlationFileHandle.write(category_name+"\t\t"+str(kendall)+"\n")
 
   correlationFileHandle.close()
+    '''
+    # Here is the new kendall tau metric measurment which will be on the query base and then we average the results
+    r_difference_folder_path = base_predictions_directory + category_name + "/Cutoff_10/R_Difference/"
+    try:
+      os.stat(r_difference_folder_path)
+    except:
+      os.mkdir(r_difference_folder_path)
+
+    testing_path = base_predictions_directory + category_name + "/Cutoff_10/" + "test.txt"
+    query_ranks = []
+    num_products = 0
+    query = []
+    queryid = ""
+    with open(testing_path, 'r') as filep:
+      for line in filep:
+        row = line.split(' ')
+        if queryid == "":
+          queryid= row[1]
+          query.append(int(row[0]))
+          num_products+=1
+          continue
+
+        if queryid!= row[1]:
+          queryid = row[1]
+          query_ranks.append(query)
+          query = []
+          query.append(int(row[0]))
+          num_products += 1
+        else:
+          query.append(int(row[0]))
+          num_products += 1
+
+
+    if len(query)>0:
+      query_ranks.append(query)
+    #print(query_ranks)
+    print("Num Products "+str(num_products))
+    predictions = []
+
+    predictions_path = base_predictions_directory + category_name + "/Cutoff_10/" + "predictions.txt"
+    with open(predictions_path, 'r') as filep:
+      for line in filep:
+        predictions.append(float(line))
+
+    query_predictions = []
+
+    index = 0
+    for i in range(len(query_ranks)):
+      query = query_ranks[i]
+      num_pro_per_query = len(query)
+      query_pred = []
+      for j in range(num_pro_per_query):
+        query_pred.append((j,predictions[index]))
+        index+=1
+      #print(query_pred)
+      mergeSort(query_pred)
+      #print(query_pred)
+      file_path = r_difference_folder_path +"R_Difference_"+str(i)+".txt"
+      filehandle = open(file_path, 'w')
+      #print(query_pred)
+      for k in range(len( query_pred)):
+        filehandle.write(str(query[k]+1)+"\t"+str(query_pred[k][0]+1)+"\n")
+      filehandle.close()
+        #print(query_pred[i][0])
+      #print("-----------------------------------------")
+      query_predictions.append(query_pred)
+    #print(query_predictions)
+
+    from Testing import runKenallExtractScript, writeCorrelationRScriptNew
+    # Creating the R Script to run Kendall tau
+
+    rScriptFilePath = writeCorrelationRScriptNew(base_predictions_directory + category_name + "/Cutoff_10/", 1)
+    print("Kendall value is ")
+    kendall = runKenallExtractScript(rScriptFilePath, R_path)
+    avg_kendall = 0
+    all_kendall_path = base_predictions_directory + category_name + "/Cutoff_10/kendall.txt"
+    filehandle = open(all_kendall_path, 'w')
+    for ken in kendall:
+      avg_kendall+=ken
+      filehandle.write(str(ken)+"\n")
+    filehandle.close()
+    avg_kendall = avg_kendall/len(kendall)
+    print("Avg Kendal "+str(avg_kendall))
+    correlationFileHandle.write(category_name + "\t\t" + str(avg_kendall) + "\n")
+
+  correlationFileHandle.close()
   return
 
-#Prepare_Training_Testing_Data_New_Experiment_Setup()
+#Prepare_Training_Testing_Data_New_Experiment_Setup(10)

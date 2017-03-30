@@ -887,6 +887,8 @@ def writeCorrelationRScript(destDirectory,correlationFn):
         rScriptFileHandle.write("library(Kendall)\n")
 
     directParts = destDirectory.split('//')
+    print("destDirectory ")
+    print(destDirectory)
     newDistDirect = ""
     index = 0
     for part in directParts:
@@ -925,6 +927,58 @@ def writeCorrelationRScript(destDirectory,correlationFn):
     print("Finished Writing")
     return rScriptFilePath
 
+def writeCorrelationRScriptNew(destDirectory,correlationFn):
+    #correlationFn 1 means Kendall tau and 2 means Spearman Correlation
+    if correlationFn == 1:
+        #print("Writing Kendall tau R Script File")
+        rScriptFilePath = destDirectory + "R_Kendall_Script.r"
+    else:
+        #print("Writing Spearman Correlation R Script File")
+        rScriptFilePath = destDirectory + "R_Spearman_Script.r"
+
+    rScriptFileHandle = open(rScriptFilePath, 'w')
+    if correlationFn == 1:
+        rScriptFileHandle.write("library(Kendall)\n")
+
+    directParts = destDirectory.split('/')
+
+    newDistDirect = ""
+    index = 0
+    for part in directParts:
+
+        if index == len(directParts)-1:
+            continue
+        elif index == len(directParts)-2:
+            newDistDirect += part+"//"
+        else:
+            newDistDirect += part
+            newDistDirect+= '//'
+        index+=1
+
+    newDistDirect = newDistDirect.replace('\\', "\\\\")
+
+    rScriptFileHandle.write("files <-list.files(")
+    rScriptFileHandle.write('"')
+    differenceDirectory = newDistDirect + "R_Difference"
+    rScriptFileHandle.write(differenceDirectory)
+    rScriptFileHandle.write('")')
+    rScriptFileHandle.write("\n")
+    rScriptFileHandle.write("size<- length(files)\n")
+    rScriptFileHandle.write("for (i in 1: size)\n")
+    rScriptFileHandle.write("{\n")
+    rScriptFileHandle.write("mydodo<-read.table(file.path(")
+    rScriptFileHandle.write('"')
+    rScriptFileHandle.write(differenceDirectory+"////")
+    rScriptFileHandle.write('"')
+    rScriptFileHandle.write(",files[i]))\n")
+    if correlationFn == 1:
+        rScriptFileHandle.write("print(Kendall(mydodo$V1,mydodo$V2))\n")
+    else:
+        rScriptFileHandle.write("print(cor(mydodo$V1,mydodo$V2))\n")
+    rScriptFileHandle.write("}\n")
+    rScriptFileHandle.close()
+    print("Finished Writing")
+    return rScriptFilePath
 
 def writeCorrelationRScriptOneFile(file_path,correlationFn,destDirectory):
     #correlationFn 1 means Kendall tau and 2 means Spearman Correlation
