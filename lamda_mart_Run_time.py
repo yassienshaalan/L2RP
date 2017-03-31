@@ -194,7 +194,15 @@ def runLamadaMart_All_Categories_New_Experiment_Setup(base_learning_directory,le
     for category in categoryList:
         for i in range(len(cutoffs)):
             cutoff = "Cutoff_" + str(cutoffs[i])
+            try:
+                os.stat(base_learning_directory + category + "/")
+            except:
+                os.mkdir(base_learning_directory + category + "/")
             destCopyDirectory = base_learning_directory + category + "/" + cutoff + "/"
+            try:
+                os.stat(destCopyDirectory)
+            except:
+                os.mkdir(destCopyDirectory)
             if exp_type == "svm":
                 runSVMRankOnly(learning_lib_directory, destCopyDirectory, 20, 0, 0)
             elif exp_type == "lamda":
@@ -238,7 +246,7 @@ learning_lib_directory ="f:\Yassien_PhD\Experiment 2\Lamda_Java/"
 exp_type ="lamda"
 #'''
 #runLamadaMart_All_Categories_Old_Experiment_Setup(categoryList,base_learning_directory,learning_lib_directory,exp_type)
-runLamadaMart_All_Categories_New_Experiment_Setup(base_learning_directory,learning_lib_directory,exp_type)
+#runLamadaMart_All_Categories_New_Experiment_Setup(base_learning_directory,learning_lib_directory,exp_type)
 #'''
 
 

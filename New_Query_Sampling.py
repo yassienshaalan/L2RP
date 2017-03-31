@@ -164,10 +164,11 @@ def DivideTestingSetIntoQueries(cat_train_test_desination_directory_stage_1,cate
         for product_line in query:
             sales_index = testing_indices[product_index]
             rank = all_products[sales_index]
+            TQ_Rank = product_line.split(' ')[0]
             #print("TQ Rank "+str(str(product_line).split(' ')[0]))
             #print("Sales Rank "+str(rank))
             #rank = str(product_line).split(' ')[0] This is the TQ rank we will replace that with the sales rank
-            query_pair.append((index, int(rank)))
+            query_pair.append((index, int(TQ_Rank)))#int(rank)))#Testing with putting TQ rank
             index += 1
 
         mergeSort(query_pair)
