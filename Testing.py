@@ -965,7 +965,7 @@ def writeCorrelationRScriptNew(destDirectory,correlationFn):
     rScriptFileHandle.write("\n")
     rScriptFileHandle.write("size<- length(files)\n")
     rScriptFileHandle.write("for (i in 1: size)\n")
-    rScriptFileHandle.write("{\n")
+    rScriptFileHandle.write("{\nprint(files[i])\n")
     rScriptFileHandle.write("mydodo<-read.table(file.path(")
     rScriptFileHandle.write('"')
     rScriptFileHandle.write(differenceDirectory+"////")

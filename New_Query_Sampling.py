@@ -57,9 +57,13 @@ def DivideTrainingSetIntoQueries(cat_train_test_desination_directory,category_na
       query_pair.append((index,int(rank)))
       index+=1
 
+    #print("query_pair before ")
+    #print(query_pair)
     mergeSort(query_pair)
-
-    rank = 0
+    query_pair.reverse()
+    #print("query pair after")
+    #print(query_pair)
+    rank = len(query_pair)-1
 
     for qpair in query_pair:
         new_query = ""
@@ -77,7 +81,7 @@ def DivideTrainingSetIntoQueries(cat_train_test_desination_directory,category_na
                 else:
                     new_query += old_query_iter[i] + ' '
         new_relabled_queries.append(new_query)
-        rank+=1
+        rank-=1
     new_query_index+=1
 
   num_inst_for_validation = int(len(new_relabled_queries)*validation_ratio)
@@ -99,10 +103,15 @@ def DivideTrainingSetIntoQueries(cat_train_test_desination_directory,category_na
   print("Writing new relabled queries")
   index = 0
   for query in new_relabled_queries:
+      #Make training same as validation
+      filehandle_validation.write(query)
+      filehandle_training.write(query)
+      '''#This way the validation is a divided part of the training
       if index<num_inst_for_validation:
           filehandle_validation.write(query)
       else:
           filehandle_training.write(query)
+      '''
       index+=1
 
   print("The num of products in queries @ the end "+str(num_products_assigned_to_q))
@@ -172,8 +181,8 @@ def DivideTestingSetIntoQueries(cat_train_test_desination_directory_stage_1,cate
             index += 1
 
         mergeSort(query_pair)
-
-        rank = 0
+        query_pair.reverse()
+        rank = len(query_pair)-1
 
         for qpair in query_pair:
             new_query = ""
@@ -191,7 +200,7 @@ def DivideTestingSetIntoQueries(cat_train_test_desination_directory_stage_1,cate
                     else:
                         new_query += old_query_iter[i] + ' '
             new_relabled_queries.append(new_query)
-            rank += 1
+            rank -= 1
         new_query_index += 1
     print("The num of products in queries @ the end " + str(num_products_assigned_to_q))
     print("Writing relabled Testing set with sales rank")

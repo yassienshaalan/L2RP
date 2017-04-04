@@ -358,6 +358,8 @@ def arrange_products_by_num_reviews(feature_category_path,category_name,source_c
     print("Num_Products Num_with_large_revs Num_with_small_revs num_large_per_sample num_small_per_sample")
     print(str(num_products)+" "+str(len(products_with_large_num_revs))+" "+str(len(products_with_small_num_revs))+" "+str(num_from_large_per_sample)+" "+str(num_from_small_per_sample))
     return
+
+
 def adjustSalesRankOrder(category_name,source_category_path,old_feature_path,new_feature_path,sales_destination_directory):
     index = 0
     original_products_salesrank = dict()
@@ -398,6 +400,8 @@ def adjustSalesRankOrder(category_name,source_category_path,old_feature_path,new
     filehandle.close()
 
     return
+
+
 sourceFeaturesDirectory = "f:\Yassien_PhD\Experiment_4/All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/"
 category_source = "f:\Yassien_PhD\categories/"#"C:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three\categories/"
 productBaseDirectory = "f:\Yassien_PhD/Product_Reviews/"

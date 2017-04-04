@@ -11,7 +11,84 @@ def get_num_reviews_per_product_local(product_path):
         for item in filep:
             count+=1
     return count
+def Write_Number_Reviews_For_All_Categories():
+    category_source = "f:\Yassien_PhD\categories/"
+    product_base_directory = "f:\Yassien_PhD\Product_Reviews/"
+    destenation_directory = "F:/Yassien_PhD/Number_of_reviews_per_product/"
+    Categories = ["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories", "Electronics"]
+    for category_name in Categories:
+        print("Processing "+category_name)
+        source_category_path = category_source + category_name + ".txt"
+        dest_cat_path = destenation_directory+ category_name + ".txt"
+        filehandle = open(dest_cat_path,'w')
+        with open(source_category_path, 'r') as filep:
+            for item in filep:
+                line = item.split('\t')
+                productid = line[0]
+                product_file_path = product_base_directory + productid + ".txt"
+                count = get_num_reviews_per_product_local(product_file_path)
+                filehandle.write(str(productid)+"\t"+str(count)+"\n")
+        filehandle.close()
+    return
+def Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_path,sampling_choice):
+    products_num_revs_dict = dict()
+    with open(products_num_revs_path, 'r') as filep:
+        for item in filep:
+            line = item.split('\t')
+            products_num_revs_dict[line[0]]=int(line[1])
 
+    final_training_set = []
+    index = 0
+    temp_list = []
+    for product_line in training_products:
+        produtid = str(product_line).split('\t')[0]
+        if sampling_choice == 1 or sampling_choice == 2:
+            count = products_num_revs_dict[produtid]#get_num_reviews_per_product_local(product_file_path)
+            pair = (index,count)
+            temp_list.append(pair)
+        index+=1
+    #print("temp list before")
+    #print(temp_list)
+    mergeSort(temp_list)
+    temp_list.reverse()
+    #print("temp list after")
+    #print(temp_list)
+    total_num_prods = len(temp_list)
+    new_list = []
+    index_top = 0
+    num_taken_top = 0
+    index_bottom = total_num_prods-1
+    num_taken_bottom = 7
+    print("total_num_prods "+str(total_num_prods))
+    if sampling_choice == 2:
+        while len(new_list)<total_num_prods:
+            #print("index_top "+str(index_top))
+            #print("index_bottom "+str(index_bottom))
+            if num_taken_top <3:
+                if index_top==index_bottom:
+                    new_list.append(temp_list[index_bottom])
+                    break
+                new_list.append(temp_list[index_top])
+                num_taken_top+=1
+                index_top+=1
+            elif num_taken_bottom == 7 and num_taken_top == 3:
+                num_taken_top = 0
+
+            if num_taken_bottom < 7:
+                if index_top == index_bottom:
+                    new_list.append(temp_list[index_bottom])
+                    break
+                new_list.append(temp_list[index_bottom])
+                num_taken_bottom += 1
+                index_bottom -= 1
+            elif num_taken_bottom == 7 and num_taken_top ==3:
+                num_taken_bottom = 0
+        temp_list = new_list
+    for i in range(len(temp_list)):
+        pro_index = temp_list[i][0]
+        final_training_set.append(training_products[pro_index])
+
+    return final_training_set
 def Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,local_destination,product_base_directory):
 
   print("Processing "+category_name)
@@ -39,15 +116,26 @@ def Randomize_Product_List_and_Picktraining(source_category_path,category_name, 
 
   training_products = []
   testing_products = []
+  indo = 0
 
   while len(product_list)>num_testing:
-    choice = random.choice(list(product_list))
+    # Code randomization
+    #choice = random.choice(list(product_list))
+    choice = product_list[indo]
     training_products.append(choice)
     #print("Choice "+str(choice))
     product_list.remove(choice)
+    #indo+=1
     #print(product_list)
+
   testing_products = product_list
 
+  #Here we inject whatever query sampling we need
+  sampling_choice = 2 #means arrange by number of reviews
+  products_num_revs_path = "f:/Yassien_PhD/Number_of_reviews_per_product/"+category_name+".txt"
+  #training_products=Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_path,sampling_choice)
+
+  ######################################################################################################################
   print("Final num_training " + str(len(training_products)))
   print("Final num_testing " + str(len(testing_products)))
   print("Final total "+str(len(training_products)+len(testing_products)))
@@ -164,7 +252,6 @@ def Prepare_Training_Testing_Data_New_Experiment_Setup(query_size):
   #Categories with large number of products > 5000 products we don't need cross_Validation randomize and take 80%
   categories_with_large_products=["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories", "Electronics"]#[ "Jewelry","Toys & Games", "Video Games" , "Cell Phones & Accessories", "Electronics"]
   for category_name in categories_with_large_products:
-
     ################################################################################################################################################################
     #'''
     #This part of the code to randomize all products within one group and then pick 80% randomly for training and 20% for testing keeping the indices of each set to be able to formulate the queries
@@ -173,7 +260,7 @@ def Prepare_Training_Testing_Data_New_Experiment_Setup(query_size):
       os.stat(modified_categories_with_indices)
     except:
       os.mkdir(modified_categories_with_indices)
-    training_ratio = 0.8
+    training_ratio = 0.9
     source_category_path = category_source + category_name + ".txt"
     Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,modified_categories_with_indices,product_base_directory)
     source_feature_vector_path=source_features_path+category_name+".txt"
@@ -207,7 +294,268 @@ def Prepare_Training_Testing_Data_New_Experiment_Setup(query_size):
 
   return
 
-def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_sales_rank,categories_with_testing_indices,query_size,lib,R_path):
+def Old_Kendall_Tau_Measuring_On_All_Predictions_Level(products_to_test,predictions,base_predictions_directory,category_name,R_path,correlationFileHandle):
+    # This is the old measuring of kendall tau metric
+    if len(products_to_test) != len(predictions):
+        print("Error Un even lists")
+        print("Num products from sales " + str(len(products_to_test)) + " From predictions " + str(len(predictions)))
+
+    print("#####################################")
+    print("After Sorting")
+    mergeSort(products_to_test)
+    mergeSort(predictions)
+    products_to_test.reverse()  # reverse as it is ordered in ascending order and in our notation the higher the value the better the rank
+    predictions.reverse()
+    print(products_to_test)
+    print(predictions)
+
+    # Create sorted sales rank file
+    print("Writing sorted sales rank file ")
+    file_path = base_predictions_directory + category_name + "/Cutoff_10/" + "Sorted_Sales_Rank.txt"
+    filehandle = open(file_path, 'w')
+    filehandle.write("Index\tRank\n")
+    for sales_rank in products_to_test:
+        filehandle.write(str(sales_rank[0]) + "\t" + str(sales_rank[1]) + "\n")
+    filehandle.close()
+
+    # Create sorted predictions
+    print("Writing sorted predictions file ")
+    file_path = base_predictions_directory + category_name + "/Cutoff_10/" + "Sorted_Predictions.txt"
+    filehandle = open(file_path, 'w')
+    filehandle.write("Index\tValue\n")
+    for pred in predictions:
+        filehandle.write(str(pred[0]) + "\t" + str(pred[1]) + "\n")
+    filehandle.close()
+
+    # Create R_Difference file where you put the two
+    print("Writing R_Difference File for kendall Calculation")
+    r_difference_path = base_predictions_directory + category_name + "/Cutoff_10/" + "R_Difference.txt"
+    filehandle = open(r_difference_path, 'w')
+    for i in range(len(products_to_test)):
+        filehandle.write(str(i + 1) + "\t")
+        initial_index = products_to_test[i][0]
+        temp_index = 0
+        for pred in predictions:
+            if initial_index == pred[0]:
+                break
+            temp_index += 1
+        filehandle.write(str(temp_index + 1) + "\n")
+    filehandle.close()
+
+    from Testing import runKenallExtractScript, writeCorrelationRScriptOneFile
+    # Creating the R Script to run Kendall tau
+
+    rScriptFilePath = writeCorrelationRScriptOneFile(r_difference_path, 1,
+                                                     base_predictions_directory + category_name + "/Cutoff_10/")
+    print(rScriptFilePath)
+    print("Kendall value is ")
+    kendall = runKenallExtractScript(rScriptFilePath, R_path)
+    correlationFileHandle.write(category_name + "\t\t" + str(kendall) + "\n")
+    return
+
+def New_Kendall_Tau_Measuring_On_Query_Level(base_predictions_directory,category_name,products_to_test,R_path,correlationFileHandle):
+    # Here is the new kendall tau metric measurment which will be on the query base and then we average the results from Sales Rank way
+    # '''
+    r_difference_folder_path = base_predictions_directory + category_name + "/Cutoff_10/R_Difference/"
+    try:
+        os.stat(r_difference_folder_path)
+    except:
+        os.mkdir(r_difference_folder_path)
+
+    testing_path = base_predictions_directory + category_name + "/Cutoff_10/" + "test.txt"
+    query_ranks = []
+    prods_per_query = []
+    num_products = 0
+    query = []
+    queryid = ""
+    nums = 0
+    with open(testing_path, 'r') as filep:
+        for line in filep:
+            row = line.split(' ')
+            if queryid == "":
+                queryid = row[1]
+                nums += 1
+                num_products += 1
+                continue
+
+            if queryid != row[1]:
+                queryid = row[1]
+                prods_per_query.append(nums)
+                nums = 1
+                num_products += 1
+            else:
+                nums += 1
+                num_products += 1
+
+    if nums > 0:
+        prods_per_query.append(nums)
+
+    # print("Nums per query")
+    # print(prods_per_query)
+    # print("****************************************************")
+    index = 0
+    for k in range(len(prods_per_query)):
+        nums = prods_per_query[k]
+        inner = 0
+        query = []
+        for z in range(index, index + nums):
+            pair = products_to_test[z]
+            pair = (inner, pair[1])
+            products_to_test[z] = pair
+            query.append(products_to_test[z])
+            # print(products_to_test[z])
+            inner += 1
+        query_ranks.append(query)
+        index += nums
+        # print("****************************************************")
+    print("Num Products " + str(num_products))
+    predictions = []
+
+    predictions_path = base_predictions_directory + category_name + "/Cutoff_10/" + "predictions.txt"
+    with open(predictions_path, 'r') as filep:
+        for line in filep:
+            predictions.append(float(line))
+
+    query_predictions = []
+
+    index = 0
+    for i in range(len(query_ranks)):
+        query = query_ranks[i]
+        # print("query Before ")
+        # print(query)
+        mergeSort(query)
+        query.reverse()
+        # print("query After ")
+        # print(query)
+        num_pro_per_query = len(query)
+        query_pred = []
+        for j in range(num_pro_per_query):
+            query_pred.append((j, predictions[index]))
+            index += 1
+            # print("Query Pred Before")
+            # print(query_pred)
+        mergeSort(query_pred)
+        query_pred.reverse()
+        # print("Query Pred after")
+        # print(query_pred)
+        file_path = r_difference_folder_path + "R_Difference_" + str(i) + ".txt"
+        filehandle = open(file_path, 'w')
+        # print(query_pred)
+        for k in range(len(query_pred)):
+            filehandle.write(str(query[k][0] + 1) + "\t" + str(query_pred[k][0] + 1) + "\n")
+        filehandle.close()
+        # print(query_pred[i][0])
+        # print("-----------------------------------------")
+        query_predictions.append(query_pred)
+    # print(query_predictions)
+
+    from Testing import runKenallExtractScript, writeCorrelationRScriptNew
+    # Creating the R Script to run Kendall tau
+
+    rScriptFilePath = writeCorrelationRScriptNew(base_predictions_directory + category_name + "/Cutoff_10/", 1)
+    print("Kendall value is ")
+    kendall = runKenallExtractScript(rScriptFilePath, R_path)
+    avg_kendall = 0
+    all_kendall_path = base_predictions_directory + category_name + "/Cutoff_10/kendalls.txt"
+    filehandle = open(all_kendall_path, 'w')
+    for ken in kendall:
+        avg_kendall += abs(ken)
+        filehandle.write(str(ken) + "\n")
+    filehandle.close()
+    avg_kendall = avg_kendall / len(kendall)
+    print("Avg Kendal " + str(avg_kendall))
+    correlationFileHandle.write(category_name + "\t\t" + str(avg_kendall) + "\n")
+    return
+
+def New_Kendall_Tau_Measuring_On_Testing_Set(base_predictions_directory,category_name,R_path,correlationFileHandle):
+    # Here is the new kendall tau metric measurment which will be on the query base and then we average the results from testing file
+
+    r_difference_folder_path = base_predictions_directory + category_name + "/Cutoff_10/R_Difference/"
+    try:
+        os.stat(r_difference_folder_path)
+    except:
+        os.mkdir(r_difference_folder_path)
+
+    testing_path = base_predictions_directory + category_name + "/Cutoff_10/" + "test.txt"
+    query_ranks = []
+    num_products = 0
+    query = []
+    queryid = ""
+    with open(testing_path, 'r') as filep:
+        for line in filep:
+            row = line.split(' ')
+            if queryid == "":
+                queryid = row[1]
+                query.append(int(row[0]))
+                num_products += 1
+                continue
+
+            if queryid != row[1]:
+                queryid = row[1]
+                query_ranks.append(query)
+                query = []
+                query.append(int(row[0]))
+                num_products += 1
+            else:
+                query.append(int(row[0]))
+                num_products += 1
+
+    if len(query) > 0:
+        query_ranks.append(query)
+    # print(query_ranks)
+    print("Num Products " + str(num_products))
+    predictions = []
+
+    predictions_path = base_predictions_directory + category_name + "/Cutoff_10/" + "predictions.txt"
+    with open(predictions_path, 'r') as filep:
+        for line in filep:
+            predictions.append(float(line))
+
+    query_predictions = []
+
+    index = 0
+    for i in range(len(query_ranks)):
+        query = query_ranks[i]
+        num_pro_per_query = len(query)
+        query_pred = []
+        for j in range(num_pro_per_query):
+            query_pred.append((j, predictions[index]))
+            index += 1
+            # print(query_pred)
+        mergeSort(query_pred)
+        # print(query_pred)
+        file_path = r_difference_folder_path + "R_Difference_" + str(i) + ".txt"
+        filehandle = open(file_path, 'w')
+        # print(query_pred)
+        for k in range(len(query_pred)):
+            filehandle.write(str(query[k] + 1) + "\t" + str(query_pred[k][0] + 1) + "\n")
+        filehandle.close()
+        # print(query_pred[i][0])
+        # print("-----------------------------------------")
+        query_predictions.append(query_pred)
+    # print(query_predictions)
+
+    from Testing import runKenallExtractScript, writeCorrelationRScriptNew
+    # Creating the R Script to run Kendall tau
+
+    rScriptFilePath = writeCorrelationRScriptNew(base_predictions_directory + category_name + "/Cutoff_10/", 1)
+    print("Kendall value is ")
+    kendall = runKenallExtractScript(rScriptFilePath, R_path)
+    avg_kendall = 0
+    all_kendall_path = base_predictions_directory + category_name + "/Cutoff_10/kendall.txt"
+    filehandle = open(all_kendall_path, 'w')
+    for ken in kendall:
+        avg_kendall += ken
+        filehandle.write(str(ken) + "\n")
+    filehandle.close()
+    avg_kendall = avg_kendall / len(kendall)
+    print("Avg Kendal " + str(avg_kendall))
+    correlationFileHandle.write(category_name + "\t\t" + str(avg_kendall) + "\n")
+
+
+
+    return
+def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_sales_rank,categories_with_testing_indices,lib,R_path):
   categories = ["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games","Video Games", "Computers & Accessories", "Software", "Cell Phones & Accessories","Electronics"]
   print("This procedure computes the kendall tau for the new learning experiment setup ")
   correlationFilePath = base_predictions_directory + "correlation_" + lib + ".txt"
@@ -251,268 +599,17 @@ def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_s
           predictions.append((index,float(line)))
           index+=1
       #print(predictions)
-      '''
-      #This is the old measuring of kendall tau metric
-      if len(products_to_test) != len(predictions):
-        print("Error Un even lists")
-        print("Num products from sales "+str(len(products_to_test)) +" From predictions "+str(len(predictions)))
 
-      print("#####################################")
-      print("After Sorting")
-      mergeSort(products_to_test)
-      mergeSort(predictions)
-      products_to_test.reverse()#reverse as it is ordered in ascending order and in our notation the higher the value the better the rank
-      predictions.reverse()
-      print(products_to_test)
-      print(predictions)
+      #Old_Kendall_Tau_Measuring_On_All_Predictions_Level(products_to_test, predictions, base_predictions_directory,category_name, R_path, correlationFileHandle)
 
-      #Create sorted sales rank file
-      print("Writing sorted sales rank file ")
-      file_path = base_predictions_directory + category_name + "/Cutoff_10/" + "Sorted_Sales_Rank.txt"
-      filehandle = open(file_path, 'w')
-      filehandle.write("Index\tRank\n")
-      for sales_rank in products_to_test:
-        filehandle.write(str(sales_rank[0])+"\t"+str(sales_rank[1])+"\n")
-      filehandle.close()
+      #New_Kendall_Tau_Measuring_On_Testing_Set(base_predictions_directory, category_name, R_path,correlationFileHandle)
 
-      #Create sorted predictions
-      print("Writing sorted predictions file ")
-      file_path = base_predictions_directory + category_name + "/Cutoff_10/" + "Sorted_Predictions.txt"
-      filehandle = open(file_path, 'w')
-      filehandle.write("Index\tValue\n")
-      for pred in predictions:
-        filehandle.write(str(pred[0]) + "\t" + str(pred[1])+"\n")
-      filehandle.close()
+      New_Kendall_Tau_Measuring_On_Query_Level(base_predictions_directory, category_name, products_to_test, R_path,correlationFileHandle)
 
-      # Create R_Difference file where you put the two
-      print("Writing R_Difference File for kendall Calculation")
-      r_difference_path = base_predictions_directory + category_name + "/Cutoff_10/" + "R_Difference.txt"
-      filehandle = open(r_difference_path, 'w')
-      for i in range(len(products_to_test)):
-        filehandle.write(str(i+1)+"\t")
-        initial_index = products_to_test[i][0]
-        temp_index = 0
-        for pred in predictions:
-          if initial_index == pred[0]:
-            break
-          temp_index+=1
-        filehandle.write(str(temp_index + 1) + "\n")
-      filehandle.close()
-
-      from Testing import runKenallExtractScript,writeCorrelationRScriptOneFile
-      #Creating the R Script to run Kendall tau
-
-      rScriptFilePath = writeCorrelationRScriptOneFile(r_difference_path, 1,base_predictions_directory + category_name + "/Cutoff_10/")
-      print(rScriptFilePath)
-      print("Kendall value is ")
-      kendall = runKenallExtractScript(rScriptFilePath, R_path)
-      correlationFileHandle.write(category_name+"\t\t"+str(kendall)+"\n")
-      break
-    correlationFileHandle.close()'''
-
-
-      ''''# Here is the new kendall tau metric measurment which will be on the query base and then we average the results from testing file
-
-      r_difference_folder_path = base_predictions_directory + category_name + "/Cutoff_10/R_Difference/"
-      try:
-        os.stat(r_difference_folder_path)
-      except:
-        os.mkdir(r_difference_folder_path)
-
-      testing_path = base_predictions_directory + category_name + "/Cutoff_10/" + "test.txt"
-      query_ranks = []
-      num_products = 0
-      query = []
-      queryid = ""
-      with open(testing_path, 'r') as filep:
-        for line in filep:
-          row = line.split(' ')
-          if queryid == "":
-            queryid= row[1]
-            query.append(int(row[0]))
-            num_products+=1
-            continue
-
-          if queryid!= row[1]:
-            queryid = row[1]
-            query_ranks.append(query)
-            query = []
-            query.append(int(row[0]))
-            num_products += 1
-          else:
-            query.append(int(row[0]))
-            num_products += 1
-
-
-      if len(query)>0:
-        query_ranks.append(query)
-      #print(query_ranks)
-      print("Num Products "+str(num_products))
-      predictions = []
-
-      predictions_path = base_predictions_directory + category_name + "/Cutoff_10/" + "predictions.txt"
-      with open(predictions_path, 'r') as filep:
-        for line in filep:
-          predictions.append(float(line))
-
-      query_predictions = []
-
-      index = 0
-      for i in range(len(query_ranks)):
-        query = query_ranks[i]
-        num_pro_per_query = len(query)
-        query_pred = []
-        for j in range(num_pro_per_query):
-          query_pred.append((j,predictions[index]))
-          index+=1
-       # print(query_pred)
-        mergeSort(query_pred)
-        #print(query_pred)
-        file_path = r_difference_folder_path +"R_Difference_"+str(i)+".txt"
-        filehandle = open(file_path, 'w')
-        #print(query_pred)
-        for k in range(len( query_pred)):
-          filehandle.write(str(query[k]+1)+"\t"+str(query_pred[k][0]+1)+"\n")
-        filehandle.close()
-          #print(query_pred[i][0])
-        #print("-----------------------------------------")
-        query_predictions.append(query_pred)
-      #print(query_predictions)
-
-      from Testing import runKenallExtractScript, writeCorrelationRScriptNew
-      # Creating the R Script to run Kendall tau
-
-      rScriptFilePath = writeCorrelationRScriptNew(base_predictions_directory + category_name + "/Cutoff_10/", 1)
-      print("Kendall value is ")
-      kendall = runKenallExtractScript(rScriptFilePath, R_path)
-      avg_kendall = 0
-      all_kendall_path = base_predictions_directory + category_name + "/Cutoff_10/kendall.txt"
-      filehandle = open(all_kendall_path, 'w')
-      for ken in kendall:
-        avg_kendall+=ken
-        filehandle.write(str(ken)+"\n")
-      filehandle.close()
-      avg_kendall = avg_kendall/len(kendall)
-      print("Avg Kendal "+str(avg_kendall))
-      correlationFileHandle.write(category_name + "\t\t" + str(avg_kendall) + "\n")
-
-     correlationFileHandle.close()'''
-
-    # Here is the new kendall tau metric measurment which will be on the query base and then we average the results from Sales Rank way
-
-      r_difference_folder_path = base_predictions_directory + category_name + "/Cutoff_10/R_Difference/"
-      try:
-        os.stat(r_difference_folder_path)
-      except:
-        os.mkdir(r_difference_folder_path)
-
-      testing_path = base_predictions_directory + category_name + "/Cutoff_10/" + "test.txt"
-      query_ranks = []
-      prods_per_query = []
-      num_products = 0
-      query = []
-      queryid = ""
-      nums = 0
-      with open(testing_path, 'r') as filep:
-        for line in filep:
-          row = line.split(' ')
-          if queryid == "":
-            queryid = row[1]
-            nums+=1
-            num_products += 1
-            continue
-
-          if queryid != row[1]:
-            queryid = row[1]
-            prods_per_query.append(nums)
-            nums=1
-            num_products += 1
-          else:
-            nums += 1
-            num_products += 1
-
-      if nums > 0:
-        prods_per_query.append(nums)
-
-      #print("Nums per query")
-      #print(prods_per_query)
-      #print("****************************************************")
-      index = 0
-      for k in range(len(prods_per_query)):
-        nums = prods_per_query[k]
-        inner = 0
-        query = []
-        for z in range(index,index+nums):
-          pair = products_to_test[z]
-          pair=(inner,pair[1])
-          products_to_test[z]=pair
-          query.append(products_to_test[z])
-          #print(products_to_test[z])
-          inner+=1
-        query_ranks.append(query)
-        index+=nums
-        #print("****************************************************")
-      print("Num Products " + str(num_products))
-      predictions = []
-
-      predictions_path = base_predictions_directory + category_name + "/Cutoff_10/" + "predictions.txt"
-      with open(predictions_path, 'r') as filep:
-        for line in filep:
-          predictions.append(float(line))
-
-      query_predictions = []
-
-      index = 0
-      for i in range(len(query_ranks)):
-        query = query_ranks[i]
-        #print("query Before ")
-        #print(query)
-        mergeSort(query)
-        query.reverse()
-        #print("query After ")
-        #print(query)
-        num_pro_per_query = len(query)
-        query_pred = []
-        for j in range(num_pro_per_query):
-          query_pred.append((j, predictions[index]))
-          index += 1
-        #print("Query Pred Before")
-        #print(query_pred)
-        mergeSort(query_pred)
-        query_pred.reverse()
-        #print("Query Pred after")
-        #print(query_pred)
-        file_path = r_difference_folder_path + "R_Difference_" + str(i) + ".txt"
-        filehandle = open(file_path, 'w')
-        # print(query_pred)
-        for k in range(len(query_pred)):
-          filehandle.write(str(query[k][0] + 1) + "\t" + str(query_pred[k][0] + 1) + "\n")
-        filehandle.close()
-        # print(query_pred[i][0])
-        # print("-----------------------------------------")
-        query_predictions.append(query_pred)
-      # print(query_predictions)
-
-      from Testing import runKenallExtractScript, writeCorrelationRScriptNew
-      # Creating the R Script to run Kendall tau
-
-      rScriptFilePath = writeCorrelationRScriptNew(base_predictions_directory + category_name + "/Cutoff_10/", 1)
-      print("Kendall value is ")
-      kendall = runKenallExtractScript(rScriptFilePath, R_path)
-      avg_kendall = 0
-      all_kendall_path = base_predictions_directory + category_name + "/Cutoff_10/kendall.txt"
-      filehandle = open(all_kendall_path, 'w')
-      for ken in kendall:
-        avg_kendall += ken
-        filehandle.write(str(ken) + "\n")
-      filehandle.close()
-      avg_kendall = avg_kendall / len(kendall)
-      print("Avg Kendal " + str(avg_kendall))
-      correlationFileHandle.write(category_name + "\t\t" + str(avg_kendall) + "\n")
-
+      #break
 
   correlationFileHandle.close()
-
+   #'''
   return
 
 #Prepare_Training_Testing_Data_New_Experiment_Setup(10)

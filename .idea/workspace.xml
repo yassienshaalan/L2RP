@@ -5,6 +5,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data_Preparation_For_Learning.py" afterPath="$PROJECT_DIR$/Data_Preparation_For_Learning.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/New_Query_Sampling.py" afterPath="$PROJECT_DIR$/New_Query_Sampling.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Query_Sampling.py" afterPath="$PROJECT_DIR$/Query_Sampling.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Testing.py" afterPath="$PROJECT_DIR$/Testing.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lamda_mart_Run_time.py" afterPath="$PROJECT_DIR$/lamda_mart_Run_time.py" />
     </list>
     <ignored path="Learn_Ranking.iws" />
@@ -26,12 +28,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ranking.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ranking.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-850">
+              <caret line="1784" column="49" selection-start-line="1784" selection-start-column="42" selection-end-line="1784" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Query_Sampling.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Query_Sampling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="18" />
-              <folding />
+            <state relative-caret-position="272">
+              <caret line="188" column="49" selection-start-line="188" selection-start-column="4" selection-end-line="188" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+                <element signature="e#455#2836#0" expanded="false" />
+                <element signature="e#3000#6388#0" expanded="false" />
+                <element signature="e#9234#14012#0" expanded="false" />
+                <element signature="e#14143#15459#0" expanded="false" />
+                <element signature="e#14253#14380#0" expanded="false" />
+                <element signature="e#16264#17275#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,7 +59,7 @@
       <file leaf-file-name="Investigating_Clustering_Properties.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Investigating_Clustering_Properties.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
+            <state relative-caret-position="1394">
               <caret line="84" column="93" selection-start-line="84" selection-start-column="93" selection-end-line="84" selection-end-column="115" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
@@ -51,11 +71,10 @@
       <file leaf-file-name="Data_Preparation_For_Learning.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Data_Preparation_For_Learning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="252" column="12" selection-start-line="252" selection-start-column="7" selection-end-line="252" selection-end-column="12" />
+            <state relative-caret-position="272">
+              <caret line="461" column="30" selection-start-line="461" selection-start-column="27" selection-end-line="461" selection-end-column="30" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#14445#17543#1" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -64,8 +83,8 @@
       <file leaf-file-name="New_Query_Sampling.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/New_Query_Sampling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="170" column="52" selection-start-line="170" selection-start-column="52" selection-end-line="170" selection-end-column="52" />
+            <state relative-caret-position="238">
+              <caret line="184" column="30" selection-start-line="184" selection-start-column="30" selection-end-line="184" selection-end-column="30" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -76,8 +95,8 @@
       <file leaf-file-name="lamda_mart_Run_time.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lamda_mart_Run_time.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="267" column="18" selection-start-line="267" selection-start-column="18" selection-end-line="267" selection-end-column="18" />
+            <state relative-caret-position="415">
+              <caret line="269" column="27" selection-start-line="269" selection-start-column="27" selection-end-line="269" selection-end-column="27" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -88,7 +107,7 @@
       <file leaf-file-name="shutil.py" pinned="false" current-in-tab="false">
         <entry file="file://C:/Python34/Lib/shutil.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="4029">
               <caret line="244" column="0" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
               <folding />
             </state>
@@ -115,21 +134,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dirichlet_True_Rating.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dirichlet_True_Rating.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15861">
-              <caret line="934" column="30" selection-start-line="934" selection-start-column="13" selection-end-line="934" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Testing.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Testing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-587">
-              <caret line="876" column="37" selection-start-line="876" selection-start-column="37" selection-end-line="876" selection-end-column="37" />
+            <state relative-caret-position="357">
+              <caret line="967" column="49" selection-start-line="967" selection-start-column="49" selection-end-line="967" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -185,15 +194,15 @@
         <option value="F:/Debt_Issuance/Debt_Issuance/test.py" />
         <option value="F:/Debt_Issuance/Debt_Issuance/Data_Preparation.py" />
         <option value="F:/Debt_Issuance/Debt_Issuance/classify.py" />
-        <option value="$PROJECT_DIR$/Query_Sampling.py" />
         <option value="$PROJECT_DIR$/ranking.py" />
         <option value="$PROJECT_DIR$/Similarity.py" />
         <option value="$PROJECT_DIR$/Stats_Plotting_Learning_Data.py" />
         <option value="$PROJECT_DIR$/Investigating_Clustering_Properties.py" />
         <option value="$PROJECT_DIR$/RankingHelper.py" />
+        <option value="$PROJECT_DIR$/Query_Sampling.py" />
         <option value="$PROJECT_DIR$/Testing.py" />
-        <option value="$PROJECT_DIR$/New_Query_Sampling.py" />
         <option value="$PROJECT_DIR$/lamda_mart_Run_time.py" />
+        <option value="$PROJECT_DIR$/New_Query_Sampling.py" />
         <option value="$PROJECT_DIR$/Data_Preparation_For_Learning.py" />
       </list>
     </option>
@@ -229,17 +238,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -260,6 +258,17 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -543,7 +552,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3051948" sideWeight="0.087987356" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3051948" sideWeight="0.91201264" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3051948" sideWeight="0.91201264" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -577,7 +586,7 @@
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="13" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -757,17 +766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
           <caret line="71" column="4" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ranking.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37468">
-          <caret line="2207" column="37" selection-start-line="2207" selection-start-column="22" selection-end-line="2207" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -787,29 +785,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-587">
-          <caret line="876" column="37" selection-start-line="876" selection-start-column="37" selection-end-line="876" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Investigating_Clustering_Properties.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
+        <state relative-caret-position="1394">
           <caret line="84" column="93" selection-start-line="84" selection-start-column="93" selection-end-line="84" selection-end-column="115" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Query_Sampling.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -823,16 +805,48 @@
     </entry>
     <entry file="file://C:/Python34/Lib/shutil.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="4029">
           <caret line="244" column="0" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Query_Sampling.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="188" column="49" selection-start-line="188" selection-start-column="4" selection-end-line="188" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#455#2836#0" expanded="false" />
+            <element signature="e#3000#6388#0" expanded="false" />
+            <element signature="e#9234#14012#0" expanded="false" />
+            <element signature="e#14143#15459#0" expanded="false" />
+            <element signature="e#14253#14380#0" expanded="false" />
+            <element signature="e#16264#17275#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ranking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-850">
+          <caret line="1784" column="49" selection-start-line="1784" selection-start-column="42" selection-end-line="1784" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="967" column="49" selection-start-line="967" selection-start-column="49" selection-end-line="967" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/New_Query_Sampling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="170" column="52" selection-start-line="170" selection-start-column="52" selection-end-line="170" selection-end-column="52" />
+        <state relative-caret-position="238">
+          <caret line="184" column="30" selection-start-line="184" selection-start-column="30" selection-end-line="184" selection-end-column="30" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
@@ -841,8 +855,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lamda_mart_Run_time.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="267" column="18" selection-start-line="267" selection-start-column="18" selection-end-line="267" selection-end-column="18" />
+        <state relative-caret-position="415">
+          <caret line="269" column="27" selection-start-line="269" selection-start-column="27" selection-end-line="269" selection-end-column="27" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
@@ -851,11 +865,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Data_Preparation_For_Learning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="252" column="12" selection-start-line="252" selection-start-column="7" selection-end-line="252" selection-end-column="12" />
+        <state relative-caret-position="272">
+          <caret line="461" column="30" selection-start-line="461" selection-start-column="27" selection-end-line="461" selection-end-column="30" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#14445#17543#1" expanded="false" />
           </folding>
         </state>
       </provider>
