@@ -12,9 +12,9 @@ def get_num_reviews_per_product_local(product_path):
             count+=1
     return count
 def Write_Number_Reviews_For_All_Categories():
-    category_source = "f:\Yassien_PhD\categories/"
-    product_base_directory = "f:\Yassien_PhD\Product_Reviews/"
-    destenation_directory = "F:/Yassien_PhD/Number_of_reviews_per_product/"
+    category_source = "d:\Yassien_PhD\categories/"
+    product_base_directory = "d:\Yassien_PhD\Product_Reviews/"
+    destenation_directory = "d:/Yassien_PhD/Number_of_reviews_per_product/"
     Categories = ["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories", "Electronics"]
     for category_name in Categories:
         print("Processing "+category_name)
@@ -43,9 +43,10 @@ def Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_
     for product_line in training_products:
         produtid = str(product_line).split('\t')[0]
         if sampling_choice == 1 or sampling_choice == 2:
-            count = products_num_revs_dict[produtid]#get_num_reviews_per_product_local(product_file_path)
-            pair = (index,count)
-            temp_list.append(pair)
+            count = products_num_revs_dict[produtid]
+            if count >70:
+                pair = (index,count)
+                temp_list.append(pair)
         index+=1
     #print("temp list before")
     #print(temp_list)
@@ -89,7 +90,7 @@ def Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_
         final_training_set.append(training_products[pro_index])
 
     return final_training_set
-def Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,local_destination,product_base_directory):
+def Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,local_destination,product_base_directory,drive):
 
   print("Processing "+category_name)
   index = 0
@@ -120,8 +121,8 @@ def Randomize_Product_List_and_Picktraining(source_category_path,category_name, 
 
   while len(product_list)>num_testing:
     # Code randomization
-    #choice = random.choice(list(product_list))
-    choice = product_list[indo]
+    choice = random.choice(list(product_list))
+    #choice = product_list[indo]
     training_products.append(choice)
     #print("Choice "+str(choice))
     product_list.remove(choice)
@@ -129,18 +130,31 @@ def Randomize_Product_List_and_Picktraining(source_category_path,category_name, 
     #print(product_list)
 
   testing_products = product_list
-
+  old_total = len(training_products)+len(testing_products)
   #Here we inject whatever query sampling we need
-  sampling_choice = 2 #means arrange by number of reviews
-  products_num_revs_path = "f:/Yassien_PhD/Number_of_reviews_per_product/"+category_name+".txt"
+  sampling_choice = 1 #means arrange by number of reviews
+  products_num_revs_path = drive+"Yassien_PhD/Number_of_reviews_per_product/"+category_name+".txt"
   #training_products=Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_path,sampling_choice)
 
   ######################################################################################################################
   print("Final num_training " + str(len(training_products)))
   print("Final num_testing " + str(len(testing_products)))
-  print("Final total "+str(len(training_products)+len(testing_products)))
-  print("Writing Files")
+  final_total = len(training_products) + len(testing_products)
+  print("Final total "+str(final_total))
+  print("Old Total "+str(old_total))
 
+  if old_total !=final_total:
+      new_list = []
+      new_testing_count = int(len(training_products)*0.2)
+      for i in range(new_testing_count):
+          new_list.append(testing_products[i])
+      testing_products = new_list
+  print("AFter Adjustment***************************************************************")
+  print("Final num_training " + str(len(training_products)))
+  print("Final num_testing " + str(len(testing_products)))
+  final_total = len(training_products) + len(testing_products)
+  print("Final total " + str(final_total))
+  print("Writing Files")
   training_filepath = local_destination + "training.txt"
   training_index_filepath = local_destination + "training_index.txt"
   filehandle = open(training_filepath, 'w')
@@ -238,13 +252,14 @@ def PrepareCategoriesWithSalesRankRanking(sourceCategorypath,destinationCategory
   filehandle.close()
 
   return
-def Prepare_Training_Testing_Data_New_Experiment_Setup(query_size):
-  category_source = "f:\Yassien_PhD\categories/"
-  categories_source="f:\Yassien_PhD\Experiment_5\Categories/"
-  source_features_path = "f:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/"
-  train_test_destination_stage1="f:\Yassien_PhD\Experiment_5\Train_Test_Category_Stage_1/"
-  train_test_destination="f:\Yassien_PhD\Experiment_5\Train_Test_Category_With_10_Time_Interval_TQ_Target/"
-  product_base_directory ="f:\Yassien_PhD\Product_Reviews/"
+def Prepare_Training_Testing_Data_New_Experiment_Setup(query_size,drive):
+  #drive = "d:/"
+  category_source = drive+"Yassien_PhD\categories/"
+  categories_source=drive+"Yassien_PhD\Experiment_5\Categories/"
+  source_features_path = drive+"Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/"
+  train_test_destination_stage1=drive+"Yassien_PhD\Experiment_5\Train_Test_Category_Stage_1/"
+  train_test_destination=drive+"Yassien_PhD\Experiment_5\Train_Test_Category_With_10_Time_Interval_TQ_Target/"
+  product_base_directory =drive+"Yassien_PhD\Product_Reviews/"
   #Categories with small number of products < 5000 products do need cross validation
   categories_with_small_products = ["Industrial & Scientific","Arts, Crafts & Sewing","Computers & Accessories","Software"]
 
@@ -262,7 +277,7 @@ def Prepare_Training_Testing_Data_New_Experiment_Setup(query_size):
       os.mkdir(modified_categories_with_indices)
     training_ratio = 0.9
     source_category_path = category_source + category_name + ".txt"
-    Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,modified_categories_with_indices,product_base_directory)
+    Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,modified_categories_with_indices,product_base_directory,drive)
     source_feature_vector_path=source_features_path+category_name+".txt"
     cat_train_test_desination_directory_stage_1 = train_test_destination_stage1+category_name+"/"
     Retreive_Train_Test_Per_Category(source_feature_vector_path,category_name,modified_categories_with_indices,cat_train_test_desination_directory_stage_1)
@@ -288,7 +303,7 @@ def Prepare_Training_Testing_Data_New_Experiment_Setup(query_size):
     modified_categories_with_indices = categories_source + category_name + "/"
     validation_ratio = 0.2
     new_q_index = DivideTrainingSetIntoQueries(cat_train_test_desination_directory_stage_1,category_name,train_test_destination_for_cat,query_size,validation_ratio)
-    sales_rank_original_ranking_path = "f:\Yassien_PhD\Experiment_5\Categories_Ranked_by_Sales_Rank/"+category_name+".txt"
+    sales_rank_original_ranking_path = drive+"Yassien_PhD\Experiment_5\Categories_Ranked_by_Sales_Rank/"+category_name+".txt"
     modified_categories_with_indices = categories_source + category_name + "/"
     DivideTestingSetIntoQueries(cat_train_test_desination_directory_stage_1,category_name,train_test_destination_for_cat,modified_categories_with_indices,sales_rank_original_ranking_path,query_size,new_q_index)
 
@@ -300,14 +315,14 @@ def Old_Kendall_Tau_Measuring_On_All_Predictions_Level(products_to_test,predicti
         print("Error Un even lists")
         print("Num products from sales " + str(len(products_to_test)) + " From predictions " + str(len(predictions)))
 
-    print("#####################################")
-    print("After Sorting")
+    #print("#####################################")
+    #print("After Sorting")
     mergeSort(products_to_test)
     mergeSort(predictions)
     products_to_test.reverse()  # reverse as it is ordered in ascending order and in our notation the higher the value the better the rank
     predictions.reverse()
-    print(products_to_test)
-    print(predictions)
+    #print(products_to_test)
+    #print(predictions)
 
     # Create sorted sales rank file
     print("Writing sorted sales rank file ")
@@ -350,6 +365,8 @@ def Old_Kendall_Tau_Measuring_On_All_Predictions_Level(products_to_test,predicti
     print(rScriptFilePath)
     print("Kendall value is ")
     kendall = runKenallExtractScript(rScriptFilePath, R_path)
+    print("The avg Kendall ")
+    print(kendall)
     correlationFileHandle.write(category_name + "\t\t" + str(kendall) + "\n")
     return
 
@@ -462,6 +479,7 @@ def New_Kendall_Tau_Measuring_On_Query_Level(base_predictions_directory,category
         avg_kendall += abs(ken)
         filehandle.write(str(ken) + "\n")
     filehandle.close()
+
     avg_kendall = avg_kendall / len(kendall)
     print("Avg Kendal " + str(avg_kendall))
     correlationFileHandle.write(category_name + "\t\t" + str(avg_kendall) + "\n")
@@ -612,4 +630,4 @@ def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_s
    #'''
   return
 
-#Prepare_Training_Testing_Data_New_Experiment_Setup(10)
+

@@ -241,10 +241,17 @@ from Data_Preparation_For_Learning import  compute_Kendall_New_Experiment_Setup
 #base_learning_directory ="F:\Yassien_PhD\yelp_dataset_challenge_academic_dataset\AVG_Predictions/"
 #categoriesDirectory = "F:\Yassien_PhD\yelp_dataset_challenge_academic_dataset\Resturants_Categories/"
 #*******************************Amazon Dataset
+#Prepare the data for the new experiemnt setup
+drive = "f:/"
+
+from Data_Preparation_For_Learning import Prepare_Training_Testing_Data_New_Experiment_Setup
+Prepare_Training_Testing_Data_New_Experiment_Setup(4,drive)
+###########
+
 categoryList = ["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories", "Electronics"]
-base_learning_directory = "f:\Yassien_PhD\Experiment_5\Train_Test_Category_With_10_Time_Interval_TQ_Target/" #"f:\Yassien_PhD\Experiment_4\K_Fold_PerCategory_Basic__With_10_Time_Interval_TQ_Target_25_lamda_samp/"
-categoriesDirectory = "f:\Yassien_PhD\Experiment_4\categories_sales_rank/"
-learning_lib_directory ="f:\Yassien_PhD\Experiment 2\Lamda_Java/"
+base_learning_directory = drive+"Yassien_PhD\Experiment_5\Train_Test_Category_With_10_Time_Interval_TQ_Target/" #"f:\Yassien_PhD\Experiment_4\K_Fold_PerCategory_Basic__With_10_Time_Interval_TQ_Target_25_lamda_samp/"
+categoriesDirectory = drive+"Yassien_PhD\Experiment_4\categories_sales_rank/"
+learning_lib_directory =drive+"Yassien_PhD\Experiment 2\Lamda_Java/"
 exp_type ="lamda"
 #'''
 #runLamadaMart_All_Categories_Old_Experiment_Setup(categoryList,base_learning_directory,learning_lib_directory,exp_type)
@@ -257,8 +264,8 @@ runLamadaMart_All_Categories_New_Experiment_Setup(base_learning_directory,learni
 #categoriesList = ["Cafes", "Chinese","Mexican" , "Italian","American (Traditional)", "Thai", "Bars", "Japanese", "American (New)"]
 #orig_catNames = ["Cafes", "Chinese","Mexican" , "Italian","American (Traditional)", "Thai", "Bars", "Japanese", "American (New)"]
 #*******************************Amazon Dataset
-categories_sales_rank="f:\Yassien_PhD\Experiment_5\Categories_Ranked_by_Sales_Rank/"
-categories_with_testing_indices="f:\Yassien_PhD\Experiment_5\Categories/"
+categories_sales_rank=drive+"Yassien_PhD\Experiment_5\Categories_Ranked_by_Sales_Rank/"
+categories_with_testing_indices=drive+"Yassien_PhD\Experiment_5\Categories/"
 categoriesList = ["Arts","Industrial", "Jewelry", "Toys", "Computers", "Video Games", "Electronics","Software", "Cell Phones"]
 orig_catNames  = ["Arts, Crafts & Sewing","Industrial & Scientific", "Jewelry",  "Toys & Games","Computers & Accessories", "Video Games", "Electronics", "Software", "Cell Phones & Accessories"]
 dataset_type="amazon"
