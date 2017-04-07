@@ -245,13 +245,13 @@ from Data_Preparation_For_Learning import  compute_Kendall_New_Experiment_Setup
 drive = "f:/"
 
 from Data_Preparation_For_Learning import Prepare_Training_Testing_Data_New_Experiment_Setup
-Prepare_Training_Testing_Data_New_Experiment_Setup(4,drive)
+Prepare_Training_Testing_Data_New_Experiment_Setup(5,drive)
 ###########
 
 categoryList = ["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories", "Electronics"]
 base_learning_directory = drive+"Yassien_PhD\Experiment_5\Train_Test_Category_With_10_Time_Interval_TQ_Target/" #"f:\Yassien_PhD\Experiment_4\K_Fold_PerCategory_Basic__With_10_Time_Interval_TQ_Target_25_lamda_samp/"
 categoriesDirectory = drive+"Yassien_PhD\Experiment_4\categories_sales_rank/"
-learning_lib_directory =drive+"Yassien_PhD\Experiment 2\Lamda_Java/"
+learning_lib_directory =drive+"Yassien_PhD\Experiment 2\Lamda_Java/"#"Yassien_PhD\Experiment 2\SVM_Light\svm_light_windows64/"
 exp_type ="lamda"
 #'''
 #runLamadaMart_All_Categories_Old_Experiment_Setup(categoryList,base_learning_directory,learning_lib_directory,exp_type)

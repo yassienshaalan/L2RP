@@ -30,7 +30,7 @@ def Write_Number_Reviews_For_All_Categories():
                 filehandle.write(str(productid)+"\t"+str(count)+"\n")
         filehandle.close()
     return
-def Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_path,sampling_choice):
+def Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_path,sampling_choice,query_size):
     products_num_revs_dict = dict()
     with open(products_num_revs_path, 'r') as filep:
         for item in filep:
@@ -44,7 +44,7 @@ def Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_
         produtid = str(product_line).split('\t')[0]
         if sampling_choice == 1 or sampling_choice == 2:
             count = products_num_revs_dict[produtid]
-            if count >70:
+            if count >30:
                 pair = (index,count)
                 temp_list.append(pair)
         index+=1
@@ -59,30 +59,38 @@ def Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_
     index_top = 0
     num_taken_top = 0
     index_bottom = total_num_prods-1
-    num_taken_bottom = 7
-    print("total_num_prods "+str(total_num_prods))
+
+    num_to_take_top = int(query_size / 2)
+    num_to_take_bottom = query_size - num_to_take_top
+    print("num_to_take_top "+str(num_to_take_top))
+    print("num_to_take_bottom " + str(num_to_take_bottom))
+
+    num_taken_bottom = num_to_take_bottom
+
+
+   # print("total_num_prods "+str(total_num_prods))
     if sampling_choice == 2:
         while len(new_list)<total_num_prods:
             #print("index_top "+str(index_top))
             #print("index_bottom "+str(index_bottom))
-            if num_taken_top <3:
+            if num_taken_top <num_to_take_top:
                 if index_top==index_bottom:
                     new_list.append(temp_list[index_bottom])
                     break
                 new_list.append(temp_list[index_top])
                 num_taken_top+=1
                 index_top+=1
-            elif num_taken_bottom == 7 and num_taken_top == 3:
+            elif num_taken_bottom == num_to_take_bottom and num_taken_top == num_to_take_top:
                 num_taken_top = 0
 
-            if num_taken_bottom < 7:
+            if num_taken_bottom < num_to_take_bottom:
                 if index_top == index_bottom:
                     new_list.append(temp_list[index_bottom])
                     break
                 new_list.append(temp_list[index_bottom])
                 num_taken_bottom += 1
                 index_bottom -= 1
-            elif num_taken_bottom == 7 and num_taken_top ==3:
+            elif num_taken_bottom == num_to_take_bottom and num_taken_top == num_to_take_top:
                 num_taken_bottom = 0
         temp_list = new_list
     for i in range(len(temp_list)):
@@ -90,7 +98,7 @@ def Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_
         final_training_set.append(training_products[pro_index])
 
     return final_training_set
-def Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,local_destination,product_base_directory,drive):
+def Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,local_destination,product_base_directory,drive,query_size):
 
   print("Processing "+category_name)
   index = 0
@@ -132,28 +140,29 @@ def Randomize_Product_List_and_Picktraining(source_category_path,category_name, 
   testing_products = product_list
   old_total = len(training_products)+len(testing_products)
   #Here we inject whatever query sampling we need
-  sampling_choice = 1 #means arrange by number of reviews
+  sampling_choice =2 #means arrange by number of reviews
   products_num_revs_path = drive+"Yassien_PhD/Number_of_reviews_per_product/"+category_name+".txt"
-  #training_products=Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_path,sampling_choice)
+  #training_products=Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_path,sampling_choice,query_size)
 
   ######################################################################################################################
-  print("Final num_training " + str(len(training_products)))
-  print("Final num_testing " + str(len(testing_products)))
+  print("Final num_training now " + str(len(training_products)))
+  print("Final num_testing was " + str(len(testing_products)))
   final_total = len(training_products) + len(testing_products)
   print("Final total "+str(final_total))
   print("Old Total "+str(old_total))
-
+  print("Final after num_training " + str(len(training_products)))
   if old_total !=final_total:
       new_list = []
-      new_testing_count = int(len(training_products)*0.2)
+      new_testing_count = int(len(training_products)*0.1)
+      print("new_testing_count " + str(new_testing_count))
       for i in range(new_testing_count):
           new_list.append(testing_products[i])
       testing_products = new_list
   print("AFter Adjustment***************************************************************")
-  print("Final num_training " + str(len(training_products)))
-  print("Final num_testing " + str(len(testing_products)))
+
+  print("Final after num_testing " + str(len(testing_products)))
   final_total = len(training_products) + len(testing_products)
-  print("Final total " + str(final_total))
+  print("Final after total " + str(final_total))
   print("Writing Files")
   training_filepath = local_destination + "training.txt"
   training_index_filepath = local_destination + "training_index.txt"
@@ -277,7 +286,7 @@ def Prepare_Training_Testing_Data_New_Experiment_Setup(query_size,drive):
       os.mkdir(modified_categories_with_indices)
     training_ratio = 0.9
     source_category_path = category_source + category_name + ".txt"
-    Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,modified_categories_with_indices,product_base_directory,drive)
+    Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,modified_categories_with_indices,product_base_directory,drive,query_size)
     source_feature_vector_path=source_features_path+category_name+".txt"
     cat_train_test_desination_directory_stage_1 = train_test_destination_stage1+category_name+"/"
     Retreive_Train_Test_Per_Category(source_feature_vector_path,category_name,modified_categories_with_indices,cat_train_test_desination_directory_stage_1)
