@@ -447,28 +447,70 @@ def New_Kendall_Tau_Measuring_On_Query_Level(base_predictions_directory,category
     index = 0
     for i in range(len(query_ranks)):
         query = query_ranks[i]
-        # print("query Before ")
-        # print(query)
+        #print("query Before ")
+        #print(query)
+        given_salesrank_query = []
+        for p in query:
+            given_salesrank_query.append(p)
         mergeSort(query)
-        query.reverse()
-        # print("query After ")
-        # print(query)
+        #query.reverse()
+        #print("query After ")
+        #print(query)
         num_pro_per_query = len(query)
+        final_sales_list = []
+        correct_rank = 0
+        for p in given_salesrank_query:
+            correct_rank=0
+            for pp in query:
+                if p[0]==pp[0]:
+                    break
+                else:
+                    correct_rank+=1
+            correct_rank=num_pro_per_query-1-correct_rank
+            final_sales_list.append(correct_rank)
+        #print("final_sales_list ")
+        #print(final_sales_list)
+
+
         query_pred = []
         for j in range(num_pro_per_query):
             query_pred.append((j, predictions[index]))
             index += 1
             # print("Query Pred Before")
             # print(query_pred)
+        given_pred_query = []
+        for p in query_pred:
+            given_pred_query.append(p)
+
+        #print("query pred before ")
+        #print(query_pred)
         mergeSort(query_pred)
         query_pred.reverse()
+        #print("query pred after ")
+        #print(query_pred)
         # print("Query Pred after")
         # print(query_pred)
+        final_pres_list = []
+        for p in given_pred_query:
+            correct_rank = 0
+            for pp in query_pred:
+                if p[0] == pp[0]:
+                    break
+                else:
+                    correct_rank += 1
+            correct_rank = num_pro_per_query - 1 - correct_rank
+            final_pres_list.append(correct_rank)
+
+        #print("final_pres_list")
+        #print(final_pres_list)
         file_path = r_difference_folder_path + "R_Difference_" + str(i) + ".txt"
         filehandle = open(file_path, 'w')
         # print(query_pred)
-        for k in range(len(query_pred)):
-            filehandle.write(str(query[k][0] + 1) + "\t" + str(query_pred[k][0] + 1) + "\n")
+        #old way
+        #for k in range(len(query_pred)):
+         #   filehandle.write(str(query[k][0] + 1) + "\t" + str(query_pred[k][0] + 1) + "\n")
+        for k in range(len(final_pres_list)):
+            filehandle.write(str(final_sales_list[k])+ "\t" + str(final_pres_list[k] + 1) + "\n")
         filehandle.close()
         # print(query_pred[i][0])
         # print("-----------------------------------------")
@@ -602,7 +644,7 @@ def compute_Kendall_New_Experiment_Setup(base_predictions_directory,categories_s
       #print(testing_indices)
       all_products = []
 
-      sales_rank_original_ranking_path=categories_sales_rank+category_name+".txt"
+      sales_rank_original_ranking_path=categories_with_testing_indices+"/"+category_name+"/"+category_name+".txt"#categories_sales_rank+category_name+".txt"
       with open(sales_rank_original_ranking_path, 'r') as filep:
         for line in filep:
           sales = int(line.split('\t')[1])

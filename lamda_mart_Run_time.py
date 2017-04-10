@@ -188,6 +188,7 @@ def runLamadaMart_All_Categories_Old_Experiment_Setup(categoryList,base_learning
             backAllPredictionsInOneFileStraight(destCopyDirectory)
             predicitonsFile = destCopyDirectory + "AllPredictions.txt"
             destDirectory = destCopyDirectory
+            categoriesDirectory="F:\Yassien_PhD\categories/"
             transformPredictionsToComputedPerCategory(category, categoriesDirectory, destDirectory, predicitonsFile)
     return
 def runLamadaMart_All_Categories_New_Experiment_Setup(base_learning_directory,learning_lib_directory,exp_type):
@@ -226,7 +227,9 @@ def compute_Kendall_Old_Experiment_Setup(categoriesList,orig_catNames,base_learn
             os.rename(original_directory, new_directory)
             print("Renamed the folder")
         categoryMainDirectory = base_learning_directory + categoryName + "/"
-        salesRankDirectory = "f:\Yassien_PhD\Experiment_4\categories_sales_rank/"
+        #This one was used when we were doing clustering or anyother sort of change that will change the order so we change the order of the sales rank for correct comparison
+        #salesRankDirectory = "f:\Yassien_PhD\Experiment_4\categories_sales_rank/"
+        salesRankDirectory ="F:\Yassien_PhD\categories/"
         R_path = "C:\Program Files\R\R-3.2.2/bin/Rscript.exe"  # RMIT
         # R_path ="C:\Program Files\R\R-3.3.2/bin/Rscript.exe" #Laptop
         createSortedRankAndRunR(categoryMainDirectory, "Lamda", categoryName, orig_CatName, dataset_type,salesRankDirectory, R_path)
@@ -245,17 +248,17 @@ from Data_Preparation_For_Learning import  compute_Kendall_New_Experiment_Setup
 drive = "f:/"
 
 from Data_Preparation_For_Learning import Prepare_Training_Testing_Data_New_Experiment_Setup
-Prepare_Training_Testing_Data_New_Experiment_Setup(5,drive)
+#Prepare_Training_Testing_Data_New_Experiment_Setup(10,drive)
 ###########
 
 categoryList = ["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories", "Electronics"]
 base_learning_directory = drive+"Yassien_PhD\Experiment_5\Train_Test_Category_With_10_Time_Interval_TQ_Target/" #"f:\Yassien_PhD\Experiment_4\K_Fold_PerCategory_Basic__With_10_Time_Interval_TQ_Target_25_lamda_samp/"
-categoriesDirectory = drive+"Yassien_PhD\Experiment_4\categories_sales_rank/"
+categoriesDirectory = drive+"Yassien_PhD\Experiment_4\categories_sales_rank/" #This one is for new setup
 learning_lib_directory =drive+"Yassien_PhD\Experiment 2\Lamda_Java/"#"Yassien_PhD\Experiment 2\SVM_Light\svm_light_windows64/"
 exp_type ="lamda"
 #'''
 #runLamadaMart_All_Categories_Old_Experiment_Setup(categoryList,base_learning_directory,learning_lib_directory,exp_type)
-runLamadaMart_All_Categories_New_Experiment_Setup(base_learning_directory,learning_lib_directory,exp_type)
+#runLamadaMart_All_Categories_New_Experiment_Setup(base_learning_directory,learning_lib_directory,exp_type)
 #'''
 
 

@@ -59,16 +59,31 @@ def DivideTrainingSetIntoQueries(cat_train_test_desination_directory,category_na
 
     #print("query_pair before ")
     #print(query_pair)
+    given_query_pair=[]
+    for p in query_pair:
+        given_query_pair.append(p)
+
     mergeSort(query_pair)
     query_pair.reverse()
     #print("query pair after")
     #print(query_pair)
+    #print("given_query_pair")
+    #print(given_query_pair)
     rank = len(query_pair)-1
-
-    for qpair in query_pair:
+    correct_rank = 0
+    for qpair in given_query_pair:
         new_query = ""
+        correct_rank=0
+        for p in query_pair:
+            if p[0]== qpair[0]:
+                break
+            else:
+                correct_rank+=1
+        correct_rank = len(query_pair)-1-correct_rank
+        #print("qpair[0] "+str(qpair[0]))
+        #print("correct_rank is "+str(correct_rank))
         old_query=query[qpair[0]]
-        new_query=str(rank)+' '
+        new_query=str(correct_rank)+' '
         old_query_iter = str(old_query).split(' ')
         for i in range(1,len(old_query_iter)):
             if i == 1:
@@ -179,16 +194,34 @@ def DivideTestingSetIntoQueries(cat_train_test_desination_directory_stage_1,cate
             #rank = str(product_line).split(' ')[0] This is the TQ rank we will replace that with the sales rank
             query_pair.append((index, int(TQ_Rank)))#int(rank)))#Testing with putting TQ rank
             index += 1
-
+        #print("before ")
+        #print(query_pair)
+        given_query_pair = []
+        for p in query_pair:
+            given_query_pair.append(p)
         mergeSort(query_pair)
         query_pair.reverse()
+        #print("after ")
+        #print(query_pair)
         rank = len(query_pair)-1
-
-        for qpair in query_pair:
+        #print("given_query_pair")
+        #print(given_query_pair)
+        for qpair in given_query_pair:
             new_query = ""
             old_query = query[qpair[0]]
-            new_query = str(rank) + ' '
+            correct_rank = 0
+            for p in query_pair:
+                if p[0] == qpair[0]:
+                    break
+                else:
+                    correct_rank += 1
+            correct_rank = len(query_pair) - 1 - correct_rank
+            #print("qpair[0] "+str(qpair[0]))
+            #print("correct_rank is "+str(correct_rank))
+            #new_query = str(rank) + ' '
+            new_query = str(correct_rank) + ' '
             old_query_iter = str(old_query).split(' ')
+
             for i in range(1, len(old_query_iter)):
                 if i == 1:
                     temp = old_query_iter[i].split(':')

@@ -919,7 +919,8 @@ def measureDistanceBetweenForCategory(path1,path2,category,destDirectory):
     line = ""
     salesRankList = []
     majorityVoateList = []
-
+    print(path1)
+    print(path2)
     try:
         with open(path1, 'r') as fp:
           for line in fp:
@@ -950,7 +951,10 @@ def measureDistanceBetweenForCategory(path1,path2,category,destDirectory):
             salesRankIndices.append(salesIndex)
             salesRankProduct.append(sales)
             majorIndex = 1
+            found = 0
             for majority in (majorityVoateList):
+                #print("sales "+str(sales))
+                #print("majority "+str(majority))
                 if sales == majority:
                     difference = salesIndex - majorIndex
                     majorityProduct.append(majority)
@@ -959,11 +963,19 @@ def measureDistanceBetweenForCategory(path1,path2,category,destDirectory):
                     #filehandle.write("\t")
                     #filehandle.write(str(difference))
                     #filehandle.write("\n")
+                    found = 1
                     break
                 majorIndex = majorIndex + 1
             salesIndex = salesIndex + 1
+            if found == 0:
+                print("Didn't find "+sales)
     #filehandle.close()
-
+    print("majorityIndices")
+    print(len(majorityIndices))
+    print("salesRankIndices")
+    print(len(salesRankIndices))
+    print("majorityVoateList")
+    print(len(majorityVoateList))
     if len(salesRankIndices)>0:
         filePath = destDirectory + category + ".txt"
         filehandle = open(filePath, 'w')
