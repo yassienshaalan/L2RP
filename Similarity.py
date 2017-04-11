@@ -46,6 +46,7 @@ class Similarity():
         intersection_cardinality = len(set.intersection(*[set(x), set(y)]))
         union_cardinality = len(set.union(*[set(x), set(y)]))
         return intersection_cardinality / float(union_cardinality)
+
 def getFeatureVector(file_path):
     features=[]
     index = 0
@@ -53,6 +54,24 @@ def getFeatureVector(file_path):
     with open(file_path, 'r') as filep:
         for item in filep:
             line = item.split(' ')
+            featureVect = []
+            sum=0
+            for i in range(2,len(line)):
+                value = line[i].split(':')
+                featureVect.append(float(value[1]))
+                sum+=float(value[1])
+            #featureVect.append(index)
+            features_dict[sum]=index
+            index+=1
+            features.append(featureVect)
+    return features,features_dict
+
+def getFeatureVector_From_Dict(input_feature_list):
+    features=[]
+    index = 0
+    features_dict = dict()
+    for key,value in input_feature_list.items():
+            line = value.split(' ')
             featureVect = []
             sum=0
             for i in range(2,len(line)):
@@ -96,12 +115,15 @@ def find_centers(X, K):
     # Initialize to K random centers
     oldmu = random.sample(list(X), K)
     mu = random.sample(list(X), K)
+    num_iterations=0
     while not has_converged(mu, oldmu):
         oldmu = mu
         # Assign all points in X to clusters
         clusters = cluster_points(X, mu)
         # Reevaluate centers
         mu = reevaluate_centers(oldmu, clusters)
+        num_iterations+=1
+        print("num_iterations "+str(num_iterations))
     return (mu, clusters)
 
 def init_board(N):

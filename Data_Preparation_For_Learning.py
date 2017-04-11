@@ -2,7 +2,7 @@ import random
 import shutil
 import os
 from alogrithms import mergeSort
-from New_Query_Sampling import  DivideTrainingSetIntoQueries,DivideTestingSetIntoQueries
+from New_Query_Sampling import  DivideTrainingSetIntoQueries,DivideTestingSetIntoQueries, Clustering_Products
 
 def get_num_reviews_per_product_local(product_path):
     #Count the number of reviews for a product
@@ -44,8 +44,11 @@ def Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_
         produtid = str(product_line).split('\t')[0]
         if sampling_choice == 1 or sampling_choice == 2:
             count = products_num_revs_dict[produtid]
-            if count >30:
+            if sampling_choice == 2 and count >50:
                 pair = (index,count)
+                temp_list.append(pair)
+            elif sampling_choice == 1:
+                pair = (index, count)
                 temp_list.append(pair)
         index+=1
     #print("temp list before")
@@ -98,7 +101,7 @@ def Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_
         final_training_set.append(training_products[pro_index])
 
     return final_training_set
-def Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,local_destination,product_base_directory,drive,query_size):
+def Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,local_destination,product_base_directory,drive,query_size,source_feature_vector_path):
 
   print("Processing "+category_name)
   index = 0
@@ -140,10 +143,10 @@ def Randomize_Product_List_and_Picktraining(source_category_path,category_name, 
   testing_products = product_list
   old_total = len(training_products)+len(testing_products)
   #Here we inject whatever query sampling we need
-  sampling_choice =2 #means arrange by number of reviews
+  sampling_choice =1 #means arrange by number of reviews
   products_num_revs_path = drive+"Yassien_PhD/Number_of_reviews_per_product/"+category_name+".txt"
   #training_products=Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_path,sampling_choice,query_size)
-
+  training_products = Clustering_Products(training_products,source_feature_vector_path,source_category_path)
   ######################################################################################################################
   print("Final num_training now " + str(len(training_products)))
   print("Final num_testing was " + str(len(testing_products)))
@@ -286,11 +289,13 @@ def Prepare_Training_Testing_Data_New_Experiment_Setup(query_size,drive):
       os.mkdir(modified_categories_with_indices)
     training_ratio = 0.9
     source_category_path = category_source + category_name + ".txt"
-    Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,modified_categories_with_indices,product_base_directory,drive,query_size)
-    source_feature_vector_path=source_features_path+category_name+".txt"
-    cat_train_test_desination_directory_stage_1 = train_test_destination_stage1+category_name+"/"
+    source_feature_vector_path = source_features_path + category_name + ".txt"
+    cat_train_test_desination_directory_stage_1 = train_test_destination_stage1 + category_name + "/"
+    train_test_destination_for_cat = train_test_destination + category_name + "/"
+
+
+    Randomize_Product_List_and_Picktraining(source_category_path,category_name, training_ratio,modified_categories_with_indices,product_base_directory,drive,query_size,source_feature_vector_path)
     Retreive_Train_Test_Per_Category(source_feature_vector_path,category_name,modified_categories_with_indices,cat_train_test_desination_directory_stage_1)
-    train_test_destination_for_cat = train_test_destination+category_name+"/"
     #'''
     ################################################################################################################################################################
 

@@ -5,9 +5,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data_Preparation_For_Learning.py" afterPath="$PROJECT_DIR$/Data_Preparation_For_Learning.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/New_Query_Sampling.py" afterPath="$PROJECT_DIR$/New_Query_Sampling.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dirichlet_True_Rating.py" afterPath="$PROJECT_DIR$/dirichlet_True_Rating.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Similarity.py" afterPath="$PROJECT_DIR$/Similarity.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lamda_mart_Run_time.py" afterPath="$PROJECT_DIR$/lamda_mart_Run_time.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ranking.py" afterPath="$PROJECT_DIR$/ranking.py" />
     </list>
     <ignored path="Learn_Ranking.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,11 +41,13 @@
         <entry file="file://$PROJECT_DIR$/Query_Sampling.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="188" column="49" selection-start-line="188" selection-start-column="4" selection-end-line="188" selection-end-column="49" />
+              <caret line="113" column="42" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="46" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
                 <element signature="e#455#2836#0" expanded="false" />
-                <element signature="e#3000#6388#0" expanded="false" />
+                <element signature="e#4830#6085#1" expanded="false" />
+                <element signature="e#6090#6377#1" expanded="false" />
+                <element signature="e#6563#9072#0" expanded="false" />
                 <element signature="e#9234#14012#0" expanded="false" />
                 <element signature="e#14143#15459#0" expanded="false" />
                 <element signature="e#14253#14380#0" expanded="false" />
@@ -56,11 +57,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Data_Preparation_For_Learning.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Similarity.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Similarity.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="125" column="29" selection-start-line="125" selection-start-column="29" selection-end-line="125" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Data_Preparation_For_Learning.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Data_Preparation_For_Learning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-101">
-              <caret line="471" column="9" selection-start-line="471" selection-start-column="9" selection-end-line="471" selection-end-column="9" />
+            <state relative-caret-position="291">
+              <caret line="148" column="30" selection-start-line="148" selection-start-column="30" selection-end-line="148" selection-end-column="30" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -71,11 +82,22 @@
       <file leaf-file-name="New_Query_Sampling.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/New_Query_Sampling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="204" column="9" selection-start-line="204" selection-start-column="9" selection-end-line="204" selection-end-column="9" />
+            <state relative-caret-position="325">
+              <caret line="290" column="22" selection-start-line="290" selection-start-column="22" selection-end-line="290" selection-end-column="22" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
+                <marker date="1491894906821" expanded="false" signature="4801:8913" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="random.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Python34/Lib/random.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="314" column="0" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -83,21 +105,11 @@
       <file leaf-file-name="lamda_mart_Run_time.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lamda_mart_Run_time.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="279" column="20" selection-start-line="279" selection-start-column="20" selection-end-line="279" selection-end-column="20" />
+            <state relative-caret-position="189">
+              <caret line="266" column="0" selection-start-line="266" selection-start-column="0" selection-end-line="266" selection-end-column="0" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shutil.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Python34/Lib/shutil.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4029">
-              <caret line="244" column="0" selection-start-line="244" selection-start-column="0" selection-end-line="244" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -115,8 +127,8 @@
       <file leaf-file-name="RankingHelper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RankingHelper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-57">
-              <caret line="190" column="4" selection-start-line="190" selection-start-column="4" selection-end-line="190" selection-end-column="4" />
+            <state relative-caret-position="385">
+              <caret line="255" column="22" selection-start-line="251" selection-start-column="3" selection-end-line="255" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -127,16 +139,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
               <caret line="956" column="17" selection-start-line="956" selection-start-column="17" selection-end-line="956" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Testing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Testing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16422">
-              <caret line="967" column="49" selection-start-line="967" selection-start-column="49" selection-end-line="967" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -191,7 +193,6 @@
         <option value="F:/Debt_Issuance/Debt_Issuance/test.py" />
         <option value="F:/Debt_Issuance/Debt_Issuance/Data_Preparation.py" />
         <option value="F:/Debt_Issuance/Debt_Issuance/classify.py" />
-        <option value="$PROJECT_DIR$/Similarity.py" />
         <option value="$PROJECT_DIR$/Stats_Plotting_Learning_Data.py" />
         <option value="$PROJECT_DIR$/Investigating_Clustering_Properties.py" />
         <option value="$PROJECT_DIR$/RankingHelper.py" />
@@ -199,17 +200,18 @@
         <option value="$PROJECT_DIR$/Testing.py" />
         <option value="$PROJECT_DIR$/ranking.py" />
         <option value="$PROJECT_DIR$/dirichlet_True_Rating.py" />
-        <option value="$PROJECT_DIR$/New_Query_Sampling.py" />
         <option value="$PROJECT_DIR$/lamda_mart_Run_time.py" />
         <option value="$PROJECT_DIR$/Data_Preparation_For_Learning.py" />
+        <option value="$PROJECT_DIR$/New_Query_Sampling.py" />
+        <option value="$PROJECT_DIR$/Similarity.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="y" value="1" />
-    <option name="width" value="1918" />
-    <option name="height" value="1038" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -542,15 +544,15 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1918" height="1038" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1462766" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14488935" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3051948" sideWeight="0.087987356" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3112583" sideWeight="0.91201264" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3051948" sideWeight="0.91201264" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -589,7 +591,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Cavity_Problem.py" />
     <entry file="file://$PROJECT_DIR$/PalindromeTest.py" />
     <entry file="file://$PROJECT_DIR$/Problems.py" />
     <entry file="file://$PROJECT_DIR$/SVM_Map.py">
@@ -760,35 +761,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Similarity.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="71" column="4" selection-start-line="71" selection-start-column="4" selection-end-line="71" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Investigating_Clustering_Properties.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1394">
           <caret line="84" column="93" selection-start-line="84" selection-start-column="93" selection-end-line="84" selection-end-column="115" />
           <folding>
             <element signature="e#0#52#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Query_Sampling.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="188" column="49" selection-start-line="188" selection-start-column="4" selection-end-line="188" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-            <element signature="e#455#2836#0" expanded="false" />
-            <element signature="e#3000#6388#0" expanded="false" />
-            <element signature="e#9234#14012#0" expanded="false" />
-            <element signature="e#14143#15459#0" expanded="false" />
-            <element signature="e#14253#14380#0" expanded="false" />
-            <element signature="e#16264#17275#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -817,14 +795,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RankingHelper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57">
-          <caret line="190" column="4" selection-start-line="190" selection-start-column="4" selection-end-line="190" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ranking.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="393">
@@ -841,33 +811,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/New_Query_Sampling.py">
+    <entry file="file://$PROJECT_DIR$/RankingHelper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="204" column="9" selection-start-line="204" selection-start-column="9" selection-end-line="204" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="385">
+          <caret line="255" column="22" selection-start-line="251" selection-start-column="3" selection-end-line="255" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lamda_mart_Run_time.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="279" column="20" selection-start-line="279" selection-start-column="20" selection-end-line="279" selection-end-column="20" />
+        <state relative-caret-position="189">
+          <caret line="266" column="0" selection-start-line="266" selection-start-column="0" selection-end-line="266" selection-end-column="0" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Query_Sampling.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="113" column="42" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#455#2836#0" expanded="false" />
+            <element signature="e#4830#6085#1" expanded="false" />
+            <element signature="e#6090#6377#1" expanded="false" />
+            <element signature="e#6563#9072#0" expanded="false" />
+            <element signature="e#9234#14012#0" expanded="false" />
+            <element signature="e#14143#15459#0" expanded="false" />
+            <element signature="e#14253#14380#0" expanded="false" />
+            <element signature="e#16264#17275#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Data_Preparation_For_Learning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101">
-          <caret line="471" column="9" selection-start-line="471" selection-start-column="9" selection-end-line="471" selection-end-column="9" />
+        <state relative-caret-position="291">
+          <caret line="148" column="30" selection-start-line="148" selection-start-column="30" selection-end-line="148" selection-end-column="30" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python34/Lib/random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="314" column="0" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/New_Query_Sampling.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="290" column="22" selection-start-line="290" selection-start-column="22" selection-end-line="290" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+            <marker date="1491894906821" expanded="false" signature="4801:8913" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Similarity.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="125" column="29" selection-start-line="125" selection-start-column="29" selection-end-line="125" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>

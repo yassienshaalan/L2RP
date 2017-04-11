@@ -4,6 +4,10 @@ import shutil
 from ranking import prepareKFoldForLamdaMart
 from ranking import prepareKFoldForSVM
 from ranking import backAllPredictionsInOneFileStraight
+from Data_Preparation_For_Learning import  compute_Kendall_New_Experiment_Setup
+from RankingHelper import createSortedRankAndRunR
+from Data_Preparation_For_Learning import Prepare_Training_Testing_Data_New_Experiment_Setup
+
 def runLamdamartLearning(lamda_directory,destCopyDirectory,testing):
 
     shutil.copy2(
@@ -34,9 +38,6 @@ def runLamdamartLearning(lamda_directory,destCopyDirectory,testing):
     testFile = destCopyDirectory+"test.txt"
     categoriesDirectory = "C:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three\categories/"
     destDirectory = destCopyDirectory+"prediction/"
-
-
-
     try:
         os.stat(destDirectory)
     except:
@@ -158,7 +159,7 @@ for i in range(5):
 
 #'''
 #cutoffs = [3, 5, 10, 20, 30, 40, 50, 60, 70, 100, 120, 150, 160, 180, 200, 220, 250, 280, 300, 350, 400,500,600]
-from RankingHelper import createSortedRankAndRunR
+
 cutoffs = [10]
 
 def runLamadaMart_All_Categories_Old_Experiment_Setup(categoryList,base_learning_directory,learning_lib_directory,exp_type):
@@ -238,7 +239,20 @@ def compute_Kendall_Old_Experiment_Setup(categoriesList,orig_catNames,base_learn
             os.rename(new_directory, original_directory)
         print("Returned the folder back to original name")
     return
-from Data_Preparation_For_Learning import  compute_Kendall_New_Experiment_Setup
+def Delete_Files_From_Old_Run(base_learning_directory):
+    print("Deleting old files from previous run")
+    lst = os.listdir(base_learning_directory)
+    lst = natsorted(lst)
+    for folder in lst:
+        folder_path = base_learning_directory+folder
+        print("Deleteing " + folder_path)
+        if os.path.isfile(folder_path):
+            os.remove(folder_path)
+        else:
+            shutil.rmtree(folder_path)
+
+    return
+
 #*******************************Yelp Dataset
 #categoryList = ["Mexican", "Cafes", "Chinese", "Thai", "American (Traditional)", "Italian", "American (New)", "Japanese", "Bars"]
 #base_learning_directory ="F:\Yassien_PhD\yelp_dataset_challenge_academic_dataset\AVG_Predictions/"
@@ -246,19 +260,22 @@ from Data_Preparation_For_Learning import  compute_Kendall_New_Experiment_Setup
 #*******************************Amazon Dataset
 #Prepare the data for the new experiemnt setup
 drive = "f:/"
-
-from Data_Preparation_For_Learning import Prepare_Training_Testing_Data_New_Experiment_Setup
-#Prepare_Training_Testing_Data_New_Experiment_Setup(10,drive)
+base_learning_directory = drive+"Yassien_PhD\Experiment_5\Train_Test_Category_With_10_Time_Interval_TQ_Target/"
+#Deleting old files and folder from main learning directory from previous run
+Delete_Files_From_Old_Run(base_learning_directory)
+#Preparing the training and tesitng data
+Prepare_Training_Testing_Data_New_Experiment_Setup(5,drive)
 ###########
 
 categoryList = ["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories", "Electronics"]
-base_learning_directory = drive+"Yassien_PhD\Experiment_5\Train_Test_Category_With_10_Time_Interval_TQ_Target/" #"f:\Yassien_PhD\Experiment_4\K_Fold_PerCategory_Basic__With_10_Time_Interval_TQ_Target_25_lamda_samp/"
 categoriesDirectory = drive+"Yassien_PhD\Experiment_4\categories_sales_rank/" #This one is for new setup
-learning_lib_directory =drive+"Yassien_PhD\Experiment 2\Lamda_Java/"#"Yassien_PhD\Experiment 2\SVM_Light\svm_light_windows64/"
+learning_lib_directory =drive+"Yassien_PhD\Experiment 2\Lamda_Java/"#
+#learning_lib_directory =drive+"Yassien_PhD\Experiment 2\SVM_Light\svm_light_windows64/"
 exp_type ="lamda"
+#Running the learning algorithm on the prepared data
 #'''
 #runLamadaMart_All_Categories_Old_Experiment_Setup(categoryList,base_learning_directory,learning_lib_directory,exp_type)
-#runLamadaMart_All_Categories_New_Experiment_Setup(base_learning_directory,learning_lib_directory,exp_type)
+runLamadaMart_All_Categories_New_Experiment_Setup(base_learning_directory,learning_lib_directory,exp_type)
 #'''
 
 
@@ -276,6 +293,7 @@ rename=1
 #query_size = 100
 R_path = "C:\Program Files\R\R-3.2.2/bin/Rscript.exe"  # RMIT
 #R_path ="C:\Program Files\R\R-3.3.2/bin/Rscript.exe" #Laptop
+#Running the algorithm to compute kendall tau on the predicted products
 #compute_Kendall_Old_Experiment_Setup(categoriesList,orig_catNames,base_learning_directory,dataset_type,rename)
 compute_Kendall_New_Experiment_Setup(base_learning_directory,categories_sales_rank,categories_with_testing_indices,"LamdaMart",R_path)
 #'''

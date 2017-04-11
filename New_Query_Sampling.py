@@ -1,6 +1,7 @@
 from alogrithms import mergeSort
 import os
-
+from Similarity import getFeatureVector,find_centers,getFeatureVector_From_Dict
+import numpy as np
 def DivideTrainingSetIntoQueries(cat_train_test_desination_directory,category_name,train_test_destination_for_cat,query_size,validation_ratio):
 
   #This funciton just divides the queries randomly taking the first sample_size as one query and the rest
@@ -244,3 +245,86 @@ def DivideTestingSetIntoQueries(cat_train_test_desination_directory_stage_1,cate
     print("Finished")
     print("###########################################################################################################")
     return
+
+def Clustering_Products(training_products,feature_category_path,source_category_path):
+
+    total_num_products = len(training_products)
+    #print(training_products)
+    feature_input_dict = dict()
+    product_index_dict = dict()
+    index = 0
+    list_of_indices = []
+    print(source_category_path)
+    with open(source_category_path, 'r') as filep:
+        for item in filep:
+            productid = item.split('\t')[0]
+            for train_line in training_products:
+                if productid == str(train_line).split('\t')[0]:
+                    product_index_dict[index] = train_line
+                    list_of_indices.append(index)
+                    break
+            index+=1
+    index = 0
+    print("len product_index_dict "+str(len(product_index_dict)))
+    print("len training_products " + str(len(training_products)))
+    print("len list_of_indices " + str(len(list_of_indices)))
+    #print(list_of_indices)
+    if len(product_index_dict) !=len(training_products):
+        print("Error Severe problem in clustering ")
+
+    index = 0
+    print(feature_category_path)
+    with open(feature_category_path, 'r') as filep:
+        for item in filep:
+            line = item.split('\t')
+            if index in list_of_indices:
+                feature_input_dict[index]= line[0]
+            index+= 1
+
+    print("len feature_dict " + str(len(feature_input_dict)))
+    features, features_sum_dict = getFeatureVector_From_Dict(feature_input_dict)
+    print("Clustering")
+    fv = np.array(features)
+    print("Features shape for clustering "+str(fv.shape))
+    num_required_clusters = int(total_num_products/20)
+    print("Num of requested clusters are " + str(num_required_clusters))
+    mu, clusters = find_centers(fv, num_required_clusters)
+    print("Num of clusters are "+str(len(mu)))
+
+    print("Retrieving Clustered Data")
+    new_training_data = []
+    for key, value in clusters.items():
+        sum = 0
+        for feature_vec in value:
+            sum = 0
+            for feat in feature_vec:
+                sum += feat
+            product_index = features_sum_dict[sum]
+            indo = 0
+            for key,value in feature_input_dict.items():
+                if indo == product_index:
+                    product_index=key
+                    break
+                indo+=1
+            train_line = product_index_dict[product_index]
+            new_training_data.append(train_line)
+    print("len of new_training_data"+str(len(new_training_data)))
+    '''
+    print("Retrieving Clustered Data")
+    new_feature_vector = []
+    for key, value in clusters.items():
+        sum = 0
+        for feature_vec in value:
+            sum = 0
+            for feat in feature_vec:
+                sum += feat
+            product_index = features_dict[sum]
+            feature_vec = feature_dict[product_index]
+            new_feature_vector.append(feature_vec)
+
+    print("Num new feature Vec len "+str(len(new_feature_vector)))
+    print("writing new feature file")
+
+    '''
+    #print(new_training_data)
+    return new_training_data
