@@ -246,10 +246,27 @@ def DivideTestingSetIntoQueries(cat_train_test_desination_directory_stage_1,cate
     print("###########################################################################################################")
     return
 
-def Clustering_Products(training_products,feature_category_path,source_category_path):
+def Clustering_Products(training_products,feature_category_path,source_category_path,products_num_revs_path):
 
     total_num_products = len(training_products)
-    #print(training_products)
+    print("Input num "+str(total_num_products))
+    products_num_revs_dict = dict()
+    with open(products_num_revs_path, 'r') as filep:
+        for item in filep:
+            line = item.split('\t')
+            products_num_revs_dict[line[0]] = int(line[1])
+
+    training_to_process = []
+    for productline in training_products:
+        try:
+            count = products_num_revs_dict[str(productline).split('\t')[0]]
+            if count>100:
+                training_to_process.append(productline)
+        except KeyError:
+            pass
+    training_products = training_to_process
+    print("Now ")
+    print(len(training_products))
     feature_input_dict = dict()
     product_index_dict = dict()
     index = 0
@@ -286,7 +303,7 @@ def Clustering_Products(training_products,feature_category_path,source_category_
     print("Clustering")
     fv = np.array(features)
     print("Features shape for clustering "+str(fv.shape))
-    num_required_clusters = int(total_num_products/20)
+    num_required_clusters = int(len(training_products)/10)
     print("Num of requested clusters are " + str(num_required_clusters))
     mu, clusters = find_centers(fv, num_required_clusters)
     print("Num of clusters are "+str(len(mu)))

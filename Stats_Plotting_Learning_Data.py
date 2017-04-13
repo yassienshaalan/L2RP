@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+import os
 def get_num_revs(product_path):
     #Count the number of reviews for a product
     count = 0
@@ -82,7 +82,22 @@ def get_num_revs_large_to_small_distribution(source_category_path,productBaseDir
         print(index)
         index+=1
     return x,y
+def get_num_revs_distribution_per_Category(num_revs_base_directory):
+    lst = os.listdir(num_revs_base_directory)
+    for file in lst:
+        file_path = num_revs_base_directory + file
+        num_greater = 0
+        num_less=0
+        with open(file_path, 'r') as filep:
+            for item in filep:
+                line = item.split('\t')
+                if int(line[1])>50:
+                    num_greater+=1
+                else:
+                    num_less+=1
+        print(file+" num_greater "+str(num_greater))
 
+    return
 '''category_name = "Industrial & Scientific"
 source_category_path="d:\Yassien_PhD\categories/"+category_name+".txt"
 productBaseDirectory="d:\Yassien_PhD/Product_Reviews/"
@@ -95,3 +110,4 @@ ax.set_ylabel('Num Reviews')
 ax.scatter(x, y)
 fig.suptitle(category_name, fontsize=14, fontweight='bold')
 plt.show()'''
+get_num_revs_distribution_per_Category("D:/Yassien_PhD/Number_of_reviews_per_product/")
