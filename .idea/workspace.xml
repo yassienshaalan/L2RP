@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4367508a-fdc1-4275-ba3f-0484f6e6570d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Feature_Selection.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data_Preparation_For_Learning.py" afterPath="$PROJECT_DIR$/Data_Preparation_For_Learning.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/New_Query_Sampling.py" afterPath="$PROJECT_DIR$/New_Query_Sampling.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Stats_Plotting_Learning_Data.py" afterPath="$PROJECT_DIR$/Stats_Plotting_Learning_Data.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RankingHelper.py" afterPath="$PROJECT_DIR$/RankingHelper.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lamda_mart_Run_time.py" afterPath="$PROJECT_DIR$/lamda_mart_Run_time.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ranking.py" afterPath="$PROJECT_DIR$/ranking.py" />
     </list>
     <ignored path="Learn_Ranking.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +31,8 @@
       <file leaf-file-name="ranking.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ranking.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36584">
-              <caret line="2155" column="15" selection-start-line="2155" selection-start-column="12" selection-end-line="2155" selection-end-column="15" />
+            <state relative-caret-position="582">
+              <caret line="916" column="27" selection-start-line="916" selection-start-column="16" selection-end-line="916" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -70,19 +71,29 @@
       <file leaf-file-name="Data_Preparation_For_Learning.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Data_Preparation_For_Learning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="148" column="34" selection-start-line="148" selection-start-column="34" selection-end-line="148" selection-end-column="34" />
+            <state relative-caret-position="195">
+              <caret line="270" column="102" selection-start-line="270" selection-start-column="102" selection-end-line="270" selection-end-column="102" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lamda_mart_Run_time.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lamda_mart_Run_time.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="318" column="23" selection-start-line="318" selection-start-column="23" selection-end-line="318" selection-end-column="23" />
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#0#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="New_Query_Sampling.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="New_Query_Sampling.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/New_Query_Sampling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
+            <state relative-caret-position="4403">
               <caret line="262" column="23" selection-start-line="262" selection-start-column="23" selection-end-line="262" selection-end-column="23" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -94,7 +105,7 @@
       <file leaf-file-name="Stats_Plotting_Learning_Data.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Stats_Plotting_Learning_Data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1717">
+            <state relative-caret-position="1700">
               <caret line="101" column="70" selection-start-line="101" selection-start-column="70" selection-end-line="101" selection-end-column="70" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -106,9 +117,81 @@
       <file leaf-file-name="RankingHelper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RankingHelper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4233">
-              <caret line="255" column="22" selection-start-line="251" selection-start-column="3" selection-end-line="255" selection-end-column="22" />
-              <folding />
+            <state relative-caret-position="8602">
+              <caret line="512" column="1" selection-start-line="512" selection-start-column="1" selection-end-line="512" selection-end-column="1" />
+              <folding>
+                <marker date="1492596055832" expanded="false" signature="0:261" ph="import ..." />
+                <marker date="1492596055832" expanded="true" signature="374:1444" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="547:645" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="571:645" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="851:946" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="875:946" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="1123:1365" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="1167:1333" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="1566:2636" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="1739:1837" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="1763:1837" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="2043:2138" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="2067:2138" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="2315:2557" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="2359:2525" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="2737:3837" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="2816:2914" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="2840:2914" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="3018:3781" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="3161:3268" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="3189:3268" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="3461:3754" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="3508:3714" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="3944:7051" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="4083:4137" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="4306:4587" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="4330:4587" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="4449:4587" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="4805:4893" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="4905:4994" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="5231:6906" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="5315:6906" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="5365:6906" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="5412:6906" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="5551:5630" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="6025:6247" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="6137:6247" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="6575:6801" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="6690:6801" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="7121:8582" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="7126:7302" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="7401:8540" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="7589:7716" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="7615:7716" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="8073:8290" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="8123:8290" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="8304:8513" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="8346:8513" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="8734:14507" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="8807:9130" ph="'''...'''" />
+                <marker date="1492596055832" expanded="true" signature="9546:14300" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="9679:14300" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="10876:10959" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="11214:11417" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="12139:13166" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="12189:13166" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="13388:13641" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="13663:13755" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="13876:14052" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="14074:14166" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="14371:14461" ph="'''...'''" />
+                <marker date="1492596055832" expanded="true" signature="14561:16274" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="14614:16262" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="14706:16262" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="14783:16137" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="14888:16137" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="15064:16137" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="15236:15387" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="15280:15387" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="15770:15922" ph="..." />
+                <marker date="1492596055832" expanded="true" signature="15814:15922" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,13 +206,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lamda_mart_Run_time.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lamda_mart_Run_time.py">
+      <file leaf-file-name="Feature_Selection.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Feature_Selection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="794">
-              <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
+            <state relative-caret-position="510">
+              <caret line="38" column="26" selection-start-line="37" selection-start-column="3" selection-end-line="38" selection-end-column="26" />
               <folding>
-                <element signature="e#0#27#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -150,6 +233,16 @@
       <find>delet</find>
       <find>Clustering_Products</find>
       <find>Query_Sampling_For_New_Experiment_Setup</find>
+      <find>product_polarties_Per_RatingLevelPer</find>
+      <find>prepareTrainingTestingDataForAllCategoriesL2R</find>
+      <find>'r</find>
+      <find>nump</find>
+      <find>numpy</find>
+      <find>buildFeatureListForCategoryForTimePeriods</find>
+      <find>readSentencePolaritiesPerRatingPerPeriod</find>
+      <find>plot_feature_importance2</find>
+      <find>Copy_Rank_From_One_Set_To_Other</find>
+      <find>runLamdamartLearning_Rank_Lib</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -193,16 +286,17 @@
         <option value="F:/Debt_Issuance/Debt_Issuance/Data_Preparation.py" />
         <option value="F:/Debt_Issuance/Debt_Issuance/classify.py" />
         <option value="$PROJECT_DIR$/Investigating_Clustering_Properties.py" />
-        <option value="$PROJECT_DIR$/RankingHelper.py" />
         <option value="$PROJECT_DIR$/Query_Sampling.py" />
         <option value="$PROJECT_DIR$/Testing.py" />
-        <option value="$PROJECT_DIR$/ranking.py" />
         <option value="$PROJECT_DIR$/dirichlet_True_Rating.py" />
         <option value="$PROJECT_DIR$/Similarity.py" />
         <option value="$PROJECT_DIR$/Stats_Plotting_Learning_Data.py" />
+        <option value="$PROJECT_DIR$/New_Query_Sampling.py" />
+        <option value="$PROJECT_DIR$/ranking.py" />
+        <option value="$PROJECT_DIR$/Feature_Selection.py" />
+        <option value="$PROJECT_DIR$/RankingHelper.py" />
         <option value="$PROJECT_DIR$/Data_Preparation_For_Learning.py" />
         <option value="$PROJECT_DIR$/lamda_mart_Run_time.py" />
-        <option value="$PROJECT_DIR$/New_Query_Sampling.py" />
       </list>
     </option>
   </component>
@@ -237,17 +331,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -268,6 +351,17 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -276,40 +370,6 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager" selected="Python.lamda_mart_Run_time">
-    <configuration default="false" name="Data_Preparation_For_Learning" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Learn_Ranking" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Data_Preparation_For_Learning.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="New_Query_Sampling" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Learn_Ranking" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/New_Query_Sampling.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="ranking" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -357,6 +417,40 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Learn_Ranking" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Stats_Plotting_Learning_Data.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Feature_Selection" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Yassien\AppData\Local\Programs\Python\Python35\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Learn_Ranking" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Feature_Selection.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="RankingHelper" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Yassien\AppData\Local\Programs\Python\Python35\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Learn_Ranking" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RankingHelper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -496,19 +590,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.Data_Preparation_For_Learning" />
-      <item index="1" class="java.lang.String" itemvalue="Python.New_Query_Sampling" />
-      <item index="2" class="java.lang.String" itemvalue="Python.ranking" />
-      <item index="3" class="java.lang.String" itemvalue="Python.lamda_mart_Run_time" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Stats_Plotting_Learning_Data" />
+      <item index="0" class="java.lang.String" itemvalue="Python.ranking" />
+      <item index="1" class="java.lang.String" itemvalue="Python.lamda_mart_Run_time" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Stats_Plotting_Learning_Data" />
+      <item index="3" class="java.lang.String" itemvalue="Python.Feature_Selection" />
+      <item index="4" class="java.lang.String" itemvalue="Python.RankingHelper" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.lamda_mart_Run_time" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Stats_Plotting_Learning_Data" />
-        <item index="2" class="java.lang.String" itemvalue="Python.ranking" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Data_Preparation_For_Learning" />
-        <item index="4" class="java.lang.String" itemvalue="Python.New_Query_Sampling" />
+        <item index="1" class="java.lang.String" itemvalue="Python.RankingHelper" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Feature_Selection" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Stats_Plotting_Learning_Data" />
+        <item index="4" class="java.lang.String" itemvalue="Python.ranking" />
       </list>
     </recent_temporary>
   </component>
@@ -543,15 +637,15 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14330874" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14278187" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3051948" sideWeight="0.087987356" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30411255" sideWeight="0.91201264" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3030303" sideWeight="0.91201264" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -590,8 +684,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/PalindromeTest.py" />
-    <entry file="file://$PROJECT_DIR$/Problems.py" />
     <entry file="file://$PROJECT_DIR$/SVM_Map.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-233">
@@ -723,14 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RankingHelper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4233">
-          <caret line="255" column="22" selection-start-line="251" selection-start-column="3" selection-end-line="255" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Query_Sampling.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
@@ -758,17 +842,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ranking.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36584">
-          <caret line="2155" column="15" selection-start-line="2155" selection-start-column="12" selection-end-line="2155" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Stats_Plotting_Learning_Data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1717">
+        <state relative-caret-position="1700">
           <caret line="101" column="70" selection-start-line="101" selection-start-column="70" selection-end-line="101" selection-end-column="70" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
@@ -776,32 +852,129 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lamda_mart_Run_time.py">
+    <entry file="file://$PROJECT_DIR$/New_Query_Sampling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="794">
-          <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
+        <state relative-caret-position="4403">
+          <caret line="262" column="23" selection-start-line="262" selection-start-column="23" selection-end-line="262" selection-end-column="23" />
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/sklearn/grid_search.py" />
+    <entry file="file://$PROJECT_DIR$/ranking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="916" column="27" selection-start-line="916" selection-start-column="16" selection-end-line="916" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RankingHelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8602">
+          <caret line="512" column="1" selection-start-line="512" selection-start-column="1" selection-end-line="512" selection-end-column="1" />
+          <folding>
+            <marker date="1492596055832" expanded="false" signature="0:261" ph="import ..." />
+            <marker date="1492596055832" expanded="true" signature="374:1444" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="547:645" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="571:645" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="851:946" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="875:946" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="1123:1365" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="1167:1333" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="1566:2636" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="1739:1837" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="1763:1837" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="2043:2138" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="2067:2138" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="2315:2557" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="2359:2525" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="2737:3837" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="2816:2914" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="2840:2914" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="3018:3781" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="3161:3268" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="3189:3268" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="3461:3754" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="3508:3714" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="3944:7051" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="4083:4137" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="4306:4587" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="4330:4587" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="4449:4587" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="4805:4893" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="4905:4994" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="5231:6906" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="5315:6906" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="5365:6906" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="5412:6906" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="5551:5630" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="6025:6247" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="6137:6247" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="6575:6801" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="6690:6801" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="7121:8582" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="7126:7302" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="7401:8540" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="7589:7716" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="7615:7716" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="8073:8290" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="8123:8290" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="8304:8513" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="8346:8513" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="8734:14507" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="8807:9130" ph="'''...'''" />
+            <marker date="1492596055832" expanded="true" signature="9546:14300" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="9679:14300" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="10876:10959" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="11214:11417" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="12139:13166" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="12189:13166" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="13388:13641" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="13663:13755" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="13876:14052" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="14074:14166" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="14371:14461" ph="'''...'''" />
+            <marker date="1492596055832" expanded="true" signature="14561:16274" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="14614:16262" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="14706:16262" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="14783:16137" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="14888:16137" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="15064:16137" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="15236:15387" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="15280:15387" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="15770:15922" ph="..." />
+            <marker date="1492596055832" expanded="true" signature="15814:15922" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Feature_Selection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="38" column="26" selection-start-line="37" selection-start-column="3" selection-end-line="38" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Data_Preparation_For_Learning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="148" column="34" selection-start-line="148" selection-start-column="34" selection-end-line="148" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="195">
+          <caret line="270" column="102" selection-start-line="270" selection-start-column="102" selection-end-line="270" selection-end-column="102" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/New_Query_Sampling.py">
+    <entry file="file://$PROJECT_DIR$/lamda_mart_Run_time.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="262" column="23" selection-start-line="262" selection-start-column="23" selection-end-line="262" selection-end-column="23" />
+        <state relative-caret-position="17">
+          <caret line="318" column="23" selection-start-line="318" selection-start-column="23" selection-end-line="318" selection-end-column="23" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>

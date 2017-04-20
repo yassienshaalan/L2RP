@@ -2408,15 +2408,15 @@ if __name__ == '__main__':
     '''
     categories_path = "C:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three/categories/"
     productBaseDirectory = "C:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three/Product_Reviews/"
-    destFilePath = "F:\Yassien_PhD\Experiment_5\Train_Test_Category_With_10_Time_Interval_TQ_Target/"
-    productPolartiesFile = "C:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three\Experiment 3/product_polarties_Per_RatingLevelPer_10_TimePeriod.txt"
+    destFilePath = "D:\Yassien_PhD\Experiment_5\All_Categories_Data_25_Basic_Features_With_15_Time_Intervals/"
+    productPolartiesFile = "D:\Yassien_PhD\yelp_dataset_challenge_academic_dataset/product_polarties_Per_RatingLevelPer_15_TimePeriod.txt"
     normalize = 1
     featureSet = 1  # This is the 17 basic features 5 Num Star Rating 5 +ve Polarity 5 -ve Polarity 5 Num Helpful per rating 5 Non-Helpful Per Rating
     categoriesList = ["Jewelry", "Toys & Games", "Arts, Crafts & Sewing", "Video Games", "Computers & Accessories","Software", "Cell Phones & Accessories", "Electronics"]
     #categoriesList = ["Industrial & Scientific"]
 
 
-    timeperiods=10
+    timeperiods=15
     prepareTrainingTestingDataForAllCategoriesL2R(categoriesList,categories_path,productBaseDirectory,destFilePath,normalize,productPolartiesFile,dataset_type,timeperiods)
     #'''
     #'''
@@ -2524,7 +2524,7 @@ if __name__ == '__main__':
             lamda = 1
             print("Preparing data for LamdaMart")
             oneTesting = 0
-            prepareTraininTestingFromOneCategory(catPath,destDirectorySvm,threshold,lamda,oneTesting,0.8)
+            #prepareTraininTestingFromOneCategory(catPath,destDirectorySvm,threshold,lamda,oneTesting,0.8)
             #Categories_For_testing_learning_with_greater_100="F:\Yassien_PhD\yelp_dataset_challenge_academic_dataset\Categories_For_testing_learning_with_greater_100/"
             #Categories_Indices_for_testing = "F:\Yassien_PhD\yelp_dataset_challenge_academic_dataset\Categories_Indices_for_testing/"
             #prepareTraininTestingFromOneCategory_with_specificTesting(catPath,destDirectorySvm,threshold,lamda,oneTesting,0.8,Categories_Indices_for_testing,category,Categories_For_testing_learning_with_greater_100,categories_path)

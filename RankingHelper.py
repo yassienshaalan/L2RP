@@ -396,7 +396,38 @@ def computeCategoryStatistics(categoryMainDirectory):
             print(folder+" " +str(qidLastTrain-qidLastTest)+" " +str(qidLastTest)+" " +str(qidLastTrain)+" " +str(numSets))
 
     return
+def Copy_Rank_From_One_Set_To_Other(source_directory,old_directory,dest_directory):
+    categories =["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories","Electronics"]
+    for category in categories:
+        source_cat_path = source_directory+category+".txt"
+        ranks = []
+        print("Processing "+category)
+        with open(source_cat_path, 'r') as fp:
+            for line in fp:
+                row = line.split(" ")
+                ranks.append(row[0])
+        print(ranks)
+        source_cat_path = old_directory + category + ".txt"
+        new_file_path = dest_directory+category+".txt"
+        print(new_file_path)
+        filehandle = open(new_file_path,'w')
+        index = 0
+        print("Writing new file")
+        with open(source_cat_path, 'r') as fp:
+            for line in fp:
+                row = line.split(" ")
+                filehandle.write(str(ranks[index])+" ")
+                for i in range(1,len(row)):
+                    if i <len(row)-1:
+                        filehandle.write(str(row[i])+" ")
+                    else:
+                        filehandle.write(str(row[i]))
 
+                index+=1
+        filehandle.close()
+
+
+    return
 '''
 #categoriesList = ["Industrial","Jewelry","Toys","Arts","Video Games","Computers","Software","Cell Phones","Electronics"]
 #orig_catNames = ["Industrial & Scientific","Jewelry","Toys & Games","Arts, Crafts & Sewing","Video Games","Computers & Accessories","Software","Cell Phones & Accessories","Electronics"]
@@ -479,3 +510,4 @@ print(features.shape)
 print(type(features))
 print(features[0])
 '''
+#Copy_Rank_From_One_Set_To_Other("D:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/","D:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_15_Time_Intervals_old/","D:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_15_Time_Intervals/")

@@ -146,7 +146,7 @@ def Randomize_Product_List_and_Picktraining(source_category_path,category_name, 
   sampling_choice =1 #means arrange by number of reviews
   products_num_revs_path = drive+"Yassien_PhD/Number_of_reviews_per_product/"+category_name+".txt"
   #training_products=Query_Sampling_For_New_Experiment_Setup(training_products,products_num_revs_path,sampling_choice,query_size)
-  training_products = Clustering_Products(training_products,source_feature_vector_path,source_category_path,products_num_revs_path)
+  #training_products = Clustering_Products(training_products,source_feature_vector_path,source_category_path,products_num_revs_path)
   ######################################################################################################################
   print("Final num_training now " + str(len(training_products)))
   print("Final num_testing was " + str(len(testing_products)))

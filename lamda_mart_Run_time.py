@@ -45,6 +45,38 @@ def runLamdamartLearning(lamda_directory,destCopyDirectory,testing):
 
     transformPredictionsToComputed(testing, categoriesDirectory, destDirectory, predicitonsFile)
     return
+def Modify_Predictions_of_RankLib():
+    predictions = []
+    with open("predictions.txt", 'r') as filep:
+        for line in filep:
+            line = line.split('\t')
+            predictions.append(float(line[len(line)-1]))
+    filehandle = open("predictions.txt",'w')
+    for pred in predictions:
+        filehandle.write(str(pred)+"\n")
+    filehandle.close()
+    return
+def runLamdamartLearning_Rank_Lib(lamda_directory,destCopyDirectory,ranker):
+    shutil.copy2(lamda_directory + 'RankLib.jar',destCopyDirectory)
+    shutil.copy2(lamda_directory + 'mslr-eval-score-mslr.pl',destCopyDirectory)
+
+    os.chdir(destCopyDirectory)
+
+    command = "java -jar RankLib.jar -train train.txt -ranker "+str(ranker)+" -metric2t MAP -test test.txt -validate valid.txt -save model.txt"
+    os.system(command)
+
+    command = "java -jar RankLib.jar -rank test.txt -load model.txt -score predictions.txt"
+    os.system(command)
+
+    os.chdir(destCopyDirectory)
+
+    command = "C:\Strawberry\perl/bin/perl.exe mslr-eval-score-mslr.pl test.txt predictions.txt results.txt 1"
+    os.system(command)
+
+    Modify_Predictions_of_RankLib()#Just to make this prediciton file compatible with the way we read predictions
+
+    return
+
 def runLamdamartLearningOnly(lamda_directory,destCopyDirectory,justTesting):
     if justTesting != 1:
 
@@ -212,6 +244,19 @@ def runLamadaMart_All_Categories_New_Experiment_Setup(base_learning_directory,le
                 runLamdamartLearningOnly(learning_lib_directory, destCopyDirectory, 0)
             elif exp_type == "regression":
                 runSVMRankOnly(destCopyDirectory, 0, 0, 0)
+            elif exp_type == "lamda_new":
+                runLamdamartLearning_Rank_Lib(learning_lib_directory, destCopyDirectory, 6)
+            elif exp_type == "mart":
+                runLamdamartLearning_Rank_Lib(learning_lib_directory, destCopyDirectory, 0)
+            elif exp_type == "ranknet":
+                runLamdamartLearning_Rank_Lib(learning_lib_directory, destCopyDirectory, 1)
+            elif exp_type == "rankboost":
+                runLamdamartLearning_Rank_Lib(learning_lib_directory, destCopyDirectory, 2)
+            elif exp_type == "adarank":
+                runLamdamartLearning_Rank_Lib(learning_lib_directory, destCopyDirectory, 3)
+            elif exp_type == "randomforest":
+                runLamdamartLearning_Rank_Lib(learning_lib_directory, destCopyDirectory, 8)
+
 
     return
 def compute_Kendall_Old_Experiment_Setup(categoriesList,orig_catNames,base_learning_directory,dataset_type,rename):
@@ -261,17 +306,17 @@ def Delete_Files_From_Old_Run(base_learning_directory):
 #Prepare the data for the new experiemnt setup
 drive = "f:/"
 base_learning_directory = drive+"Yassien_PhD\Experiment_5\Train_Test_Category_With_10_Time_Interval_TQ_Target/"
-#Deleting old files and folder from main learning directory from previous run
-Delete_Files_From_Old_Run(base_learning_directory)
-#Preparing the training and tesitng data
-Prepare_Training_Testing_Data_New_Experiment_Setup(5,drive)
+#Deleting old files and folder from main learning directory from previous run''Comment
+#Delete_Files_From_Old_Run(base_learning_directory)
+#Preparing the training and tesitng data ''Comment
+#Prepare_Training_Testing_Data_New_Experiment_Setup(5,drive)
 ###########
 
 categoryList = ["Industrial & Scientific", "Jewelry", "Arts, Crafts & Sewing", "Toys & Games", "Video Games","Computers & Accessories", "Software", "Cell Phones & Accessories", "Electronics"]
 categoriesDirectory = drive+"Yassien_PhD\Experiment_4\categories_sales_rank/" #This one is for new setup
 learning_lib_directory =drive+"Yassien_PhD\Experiment 2\Lamda_Java/"#
 #learning_lib_directory =drive+"Yassien_PhD\Experiment 2\SVM_Light\svm_light_windows64/"
-exp_type ="lamda"
+exp_type ="randomforest"
 #Running the learning algorithm on the prepared data
 #'''
 #runLamadaMart_All_Categories_Old_Experiment_Setup(categoryList,base_learning_directory,learning_lib_directory,exp_type)
