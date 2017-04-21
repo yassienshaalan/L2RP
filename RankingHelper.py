@@ -510,4 +510,4 @@ print(features.shape)
 print(type(features))
 print(features[0])
 '''
-#Copy_Rank_From_One_Set_To_Other("D:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/","D:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_15_Time_Intervals_old/","D:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_15_Time_Intervals/")
+#Copy_Rank_From_One_Set_To_Other("f:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/","f:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_1_Time_Intervals_old/","f:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_1_Time_Intervals/")

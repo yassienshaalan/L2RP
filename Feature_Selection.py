@@ -18,14 +18,18 @@ def plot_feature_importance1(features,importances,indices,feature_names):
     plt.xlim([-1, features.shape[1]])
     plt.show()
     return
-def plot_feature_importance2(features,importances,indices,feature_names):
+def plot_feature_importance2(features,importances,indices,feature_names, category_name,num_max_features):
     f, ax = plt.subplots(figsize=(11, 9))
-    plt.title("Feature ranking", fontsize=20)
-    plt.bar(range(features.shape[1]), importances[indices], color="b", align="center")
+    plt.title("Feature ranking for "+category_name, fontsize=20)
+    print("range(features.shape[1]) "+str(range(features.shape[1])))
+    #plt.bar(features.shape[1], importances[indices], color="b", align="center")
+    plt.bar(range(num_max_features), importances[indices[range(num_max_features)]], color="b", align="center")
     #feature_names = df.columns  # e.g. ['A', 'B', 'C', 'D', 'E']
-    plt.xticks(range(features.shape[1]), feature_names)# plot features by names
+
+    plt.xticks(range(num_max_features), feature_names,rotation='vertical')# plot features by names
     #plt.xticks(range(features.shape[1]), indices) plot feature by indices
-    plt.xlim([-1, features.shape[1]])
+    #plt.xlim([-1, features.shape[1]])
+    plt.xlim([-1, num_max_features])
     plt.ylabel("importance", fontsize=18)
     plt.xlabel("index of the feature", fontsize=18)
     plt.show()
@@ -126,27 +130,30 @@ def get_feature_names(num_time_periods):
       #  feature_names.append("feature_" + str(i + 1))
 
     return feature_names
-def Feature_Selection_Using_Feature_Importance(X,Y):
+def Feature_Selection_Using_Feature_Importance(X,Y,category_name,timeperiods,num_max_features):
     # feature extraction
     print("Feature Importance Feature selection")
-    model = ExtraTreesClassifier()
+    model = ExtraTreesClassifier(class_weight='balanced',n_jobs=1)
     model.fit(X, Y)
     #print(model.feature_importances_)
     #print(type(model.feature_importances_))
     feat_imp = model.feature_importances_
     indices = np.argsort(feat_imp)[::-1]
     #print(indices)
-    feature_names = get_feature_names(10)
+    feature_names = get_feature_names(timeperiods)
+    print("len feature names "+str(len(feature_names)))
     for f in range(X.shape[1]):
         print("%d. feature %d (%f) %s" % (f + 1, indices[f], feat_imp[indices[f]],feature_names[f]))
 
     print(feature_names)
-    plot_feature_importance2(X, feat_imp, indices, feature_names)
+    plot_feature_importance2(X, feat_imp, indices, feature_names,category_name,num_max_features)
     return
-file_path = "D:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/Jewelry.txt"
+file_path = "f:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/Computers & Accessories.txt"
 features_vectors,ranks = Extract_Features_From_File(file_path)
 X = np.array(features_vectors)
 Y = np.array(ranks)
 print(X.shape)
 print(Y.shape)
-Feature_Selection_Using_Feature_Importance(X,Y)
+timeperiods=10
+num_max_features = 20
+Feature_Selection_Using_Feature_Importance(X,Y,"Computers & Accessories",timeperiods,num_max_features)
