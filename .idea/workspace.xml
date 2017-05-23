@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4367508a-fdc1-4275-ba3f-0484f6e6570d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/New_Data_Prepration_For_Learning.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lamda_mart_Run_time_New_Exp.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data_Preparation_For_Learning.py" afterPath="$PROJECT_DIR$/Data_Preparation_For_Learning.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Feature_Selection.py" afterPath="$PROJECT_DIR$/Feature_Selection.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/New_Query_Sampling.py" afterPath="$PROJECT_DIR$/New_Query_Sampling.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RankingHelper.py" afterPath="$PROJECT_DIR$/RankingHelper.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Testing.py" afterPath="$PROJECT_DIR$/Testing.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lamda_mart_Run_time.py" afterPath="$PROJECT_DIR$/lamda_mart_Run_time.py" />
     </list>
     <ignored path="Learn_Ranking.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,7 +21,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -28,38 +33,43 @@
       <file leaf-file-name="ranking.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ranking.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="2582" column="17" selection-start-line="2582" selection-start-column="17" selection-end-line="2582" selection-end-column="17" />
+            <state relative-caret-position="226">
+              <caret line="1045" column="44" lean-forward="false" selection-start-line="1045" selection-start-column="44" selection-end-line="1045" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Query_Sampling.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Query_Sampling.py">
+      <file leaf-file-name="ranking_metrics.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ranking_metrics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
-              <caret line="113" column="42" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="46" />
+            <state relative-caret-position="52">
+              <caret line="59" column="18" lean-forward="false" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RankingHelper.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RankingHelper.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="1392" column="0" lean-forward="false" selection-start-line="1392" selection-start-column="0" selection-end-line="1392" selection-end-column="0" />
               <folding>
-                <element signature="e#0#32#0" expanded="true" />
-                <element signature="e#455#2836#0" expanded="false" />
-                <element signature="e#4830#6085#1" expanded="false" />
-                <element signature="e#6090#6377#1" expanded="false" />
-                <element signature="e#6563#9072#0" expanded="false" />
-                <element signature="e#9234#14012#0" expanded="false" />
-                <element signature="e#14143#15459#0" expanded="false" />
-                <element signature="e#14253#14380#0" expanded="false" />
-                <element signature="e#16264#17275#0" expanded="false" />
+                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#17629#24178#0" expanded="false" />
+                <element signature="e#30916#32172#0" expanded="false" />
+                <element signature="e#30932#31151#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Similarity.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Similarity.py">
+      <file leaf-file-name="New_Data_Prepration_For_Learning.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/New_Data_Prepration_For_Learning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2108">
-              <caret line="125" column="29" selection-start-line="125" selection-start-column="29" selection-end-line="125" selection-end-column="29" />
+            <state relative-caret-position="22">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -68,9 +78,11 @@
       <file leaf-file-name="Data_Preparation_For_Learning.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Data_Preparation_For_Learning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5903">
-              <caret line="686" column="8" selection-start-line="686" selection-start-column="8" selection-end-line="686" selection-end-column="8" />
-              <folding />
+            <state relative-caret-position="176">
+              <caret line="417" column="4" lean-forward="false" selection-start-line="417" selection-start-column="4" selection-end-line="418" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,8 +90,8 @@
       <file leaf-file-name="lamda_mart_Run_time.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lamda_mart_Run_time.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="345" column="0" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
+            <state relative-caret-position="316">
+              <caret line="420" column="52" lean-forward="false" selection-start-line="420" selection-start-column="1" selection-end-line="420" selection-end-column="52" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -87,47 +99,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="New_Query_Sampling.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/New_Query_Sampling.py">
+      <file leaf-file-name="lamda_mart_Run_time_New_Exp.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lamda_mart_Run_time_New_Exp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4403">
-              <caret line="262" column="23" selection-start-line="262" selection-start-column="23" selection-end-line="262" selection-end-column="23" />
+            <state relative-caret-position="596">
+              <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
               <folding>
-                <element signature="e#0#32#0" expanded="true" />
+                <element signature="e#0#85#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Feature_Selection.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Feature_Selection.py">
+      <file leaf-file-name="RankTest.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RankTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="20" column="28" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Stats_Plotting_Learning_Data.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Stats_Plotting_Learning_Data.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1700">
-              <caret line="101" column="70" selection-start-line="101" selection-start-column="70" selection-end-line="101" selection-end-column="70" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RankingHelper.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RankingHelper.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="512" column="1" selection-start-line="512" selection-start-column="1" selection-end-line="512" selection-end-column="1" />
+            <state relative-caret-position="548">
+              <caret line="78" column="37" lean-forward="false" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -136,8 +124,18 @@
       <file leaf-file-name="dirichlet_True_Rating.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dirichlet_True_Rating.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16235">
-              <caret line="956" column="17" selection-start-line="956" selection-start-column="17" selection-end-line="956" selection-end-column="17" />
+            <state relative-caret-position="374">
+              <caret line="253" column="53" lean-forward="true" selection-start-line="242" selection-start-column="11" selection-end-line="253" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shutil.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/shutil.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2354">
+              <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -154,20 +152,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>os.</find>
-      <find>delet</find>
-      <find>Clustering_Products</find>
-      <find>Query_Sampling_For_New_Experiment_Setup</find>
-      <find>product_polarties_Per_RatingLevelPer</find>
-      <find>prepareTrainingTestingDataForAllCategoriesL2R</find>
-      <find>'r</find>
-      <find>nump</find>
-      <find>numpy</find>
-      <find>buildFeatureListForCategoryForTimePeriods</find>
-      <find>readSentencePolaritiesPerRatingPerPeriod</find>
-      <find>plot_feature_importance2</find>
-      <find>Copy_Rank_From_One_Set_To_Other</find>
+      <find>'r'</find>
+      <find>compute</find>
+      <find>computeLifeTimeForProductCategory</find>
+      <find>tq</find>
+      <find>extrweights</find>
+      <find>computeExponentialScore</find>
+      <find>dirich</find>
+      <find>dirichlet_mean</find>
+      <find>dirichlet_probability</find>
+      <find>mergesort</find>
+      <find>B0013JL8LM</find>
+      <find>B004BPHQWU</find>
+      <find>Extract_Features_For_Training_Testing</find>
+      <find>Get_User_Helpfulness_Per_Group_of_Products</find>
+      <find>Extract_Features_For_Query_List</find>
+      <find>training</find>
+      <find>min</find>
+      <find>runLamadaMart_Per_Categories_Sub_Cat_Experiment_Setup</find>
       <find>runLamdamartLearning_Rank_Lib</find>
+      <find>query_cat_map</find>
+      <find>compute_Kendall_SubCat_Experiment_Setup_Amazon</find>
+      <find>compute_Kendall_SubCat_Experiment_Setup</find>
+      <find>compute_Kendall_SubCat_Experiment_Setup_TQRank_Yelp</find>
+      <find>compute_Kendall_SubCat_Experiment_Setup_TQRank</find>
+      <find>ndcg_at_k</find>
+      <find>ndcg</find>
+      <find>pre</find>
+      <find>files</find>
+      <find>.li</find>
+      <find>mean</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -212,34 +226,25 @@
         <option value="F:/Debt_Issuance/Debt_Issuance/classify.py" />
         <option value="$PROJECT_DIR$/Investigating_Clustering_Properties.py" />
         <option value="$PROJECT_DIR$/Query_Sampling.py" />
-        <option value="$PROJECT_DIR$/Testing.py" />
-        <option value="$PROJECT_DIR$/dirichlet_True_Rating.py" />
         <option value="$PROJECT_DIR$/Similarity.py" />
         <option value="$PROJECT_DIR$/Stats_Plotting_Learning_Data.py" />
-        <option value="$PROJECT_DIR$/New_Query_Sampling.py" />
         <option value="$PROJECT_DIR$/ranking.py" />
-        <option value="$PROJECT_DIR$/Data_Preparation_For_Learning.py" />
+        <option value="$PROJECT_DIR$/Feature_Selection.py" />
+        <option value="$PROJECT_DIR$/New_Query_Sampling.py" />
+        <option value="$PROJECT_DIR$/Testing.py" />
+        <option value="$PROJECT_DIR$/dirichlet_True_Rating.py" />
+        <option value="$PROJECT_DIR$/New_Data_Prepration_For_Learning.py" />
         <option value="$PROJECT_DIR$/lamda_mart_Run_time.py" />
         <option value="$PROJECT_DIR$/RankingHelper.py" />
-        <option value="$PROJECT_DIR$/Feature_Selection.py" />
+        <option value="$PROJECT_DIR$/Data_Preparation_For_Learning.py" />
+        <option value="$PROJECT_DIR$/lamda_mart_Run_time_New_Exp.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
+    <option name="width" value="1932" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -266,15 +271,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="L2RP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="L2RP" />
@@ -287,6 +285,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -294,42 +293,8 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="Python.Feature_Selection">
-    <configuration default="false" name="ranking" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Learn_Ranking" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ranking.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.lamda_mart_Run_time_New_Exp">
     <configuration default="false" name="lamda_mart_Run_time" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python34\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Learn_Ranking" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lamda_mart_Run_time.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Stats_Plotting_Learning_Data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -341,24 +306,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Learn_Ranking" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Stats_Plotting_Learning_Data.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Feature_Selection" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Python34\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Learn_Ranking" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Feature_Selection.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lamda_mart_Run_time.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -369,13 +317,64 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Python34\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\Yassien\AppData\Local\Programs\Python\Python35\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Learn_Ranking" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RankingHelper.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="New_Data_Prepration_For_Learning" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Yassien\AppData\Local\Programs\Python\Python35\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Learn_Ranking" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/New_Data_Prepration_For_Learning.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="lamda_mart_Run_time_New_Exp" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Yassien\AppData\Local\Programs\Python\Python35\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Learn_Ranking" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lamda_mart_Run_time_New_Exp.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ranking_metrics" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Yassien\AppData\Local\Programs\Python\Python35\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Learn_Ranking" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ranking_metrics.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -515,19 +514,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.ranking" />
-      <item index="1" class="java.lang.String" itemvalue="Python.lamda_mart_Run_time" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Stats_Plotting_Learning_Data" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Feature_Selection" />
-      <item index="4" class="java.lang.String" itemvalue="Python.RankingHelper" />
+      <item index="0" class="java.lang.String" itemvalue="Python.lamda_mart_Run_time" />
+      <item index="1" class="java.lang.String" itemvalue="Python.RankingHelper" />
+      <item index="2" class="java.lang.String" itemvalue="Python.New_Data_Prepration_For_Learning" />
+      <item index="3" class="java.lang.String" itemvalue="Python.lamda_mart_Run_time_New_Exp" />
+      <item index="4" class="java.lang.String" itemvalue="Python.ranking_metrics" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Feature_Selection" />
-        <item index="1" class="java.lang.String" itemvalue="Python.RankingHelper" />
-        <item index="2" class="java.lang.String" itemvalue="Python.lamda_mart_Run_time" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Stats_Plotting_Learning_Data" />
-        <item index="4" class="java.lang.String" itemvalue="Python.ranking" />
+        <item index="0" class="java.lang.String" itemvalue="Python.lamda_mart_Run_time_New_Exp" />
+        <item index="1" class="java.lang.String" itemvalue="Python.ranking_metrics" />
+        <item index="2" class="java.lang.String" itemvalue="Python.RankingHelper" />
+        <item index="3" class="java.lang.String" itemvalue="Python.lamda_mart_Run_time" />
+        <item index="4" class="java.lang.String" itemvalue="Python.New_Data_Prepration_For_Learning" />
       </list>
     </recent_temporary>
   </component>
@@ -562,19 +561,19 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="0" width="1932" height="1038" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14278187" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14263323" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3051948" sideWeight="0.087987356" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30296376" sideWeight="0.09166667" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3030303" sideWeight="0.91201264" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3063263" sideWeight="0.90833336" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3982684" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3973363" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -609,23 +608,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/SVM_Map.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-233">
-          <caret line="17" column="17" selection-start-line="0" selection-start-column="0" selection-end-line="67" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SVM_Rank.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1224">
-          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Hacker_Rank/Palindrome_Test.py" />
-    <entry file="file://C:/Hacker_Rank/Problems.py" />
-    <entry file="file://C:/Hacker_Rank/Grid Challenge.py" />
     <entry file="file://C:/Hacker_Rank/Luck Balance.py" />
     <entry file="file://C:/Hacker_Rank/Making Anagrams.py" />
     <entry file="file://C:/Python34/Lib/site-packages/matplotlib/axes/_axes.py" />
@@ -634,35 +616,28 @@
     <entry file="file://$PROJECT_DIR$/alogrithms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
-          <caret line="66" column="4" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
+          <caret line="66" column="4" lean-forward="false" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Plotting_Graphs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2822">
-          <caret line="166" column="51" selection-start-line="166" selection-start-column="51" selection-end-line="166" selection-end-column="51" />
+          <caret line="166" column="51" lean-forward="false" selection-start-line="166" selection-start-column="51" selection-end-line="166" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/temp_Function.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3332">
-          <caret line="196" column="39" selection-start-line="196" selection-start-column="37" selection-end-line="196" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ranking_metrics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2839">
-          <caret line="167" column="17" selection-start-line="167" selection-start-column="17" selection-end-line="167" selection-end-column="18" />
+          <caret line="196" column="39" lean-forward="false" selection-start-line="196" selection-start-column="37" selection-end-line="196" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SVM_Light.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+          <caret line="21" column="35" lean-forward="false" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -674,7 +649,7 @@
     <entry file="file://$PROJECT_DIR$/Run_Helper_Functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+          <caret line="13" column="35" lean-forward="false" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -686,14 +661,7 @@
     <entry file="file://$PROJECT_DIR$/Dimensionality Reduction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RankTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="78" column="37" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -706,128 +674,180 @@
     <entry file="file://$PROJECT_DIR$/SVM_Regression.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="712">
-          <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+          <caret line="60" column="29" lean-forward="false" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Product_Feature_Extraction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="93" column="17" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
+          <caret line="93" column="17" lean-forward="false" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Investigating_Clustering_Properties.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1394">
-          <caret line="84" column="93" selection-start-line="84" selection-start-column="93" selection-end-line="84" selection-end-column="115" />
+          <caret line="84" column="93" lean-forward="false" selection-start-line="84" selection-start-column="93" selection-end-line="84" selection-end-column="115" />
         </state>
       </provider>
     </entry>
     <entry file="file://C:/Python34/Lib/shutil.py" />
-    <entry file="file://$PROJECT_DIR$/Testing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16422">
-          <caret line="967" column="49" selection-start-line="967" selection-start-column="49" selection-end-line="967" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dirichlet_True_Rating.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16235">
-          <caret line="956" column="17" selection-start-line="956" selection-start-column="17" selection-end-line="956" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python34/Lib/random.py" />
-    <entry file="file://$PROJECT_DIR$/Similarity.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2108">
-          <caret line="125" column="29" selection-start-line="125" selection-start-column="29" selection-end-line="125" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Stats_Plotting_Learning_Data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="101" column="70" selection-start-line="101" selection-start-column="70" selection-end-line="101" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/New_Query_Sampling.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4403">
-          <caret line="262" column="23" selection-start-line="262" selection-start-column="23" selection-end-line="262" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/sklearn/grid_search.py" />
-    <entry file="file://$PROJECT_DIR$/RankingHelper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="512" column="1" selection-start-line="512" selection-start-column="1" selection-end-line="512" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="2200">
+          <caret line="101" column="70" lean-forward="false" selection-start-line="101" selection-start-column="70" selection-end-line="101" selection-end-column="70" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Query_Sampling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="113" column="42" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="46" />
+        <state relative-caret-position="946">
+          <caret line="113" column="42" lean-forward="false" selection-start-line="113" selection-start-column="30" selection-end-line="113" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Similarity.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/json/decoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="354" column="0" lean-forward="false" selection-start-line="354" selection-start-column="0" selection-end-line="354" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Feature_Selection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3168">
+          <caret line="152" column="10" lean-forward="true" selection-start-line="152" selection-start-column="10" selection-end-line="152" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/New_Query_Sampling.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5676">
+          <caret line="261" column="75" lean-forward="true" selection-start-line="252" selection-start-column="4" selection-end-line="261" selection-end-column="75" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-            <element signature="e#455#2836#0" expanded="false" />
-            <element signature="e#4830#6085#1" expanded="false" />
-            <element signature="e#6090#6377#1" expanded="false" />
-            <element signature="e#6563#9072#0" expanded="false" />
-            <element signature="e#9234#14012#0" expanded="false" />
-            <element signature="e#14143#15459#0" expanded="false" />
-            <element signature="e#14253#14380#0" expanded="false" />
-            <element signature="e#16264#17275#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Data_Preparation_For_Learning.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/shutil.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5903">
-          <caret line="686" column="8" selection-start-line="686" selection-start-column="8" selection-end-line="686" selection-end-column="8" />
+        <state relative-caret-position="2354">
+          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lamda_mart_Run_time.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/sklearn/grid_search.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="345" column="0" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
+        <state relative-caret-position="200">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper_Functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-724">
+          <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="1118" column="37" lean-forward="false" selection-start-line="1118" selection-start-column="4" selection-end-line="1118" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dirichlet_True_Rating.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="253" column="53" lean-forward="true" selection-start-line="242" selection-start-column="11" selection-end-line="253" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RankingHelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="1392" column="0" lean-forward="false" selection-start-line="1392" selection-start-column="0" selection-end-line="1392" selection-end-column="0" />
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#17629#24178#0" expanded="false" />
+            <element signature="e#30916#32172#0" expanded="false" />
+            <element signature="e#30932#31151#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ranking.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="2582" column="17" selection-start-line="2582" selection-start-column="17" selection-end-line="2582" selection-end-column="17" />
+        <state relative-caret-position="226">
+          <caret line="1045" column="44" lean-forward="false" selection-start-line="1045" selection-start-column="44" selection-end-line="1045" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Feature_Selection.py">
+    <entry file="file://$PROJECT_DIR$/RankTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="20" column="28" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="28" />
+        <state relative-caret-position="548">
+          <caret line="78" column="37" lean-forward="false" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data_Preparation_For_Learning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="417" column="4" lean-forward="false" selection-start-line="417" selection-start-column="4" selection-end-line="418" selection-end-column="23" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/New_Data_Prepration_For_Learning.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ranking_metrics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="59" column="18" lean-forward="false" selection-start-line="59" selection-start-column="4" selection-end-line="59" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lamda_mart_Run_time.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="420" column="52" lean-forward="false" selection-start-line="420" selection-start-column="1" selection-end-line="420" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lamda_mart_Run_time_New_Exp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="596">
+          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#85#0" expanded="true" />
           </folding>
         </state>
       </provider>

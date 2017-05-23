@@ -260,7 +260,7 @@ def Clustering_Products(training_products,feature_category_path,source_category_
     for productline in training_products:
         try:
             count = products_num_revs_dict[str(productline).split('\t')[0]]
-            if count>100:
+            if count>0:
                 training_to_process.append(productline)
         except KeyError:
             pass
