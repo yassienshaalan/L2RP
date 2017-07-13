@@ -44,11 +44,11 @@ def Extract_Features_From_File(file_path):
             row = item.split(' ')
             rank = row[0]
             ranks.append(int(rank))
-
             vector = []
             for i in range(2, len(row)):
                 feat = row[i].split(':')
-                vector.append(float(feat[1]))
+                if len(feat)>1:
+                    vector.append(float(feat[1]))
             features_vectors.append(vector)
 
     return features_vectors,ranks
@@ -130,7 +130,7 @@ def get_feature_names(num_time_periods):
       #  feature_names.append("feature_" + str(i + 1))
 
     return feature_names
-def Feature_Selection_Using_Feature_Importance(X,Y,category_name,timeperiods,num_max_features):
+def Feature_Selection_Using_Feature_Importance(X,Y,category_name,feature_names,num_max_features):
     # feature extraction
     print("Feature Importance Feature selection")
     model = ExtraTreesClassifier(class_weight='balanced',n_jobs=1)
@@ -140,20 +140,42 @@ def Feature_Selection_Using_Feature_Importance(X,Y,category_name,timeperiods,num
     feat_imp = model.feature_importances_
     indices = np.argsort(feat_imp)[::-1]
     #print(indices)
-    feature_names = get_feature_names(timeperiods)
     print("len feature names "+str(len(feature_names)))
+    selected_feature_names =[]
     for f in range(X.shape[1]):
-        print("%d. feature %d (%f) %s" % (f + 1, indices[f], feat_imp[indices[f]],feature_names[f]))
-
-    print(feature_names)
-    plot_feature_importance2(X, feat_imp, indices, feature_names,category_name,num_max_features)
+        print("%d. feature %d (%f) %s" % (f + 1, indices[f], feat_imp[indices[f]],feature_names[indices[f]]))
+        if f <num_max_features:
+            selected_feature_names.append(feature_names[indices[f]])
+    #print(feature_names)
+    print (selected_feature_names)
+    plot_feature_importance2(X, feat_imp, indices,selected_feature_names,category_name,num_max_features) #feature_names,category_name,num_max_features)
     return
-file_path = "f:\Yassien_PhD\Experiment_4\All_Categories_Data_25_Basic_Features_With_10_Time_Intervals/Computers & Accessories.txt"
+file_path = "D:\Yassien_PhD\Experiment_6\Train_Test_Category_TQ_Target_Sub_Cat_Setup/train.txt"
 features_vectors,ranks = Extract_Features_From_File(file_path)
 X = np.array(features_vectors)
 Y = np.array(ranks)
 print(X.shape)
 print(Y.shape)
-timeperiods=10
-num_max_features = 20
-Feature_Selection_Using_Feature_Importance(X,Y,"Computers & Accessories",timeperiods,num_max_features)
+timeperiods=1
+num_max_features = 11
+#feature_names = get_feature_names(timeperiods)
+feature_names = []
+feature_names.append("1-Star")
+feature_names.append("2-Star")
+feature_names.append("3-Star")
+feature_names.append("4-Star")
+feature_names.append("5-Star")
+
+feature_names.append("Avg_Star")
+feature_names.append("Min LS")
+feature_names.append("Max LS")
+feature_names.append("Median LS")
+feature_names.append("Median # Revs")
+feature_names.append("Median Active")
+
+
+
+Feature_Selection_Using_Feature_Importance(X,Y,"Jewelry",feature_names,num_max_features)
+#Feature_Selection_Using_UniVariate(X,Y)
+#Feature_Selection_Using_Recursive_Feature_Elimination(X,Y)
+#Feature_Selection_Using_Principal_Component_Analysis(X,Y)

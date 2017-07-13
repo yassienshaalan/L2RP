@@ -118,10 +118,12 @@ def computeExponentialScore(productFileName,userExpert):
     rates = []
     reviewHelpfulWeight = []
     extrweights = []
+    average_star = 0
     with open(productFileName, 'r') as filep:
         # get the most recent date and oldest date
         for item in filep:
             review = item.split('\t')
+            average_star+=float(review[5])
             maxVotes = 0
             try:
                 maxVotes = userExpert[review[0]]
@@ -219,8 +221,191 @@ def computeExponentialScore(productFileName,userExpert):
             # print(newRate)
             newFinalRate = newFinalRate + newRate
             index = index + 1
+        #print(productFileName)
+        #print(len(productDates))
+        #print(len(newweights))
+        if len(productDates)>0:
+            average_star/=(len(productDates))
+    return newFinalRate,average_star
 
-    return newFinalRate
+def computeTQMinus(productFileName):
+
+    minDate = datetime(2050, 12, 31)
+    maxDate = datetime(1950, 1, 1)
+    productDates = []
+
+    rates = []
+    extrweights = []
+    average_star = 0
+    with open(productFileName, 'r') as filep:
+        # get the most recent date and oldest date
+        for item in filep:
+            review = item.split('\t')
+            average_star+=float(review[5])
+            datesplit = review[2].split(',')
+            monthDay = datesplit[0]
+            month = ""
+            day = ""
+            monthDone = 0
+            for char in monthDay:
+                if char != " " and monthDone == 0:
+                    month = month + char
+                if char == " ":
+                    monthDone = 1
+                if monthDone == 1:
+                    day = day + char
+
+            if len(datesplit) > 1 and datesplit[1] != ' ' and len(datesplit[1]) <= 5:
+                year = int(datesplit[1])
+                month = int(month)
+                day = int(day)
+                currentDay = datetime(year, month, day)
+
+                productDates.append((currentDay))
+                if currentDay > maxDate:
+                    maxDate = currentDay
+                if currentDay < minDate:
+                    minDate = currentDay
+
+                # reviewHelpfulWeight.append(weightMaxHelpVotes)
+                rates.append(float(review[5]))
+
+
+        index = 0
+        newFinalRate = 0
+
+        for i  in range(len(productDates)):
+            time_weight = ((productDates[index] - minDate).days)/((maxDate - minDate).days)
+            time_weight = (math.e**(time_weight))
+            newRate = time_weight * rates[index]
+            newFinalRate = newFinalRate + newRate
+            index = index + 1
+
+        if len(productDates)>0:
+            newFinalRate#/=(len(productDates))
+            average_star/=(len(productDates))
+
+    return newFinalRate,average_star
+
+def computeTQMinus_New(productFileName):
+    minDate = datetime(2050, 12, 31)
+    maxDate = datetime(1950, 1, 1)
+    productDates = []
+    weights = []
+    rates = []
+    reviewHelpfulWeight = []
+    extrweights = []
+    average_star = 0
+    with open(productFileName, 'r') as filep:
+        # get the most recent date and oldest date
+        for item in filep:
+            review = item.split('\t')
+            average_star+=float(review[5])
+            maxVotes = 0
+            '''
+            try:
+                maxVotes = userExpert[review[0]]
+
+            except KeyError as e:
+                maxVotes = 0
+            '''
+            maxVotes = 0
+            numHelpful = int(review[4])
+            numtotalVotes = 0
+            if review[3] != "":
+                numtotalVotes = int(review[3])
+
+            weightMaxHelpVotes = 0
+            extraWei = 0
+            if maxVotes > 0:
+                weightMaxHelpVotes = float(float(numHelpful) / float(maxVotes))
+            if numtotalVotes > 0:
+                extraWei = float(float(numHelpful) / float(numtotalVotes))
+
+            datesplit = review[2].split(',')
+            monthDay = datesplit[0]
+            month = ""
+            day = ""
+            monthDone = 0
+            for char in monthDay:
+                if char != " " and monthDone == 0:
+                    month = month + char
+                if char == " ":
+                    monthDone = 1
+                if monthDone == 1:
+                    day = day + char
+
+            if len(datesplit) > 1 and datesplit[1] != ' ' and len(datesplit[1]) <= 5:
+                year = int(datesplit[1])
+                month = int(month)
+                day = int(day)
+                currentDay = datetime(year, month, day)
+
+                productDates.append((currentDay))
+                if currentDay > maxDate:
+                    maxDate = currentDay
+                if currentDay < minDate:
+                    minDate = currentDay
+
+                # reviewHelpfulWeight.append(weightMaxHelpVotes)
+                reviewHelpfulWeight.append(0)#userExpert[review[0]])
+                rates.append(float(review[5]))
+
+                extrweights.append(extraWei)
+
+        newweights = []
+        index = 0
+        # print("-------------------------------------------------")
+        dayweights = []
+        credweights = []
+
+        for revweighthelp in reviewHelpfulWeight:
+            timeDiff = (productDates[index] - minDate).days
+            beta = 0.01
+            part2 = 0#revweighthelp
+            part1 = beta * timeDiff
+            # print("--------------")
+            part1 = part1 / 2
+            part2 = part2 + part1 / 2
+
+            # dayweights.append(part1)
+            # credweights.append(part2)
+            # print(productDates[index])
+            # print(part1)
+            # print(revweighthelp)
+            # print(part2)
+            part3 = part1
+            # print(part3)
+            expValue = (math.e ** part3)
+            # print(expValue)
+            newweights.append(expValue)
+            index = index + 1
+
+        index = 0
+        minVal = 100000000
+        maxVal = -10000000
+
+        index = 0
+        for item in newweights:
+            if item > maxVal:
+                maxVal = item
+            if item < minVal:
+                minVal = item
+        newFinalRate = 0
+
+        for item in newweights:
+            newWeight = float((float((item - minVal)) / float((maxVal - minVal))))
+            newRate = newWeight * rates[index]
+            # print("new Weight")
+            # print(newRate)
+            newFinalRate = newFinalRate + newRate
+            index = index + 1
+
+        if len(productDates)>0:
+            average_star/=(len(productDates))
+
+    return newFinalRate,average_star
+
 def computeNormalDirichelet(productBaseDirectory,path,categoryName,destDirectory):
     print("Procedure to compute product rating based on normal dirichelet distribution")
     print("Considering "+categoryName)

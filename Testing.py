@@ -861,8 +861,10 @@ def runKenallExtractScript(scriptFile,R_path):
         out = subprocess.check_output([R_path, scriptFile])
         print("Command Called now Extracting numbers")
         out = out.strip()
+        print(out)
         out = str(out)
         out = out.split("tau")
+        print(out)
         for part in out:
             number = part.split(",")
             number = number[0].split('=')
@@ -870,6 +872,55 @@ def runKenallExtractScript(scriptFile,R_path):
                 number = number[1].lstrip()
                 numbers.append(float(number))
         print(numbers)
+    except:
+        pass
+    return numbers
+def runKenallExtractFromNewScript(scriptFile,R_path):
+    print("Running Kendal R Script")
+    numbers = []
+    try:
+        out = subprocess.check_output([R_path, scriptFile])
+        print("Command Called now Extracting numbers")
+        out = out.strip()
+        out = str(out)
+        #print(out)
+        out = out.split("[1]")
+        #print(len(out))
+        #print(out)
+        #text = str(out[1].split(' ')[1]).split("'")[0]
+        #print(text)
+        #kendall = float(text)
+        #print(kendall)
+        #numbers.append(kendall)
+
+        #print(numbers)
+        for i in range(1,len(out),2):
+            query_name = out[i].split('.txt')[0].rstrip().split('"')[1]
+            #print(query_name)
+            tau = out[i+1].lstrip().rstrip().split("'")[0]#(out[i+1].split(' ')[1]).split("'")[0].split('\n')[0]
+            tau = tau.replace('\r\n', '')
+            new_tau = ""
+            for c in tau:
+                if c =='\\':
+                    break
+                else:
+                    new_tau+=c
+            tau = new_tau
+            #print(tau)
+            try:
+                tau=float(tau)
+            except:
+                print("couldn't convert")
+                print(type(tau))
+            #print("ktau")
+            #print(tau)
+            numbers.append((int(query_name),tau))
+            '''number = part.split(",")
+            number = number[0].split('=')
+            if len(number) > 1:
+                number = number[1].lstrip()
+                numbers.append(float(number))'''
+
     except:
         pass
     return numbers
@@ -980,6 +1031,58 @@ def writeCorrelationRScriptNew(destDirectory,correlationFn):
     print("Finished Writing")
     return rScriptFilePath
 
+def writeCorrelationRScriptNew_Method(destDirectory,correlationFn):
+    #correlationFn 1 means Kendall tau and 2 means Spearman Correlation
+    if correlationFn == 1:
+        #print("Writing Kendall tau R Script File")
+        rScriptFilePath = destDirectory + "R_Kendall_Script.r"
+    else:
+        #print("Writing Spearman Correlation R Script File")
+        rScriptFilePath = destDirectory + "R_Spearman_Script.r"
+
+    rScriptFileHandle = open(rScriptFilePath, 'w')
+    if correlationFn == 1:
+        rScriptFileHandle.write("library(Kendall)\n")
+
+    directParts = destDirectory.split('/')
+
+    newDistDirect = ""
+    index = 0
+    for part in directParts:
+
+        if index == len(directParts)-1:
+            continue
+        elif index == len(directParts)-2:
+            newDistDirect += part+"//"
+        else:
+            newDistDirect += part
+            newDistDirect+= '//'
+        index+=1
+
+    newDistDirect = newDistDirect.replace('\\', "\\\\")
+
+    rScriptFileHandle.write("files <-list.files(")
+    rScriptFileHandle.write('"')
+    differenceDirectory = newDistDirect + "R_Difference"
+    rScriptFileHandle.write(differenceDirectory)
+    rScriptFileHandle.write('")')
+    rScriptFileHandle.write("\n")
+    rScriptFileHandle.write("size<- length(files)\n")
+    rScriptFileHandle.write("for (i in 1: size)\n")
+    rScriptFileHandle.write("{\nprint(files[i])\n")
+    rScriptFileHandle.write("mydodo<-read.table(file.path(")
+    rScriptFileHandle.write('"')
+    rScriptFileHandle.write(differenceDirectory+"////")
+    rScriptFileHandle.write('"')
+    rScriptFileHandle.write(",files[i]))\n")
+    if correlationFn == 1:
+        rScriptFileHandle.write("print(cor(mydodo$V1,mydodo$V2,method="+'"'+"kendall"+'"'+"))\n")
+    else:
+        rScriptFileHandle.write("print(cor(mydodo$V1,mydodo$V2))\n")
+    rScriptFileHandle.write("}\n")
+    rScriptFileHandle.close()
+    print("Finished Writing")
+    return rScriptFilePath
 def writeCorrelationRScriptOneFile(file_path,correlationFn,destDirectory):
     #correlationFn 1 means Kendall tau and 2 means Spearman Correlation
     if correlationFn == 1:
@@ -1525,3 +1628,25 @@ dataset_type = "amazon"
 category_baseDirectory=baseCategoryDirectory
 productBaseDirectory="C:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three/Product_Reviews/"
 #compute_yelp_stats(category_baseDirectory,productBaseDirectory,dataset_type)
+
+#Get Unique products within from queries of one product category
+'''
+main_dirc = "D:\Yassien_PhD\Experiment_6\Queries_Per_Product_Category_Num_Pro_GT_8_Coded/"
+test_file = "D:\Yassien_PhD\Experiment_6\Randomized_Queryset/testing.txt"
+product_dict = dict()
+with open(test_file, 'r') as fp:
+    for line in fp:
+        row = line.split('\t')
+        query_file_path = main_dirc+row[0]+".txt"
+        with open(query_file_path, 'r') as fp2:
+            for line2 in fp2:
+                row2 = line2.split('\t')
+                try:
+                    product_dict[row2[0]]
+                except KeyError:
+                    product_dict[row2[0]]=1
+
+print("Num Unique Products "+str(len(product_dict)))
+'''
+#import math
+#print(math.e ** 700)

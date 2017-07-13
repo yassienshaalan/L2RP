@@ -13,8 +13,17 @@ of RankSVM using stochastic gradient descent methdos.
 
 import itertools
 import numpy as np
-
+import matplotlib.pyplot as plt
+'''
+from sklearn.externals import joblib
 from sklearn import svm, linear_model, cross_validation
+from sklearn.linear_model import LinearRegression, LassoLarsCV, RidgeCV
+from sklearn.linear_model.base import LinearClassifierMixin, SparseCoefMixin, BaseEstimator
+import sklearn as sk
+from sklearn.cross_validation import train_test_split
+from sklearn.grid_search import GridSearchCV
+from sklearn.metrics import classification_report
+from sklearn.svm import SVC
 
 def transform_pairwise(X, y):
     """Transforms data into pairs with balanced labels for ranking
@@ -56,7 +65,6 @@ def transform_pairwise(X, y):
             y_new[-1] = - y_new[-1]
             X_new[-1] = - X_new[-1]
     return np.asarray(X_new), np.asarray(y_new).ravel()
-
 
 class RankSVM(svm.LinearSVC):
     """Performs pairwise ranking with an underlying LinearSVC model
@@ -121,25 +129,25 @@ def rankingAlgorithm1(X,y):
     train, test = next(iter(cv))
     # make a simple plot out of it
 
-    '''
+
     pl.scatter(np.dot(X, true_coef), y)
     pl.title('Data to be learned')
     pl.xlabel('<X, coef>')
     pl.ylabel('y')
     #pl.show()
-    '''
+
     # print the performance of ranking
     rank_svm = RankSVM().fit(X[train], Y[train])
     print('Performance of ranking ', rank_svm.score(X[test], Y[test]))
 
-    ''' from old code
+     from old code
     # and that of linear regression
     ridge = linear_model.RidgeCV(fit_intercept=True)
     ridge.fit(X[train], y[train])
     X_test_trans, y_test_trans = transform_pairwise(X[test], y[test])
     score = np.mean(np.sign(np.dot(X_test_trans, ridge.coef_)) == y_test_trans)
     print('Performance of linear regression ', score)
-    '''
+
     blocks = np.array([0, 1] * int((X.shape[0] / 2)))
 
     X_train, y_train, b_train = X[train], y[train], blocks[train]
@@ -194,10 +202,6 @@ def rankingAlgorithm2(X,y):
         tau, _ = stats.kendalltau(ridge.predict(X_test[b_test == i]), y_test[b_test == i])
         print('Kendall correlation coefficient for block %s: %.5f' % (i, tau))
     return
-
-
-from sklearn.linear_model import LinearRegression, LassoLarsCV, RidgeCV
-from sklearn.linear_model.base import LinearClassifierMixin, SparseCoefMixin, BaseEstimator
 
 
 class ELM(BaseEstimator):
@@ -267,21 +271,18 @@ class ELM(BaseEstimator):
         for parameter, value in parameters.items():
             setattr(self, parameter, value)
         return self
-import sklearn as sk
 
-import matplotlib.pyplot as plt
-from sklearn.externals import joblib
 def estimateBestAlpha(X,y,modelSavePath):
-    '''
+
     elm = ELM(n_nodes=30, output_function='lasso')
     gs = sk.grid_search.GridSearchCV(elm,cv=5,
                                      param_grid={"c": np.linspace(0.0001, 1, 50)},fit_params={}, scoring='mean_squared_error')
     gs.fit(X, y)
     print("best_params_")
     print(gs.best_params_['c'])
-    return gs.best_params_['c']'''
+    return gs.best_params_['c']
 
-    '''
+
     lasso = linear_model.Lasso()
     alphas = np.logspace(-4, -.5, 30)#np.linspace(0.00001, 1, 30)  # np.logspace(-4, -.5, 30)
     scores = list()
@@ -292,9 +293,9 @@ def estimateBestAlpha(X,y,modelSavePath):
         this_scores = cross_validation.cross_val_score(lasso, X, y, n_jobs=1)
         scores.append(np.mean(this_scores))
         scores_std.append(np.std(this_scores))
-       '''
 
-    '''
+
+
     plt.figure(figsize=(4, 3))
     plt.semilogx(alphas, scores)
     # plot error lines showing +/- std. errors of the scores
@@ -314,7 +315,7 @@ def estimateBestAlpha(X,y,modelSavePath):
             min_score = score
             minIndex = index
         index+=1
-    '''
+
     alphas = np.logspace(-4, -.5, 30)
     print("alphas")
     print(alphas)
@@ -331,7 +332,6 @@ def estimateBestAlpha(X,y,modelSavePath):
 
     joblib.dump(lasso_cv, modelSavePath, compress=9)
     return minAlpha
-
 def rankingAlgorithm5(X,y,n_samples,modelSavePath):
 
 
@@ -380,11 +380,6 @@ def rankingAlgorithm5(X,y,n_samples,modelSavePath):
     tau = 0
     return trainLen, testLen, tau
     return
-from sklearn.cross_validation import train_test_split
-from sklearn.grid_search import GridSearchCV
-from sklearn.metrics import classification_report
-from sklearn.svm import SVC
-
 def rankingAlgorithm4(X,y,n_samples,modelSavePath):
 
     # Loading the Digits dataset
@@ -427,16 +422,11 @@ def rankingAlgorithm4(X,y,n_samples,modelSavePath):
         print()
     return
 def rankingAlgorithm3(X,y,n_samples,modelSavePath):
-    from sklearn.cross_validation import KFold
-
-    from matplotlib import pyplot as plt
-    '''
     from sklearn.cross_validation import cross_val_score
     ridge = linear_model.Lasso(alpha=0.1)
     scores = cross_val_score(ridge,X,y,scoring='mean_squared_error',cv=10)
     print("MSE")
     print(np.sqrt(-scores).mean())
-    '''
 
     cv = KFold(n_samples, 5)
     AllPredictions = []
@@ -500,6 +490,9 @@ def rankingAlgorithm3(X,y,n_samples,modelSavePath):
     #print('Kendall correlation coefficient for the test list : %.5f ' % (tau))
 
     return trainLen,testLen,tau
+
+'''
+
 
 def buildFeatureListForCategory(catFilePath,productBaseDirectory):
     X = []  # list of samples each with list of features
@@ -2221,8 +2214,9 @@ def backAllPredictionsInOneFileStraight(sourceDirectory):
     print("Done, written "+str(counter)+" records")
     return
 
-def readSentencePolaritiesPerRating():
-    productPolartiesFile = "C:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three/Experiment 2/product_polarties_Per_RatingLevel.txt"
+def readSentencePolaritiesPerRating(productPolartiesFile):
+    print("Reading Product Reviews Polarities per rating level")
+    #productPolartiesFile = "C:\Yassien_RMIT PhD\Datasets\TruthDiscovery_Datasets\Web data Amazon reviews/Unique_Products_Stanford_three/Experiment 2/product_polarties_Per_RatingLevel.txt"
     ProductPolaritiesPerRating = dict()
     with open(productPolartiesFile, 'r') as fp:
         for line in fp:
@@ -2248,8 +2242,11 @@ def readSentencePolaritiesPerRating():
                             num = ""
                     else:
                         if row[i] != '\n':
-                            numbers.append(int(row[i]))
-
+                            try:
+                                numbers.append(int(row[i]))
+                            except ValueError:
+                                print("value error "+row[i])
+                                print(row)
                 if len(numbers) != 20:
                     print(len(numbers))
                     print(row)
@@ -2580,4 +2577,4 @@ if __name__ == '__main__':
     #changeSalesRankTargetToAverageToCategories(categoriesList,sourceFeaturesDirectory,destFeaturesDirectory)
     #changeSalesRankTargetToTQRankToCategories(categoriesList,sourceFeaturesDirectory,destFeaturesDirectory)
     #'''
-    print("Done")
+    #print("Done")
