@@ -3,7 +3,7 @@
 
 ## Learning to Rank Items of Minimal Reviews Using Weak Supervision
 
--	L2RP is a learning to rank technique that can be used in ranking products based on customer reviews 
+-	L2RP is a learning to rank technique that can be used in ranking products based on customer reviews. The main idea is to learn a ranking function from products having many reviews to transfer this knolwedge to product categories having less reviews in a weakly supervised setting.  
 	-	More deatils will can be found in the original paper [link](https://link.springer.com/chapter/10.1007/978-3-319-93034-3_50). 
 ### 1. Prerequisities
 - Python 3.7
